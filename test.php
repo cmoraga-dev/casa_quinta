@@ -1,8 +1,8 @@
 <html>
  <head>
-  <title>PHP Test</title>
+  <title>Automatizado con GitHub</title>
  </head>
  <body>
- <?php echo '<p>Hello World</p>'; ?> 
+ <?php echo '<p>Listo el server, a trabajar </p>'; ?> 
  </body>
 </html>
