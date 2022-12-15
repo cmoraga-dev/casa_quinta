@@ -31,6 +31,33 @@ class BoxUser_controller{
         }
     }
 
+    function getBoxuser($rut){
+        $box_user = new BoxUser();
+        $box_users = array();
+        $box_users["Users"] = array();
+
+        $res = $box_user->getBoxuser($rut);
+
+        if ($res->rowCount()) {
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+
+                $item = array(
+                    "id" => $row['id'],
+                    "id_account" => $row['id_account'],
+                    "first_name" => $row['first_name'],
+                    "last_name" => $row['last_name'],
+                    "rut" => $row['identification_number'],
+                    "email" => $row['email'],
+                );
+                array_push($box_users["Users"], $item);
+            }
+            return $this->boxUser = $box_users;
+        } else {
+            $this->error = json_encode(array('cod' => '500', 
+                                    'msj' => 'Usuario de box no encontrado'));
+        }
+    }
+
     function createBoxUser($id_account,$first_name , $last_name, $rut ,$email){
         $box_user = new BoxUser();
 

@@ -30,6 +30,32 @@ class User_controller{
         }
     }
 
+    function getUser($rut){
+        $user = new User();
+        $users = array();
+        $users["users"] = array();
+
+        $res = $user->getUser($rut);
+
+        if ($res->rowCount()) {
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+
+                $item = array(
+                    "id" => $row['id'],
+                    "first_name" => $row['first_name'],
+                    "last_name" => $row['last_name'],
+                    "rut" => $row['identification_number'],
+                    "email" => $row['email'],
+                );
+                array_push($users["users"], $item);
+            }
+            return $this->user = $users;
+        } else {
+            $this->error = json_encode(array('cod' => '500', 
+                                    'msj' => 'Usuario no encontrado'));
+        }
+    }
+
     function createUser($first_name, $last_name, $rut ,$email){
         $user = new User();
 

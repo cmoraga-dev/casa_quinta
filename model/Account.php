@@ -9,6 +9,11 @@ include_once 'db.php';
             return $query;
         }
 
+        function getAllAccount(){
+            $query = $this->connect()->query("SELECT * FROM accounts");
+            return $query;
+        }
+
         function createAccount($name, $pass, $id_typeProfile){
             try {
 

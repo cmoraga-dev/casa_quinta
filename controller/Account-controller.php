@@ -28,6 +28,30 @@ class Account_controller{
         }
     }
 
+    function getAllAcount(){
+        $user = new Account();
+        $users = array();
+        $users["users"] = array();
+
+        $res = $user->getAllAcount();
+
+        if ($res->rowCount()) {
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+
+                $item = array(
+                    "id" => $row['id'],
+                    "account" => $row['usser_name'],
+                    "pass" => $row['pass'],
+                );
+                array_push($users["users"], $item);
+            }
+            return $this->user = $users;
+        } else {
+            $this->error = json_encode(array('cod' => '500',
+                                    'msj' => 'Usuarios incorrecto'));
+        }
+    }
+
     function createAccount($name , $pass, $id_type_profile){
         $user = new Account();
 

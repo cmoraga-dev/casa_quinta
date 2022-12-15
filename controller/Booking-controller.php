@@ -30,6 +30,32 @@ class Booking_controller{
         }
     }
 
+    function getBookingByUser($user_id){
+        $bookibng = new Booking();
+        $bookibngs = array();
+        $bookibngs["bookings"] = array();
+
+        $res = $bookibng->getAllBooking($user_id);
+
+        if ($res->rowCount()) {
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+
+                $item = array(
+                    "id" => $row['id'],
+                    "user_id" => $row['user_id'],
+                    "datatime" => $row['datatime'],
+                    "confirmed" => $row['confirmed'],
+                    "active" => $row['active']
+                );
+                array_push($bookibngs["bookings"], $item);
+            }
+            return $this->boxUser = $bookibngs;
+        } else {
+            $this->error = json_encode(array('cod' => '500', 
+                                    'msj' => 'Usuario de booking no encontrado'));
+        }
+    }
+
     function createBoxUser($id_account,$fechaActual ){
         $box_user = new Booking();
 
