@@ -28,12 +28,36 @@ class Account_controller{
         }
     }
 
+    function getByIdAccount($id){
+        $user = new Account();
+        $users = array();
+        $users["users"] = array();
+
+        $res = $user->getByIdAccount($id);
+
+        if ($res->rowCount()) {
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+
+                $item = array(
+                    "id" => $row['id'],
+                    "account" => $row['usser_name'],
+                    "pass" => $row['pass'],
+                );
+                array_push($users["users"], $item);
+            }
+            return $this->user = $users;
+        } else {
+            $this->error = json_encode(array('cod' => '204', 
+                                    'msj' => 'Usuario o contraseña incorrecto'));
+        }
+    }
+
     function getAllAcount(){
         $user = new Account();
         $users = array();
         $users["users"] = array();
 
-        $res = $user->getAllAcount();
+        $res = $user->getAllAccount();
 
         if ($res->rowCount()) {
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
@@ -53,16 +77,21 @@ class Account_controller{
     }
 
     function createAccount($name , $pass, $id_type_profile){
-        $user = new Account();
+        try {
+            $user = new Account();
 
-        $res = $user->createAccount($name , $pass, $id_type_profile);
-        
-        if ($res->rowCount()) {
-            echo 'Se guardo Existosamente';
-        }else{
-            echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro crear el usuario'));
+            $res = $user->createAccount($name , $pass, $id_type_profile);
+            
+            if ($res->rowCount()) {
+                echo 'Se guardo Existosamente';
+            }else{
+                echo json_encode(array('cod' => '500', 
+                                        'msj' => 'No se logro crear el usuario'));
+            }
+        } catch (\Throwable $th) {
+            echo $th;
         }
+        
     }
 
     function deleteAccount($idAccount){

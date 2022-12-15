@@ -19,7 +19,7 @@ include_once 'db.php';
 
                 $duplicateKey = $this->connect()->query("SELECT * FROM box_users WHERE id_account ='$id_account'");
                 $query = $this->connect()->prepare("INSERT INTO box_users (id_account, first_name, last_name, identification_number, email) 
-                                                    VALUES($id_account, '$first_name', '$last_name', '$rut', '$email')");
+                                                    VALUES($id_account, '$first_name', '$last_name', $rut, '$email')");
                 if($duplicateKey->rowCount() < 1){
                     $query->execute();
                 }

@@ -14,6 +14,11 @@ include_once 'db.php';
             return $query;
         }
 
+        function getByIdAccount($id){
+            $query = $this->connect()->query("SELECT * FROM accounts WHERE id = $id");
+            return $query;
+        }
+
         function createAccount($name, $pass, $id_typeProfile){
             try {
 
