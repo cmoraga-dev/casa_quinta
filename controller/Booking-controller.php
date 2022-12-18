@@ -83,10 +83,10 @@ class Booking_controller{
     }
 
     
-    function updateConfirmBooking($id , $confirm ){
+    function updateConfirmBooking($id , $confirm,  $id_usuario ){
         $box_user = new Booking();
 
-        $res = $box_user->updateConfirmBooking($id , $confirm );
+        $res = $box_user->updateConfirmBooking($id , $confirm,  $id_usuario );
         
         if ($res->rowCount()) {
             echo 'Se actualizo Existosamente';

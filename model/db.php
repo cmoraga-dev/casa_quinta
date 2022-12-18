@@ -7,6 +7,10 @@ class DB{
     private $password;
     private $charset;
 
+    /**
+     * Constructor para asignar las varibales y sus valores
+     * a lo que utilizara la coneccion a la base de datos
+     */
     public function __construct()
     {
         $this->host = 'localhost';
@@ -16,6 +20,10 @@ class DB{
         $this->charset  = 'utf8mb4';
     }
 
+    /**
+     * Funcion para conectarse a la base de datos y poder
+     * realizar las Querys al servidor.
+     */
     function connect()
     {
         try{
