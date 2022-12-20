@@ -4,16 +4,17 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <script src="../public/js/login-js.js"></script>
+        <script src="public/js/home-js.js"></script>
+        <script  src="public/jquery-3.6.2.min.js"></script>
     </head>
     <body>
         <h1>Confirmar Hora</h1>
-        <form  id="confirmHours">
+        <form action="javascript: confirmHour()" id="confirmHours">
             <div>
                 <h2>Ingreso de paciente</h2>
             </div>
             <div>
-                <input type="text" name="user" id="user">
+                <input type="text" name="user" id="rutUser" required>
                 <p>Digitar Rut por favor</p>
             </div>
             <div>

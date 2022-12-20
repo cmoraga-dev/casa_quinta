@@ -20,13 +20,34 @@ include_once 'db.php';
             return $query;
         }
 
+        /** Obtiene el usuario/paciente.
+         * Se obtiene el id del usuario paciente que esta ingresado en el sistema.
+         */
+        function getUserByRut($rut){
+
+            // Validamos que el rut exista
+            $queryRut = $this->connect()->query("SELECT count(id) as exist FROM users WHERE identification_number = '$rut'");
+
+            //extraemos el valor de la query
+            $validateRutExist = $queryRut->fetch(PDO::FETCH_ASSOC)["exist"];
+
+            //validamos si es mayor a 0 para extraer el id del rut asociado
+            if($validateRutExist > 0){
+                $query = $this->connect()->query("SELECT id FROM users WHERE identification_number ='$rut'");
+                return $query;
+            }
+
+            // Si no existe respondemos un 0
+            return $validateRutExist;
+        }
+
         /** Crear un usuario/paciente.
-         * Crea un usuario paciente en el sistema.
+         * Crea un usuario paciente en el sistema pero primero corrobora si no existe.
          */
         function createUser($first_name, $last_name, $rut, $email){
             try {
 
-                $duplicateKey = $this->connect()->query("SELECT * FROM box_users WHERE id_account ='$rut'");
+                $duplicateKey = $this->connect()->query("SELECT * FROM box_users WHERE identification_number ='$rut'");
                 $query = $this->connect()->prepare("INSERT INTO users (first_name, last_name, identification_number, email, can_book) 
                                                     VALUES('$first_name', '$last_name', '$rut', '$email', 0)");
                 if($duplicateKey->rowCount() < 1){

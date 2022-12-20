@@ -1,6 +1,7 @@
 <?php
 
 include_once 'db.php';
+include_once __DIR__.'\User.php';
 
     class Booking extends DB{
 
@@ -47,11 +48,23 @@ include_once 'db.php';
         }
 
         /** Se actualiza la confirmacion de hora.
-         * Actualiza la hora de reserva por un id y su rut de usuario.
+         * Actualiza la hora de reserva por un id extraido en base a su rut del usuario.
          */
-        function updateConfirmBooking($id, $confirm, $id_usuario){
-            $query = $this->connect()->query("UPDATE bookings SET confirmed = $confirm, user_id = $id_usuario WHERE id = $id ");
-            return $query;
+        function updateConfirmBooking($rut){
+            // Se crea una variable de tipo usuario para extraer el metodo que obtiene el id del rut
+            $user = new User(); 
+            
+            // Se instancia el metodo y se extrae el valor traido
+            $responseRutByUser = $user->getUserByRut($rut);
+
+            // Si el valor traido es mayor a 0 se ejecuta el metodo para extraer el id
+            if($responseRutByUser != 0 ){
+                $id_usuario = $user->getUserByRut($rut)->fetch(PDO::FETCH_ASSOC)["id"];
+                $query = $this->connect()->query("UPDATE bookings SET confirmed = 1 WHERE `user_id` = $id_usuario ");
+                return $query;
+            }
+            return $responseRutByUser;
+            
         }
 
         /** Se actualiza el Box id de la reserva.
