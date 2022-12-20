@@ -56,10 +56,15 @@ class Booking_controller{
         }
     }
 
-    function createBoxUser($id_account,$fechaActual ){
+    /** Crea una reserva.
+     * Se genera una reserva de hora asociada al usuario paciente.
+     * Se espera recibir el "id usuario" y la "fecha de la reserva".
+     * @return "mensaje exitosamente o 505 || error servidor"
+     */
+    function createBookingUser($id_account,$fechaReserva ){
         $box_user = new Booking();
 
-        $res = $box_user->createBooking($id_account, $fechaActual );
+        $res = $box_user->createBooking($id_account, $fechaReserva );
         
         if ($res->rowCount()) {
             echo 'Se guardo Existosamente';

@@ -56,6 +56,10 @@ class User_controller{
         }
     }
 
+    /** Crear usuario/paciente.
+     * Crea un usuario enviando la solicitud a la base de datos, enviando los parametros de:
+     * @return "mensaje exitosamente o 505 || error servidor"
+     */
     function createUser($first_name, $last_name, $rut ,$email){
         $user = new User();
 

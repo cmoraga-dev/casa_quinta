@@ -26,8 +26,8 @@ include_once 'db.php';
         function createBooking($user_id, $dataTime){
             try {
                 
-                $query = $this->connect()->prepare("INSERT INTO bookings (`user_id`, datatime, confirmed, active) 
-                                                    VALUES('$user_id', $dataTime, 0, 0)");
+                $query = $this->connect()->prepare("INSERT INTO bookings (`user_id`, datatime) 
+                                                    VALUES($user_id, '$dataTime')");
                 
                 $query->execute();
                 return $query;
