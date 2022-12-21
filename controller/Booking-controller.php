@@ -26,7 +26,7 @@ class Booking_controller{
             return $this->boxUser = $bookibngs;
         } else {
             $this->error = json_encode(array('cod' => '204', 
-                                    'msj' => 'Booking no encontrado'));
+                                    'def' => 'Booking no encontrado'));
         }
     }
 
@@ -56,7 +56,7 @@ class Booking_controller{
             return $this->boxUser = $bookibngs;
         } else {
             $this->error = json_encode(array('cod' => '500', 
-                                    'msj' => 'Usuario de booking no encontrado'));
+                                    'def' => 'Usuario de booking no encontrado'));
         }
     }
 
@@ -74,7 +74,7 @@ class Booking_controller{
             echo 'Se guardo Existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro crear el booking'));
+                                    'def' => 'No se logro crear el booking'));
         }
     }
 
@@ -87,32 +87,32 @@ class Booking_controller{
             echo 'Se Elimino Existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro eliminar el booking'));
+                                    'def' => 'No se logro eliminar el booking'));
         }
     }
 
     /** Actualiza confirmacion reserva.
      * Se actualiza la confirmacion de la reserva a travez del rut al momento de digitarlo.
-     * @return "mensaje exitosamente o 500 || error servidor"
+     * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
      */
     function updateConfirmBooking($rut ){
         $box_user = new Booking();
         $res = $box_user->updateConfirmBooking($rut );
-        $response = [];
+        
         if($res != 0){
             if ($res->rowCount()) {
-                $response = [ "code"=>202, "def"=> "Usuario confirmado con exito" ];
-                echo json_encode ($response);
+                echo json_encode(array('cod' => '202', 
+                                     'def' => 'Usuario confirmado con exito'));
                 return;
             }else{
                 echo json_encode(array('cod' => '500', 
-                                        'msj' => 'No se logro actualizar el parametro indicado',
+                                        'def' => 'No se logro actualizar el parametro indicado',
                                         'server' => $res));
                 return;
             }
         }
-        $response = [ "code"=>404, "def"=> "Usuario no encontrado" ];
-        echo json_encode ($response);
+        echo json_encode(array('cod' => '404', 
+                                     'def' => 'Usuario no encontrado'));
     }
 
     function updateActiveBooking($id , $active ){
@@ -124,7 +124,7 @@ class Booking_controller{
             echo 'Se actualizo Existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro actualizar el parametro indicado',
+                                    'def' => 'No se logro actualizar el parametro indicado',
                                     'server' => $res));
         }
     }
@@ -138,7 +138,7 @@ class Booking_controller{
             echo 'Se actualizo Existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro actualizar el parametro indicado',
+                                    'def' => 'No se logro actualizar el parametro indicado',
                                     'server' => $res));
         }
     }

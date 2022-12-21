@@ -1,28 +1,35 @@
 
+/* Confirmar hora.
+* Permite confirmar la hora a travez del metodo AJAX de JQyuery, esto a tavez de las variables
+    obtenidas por el document.getElementById del input del rut.
+*/
 function confirmHour(){
     let rut = document.getElementById("rutUser").value;
     if(rut){    
         $.ajax({
+            // envia la peticion URL al API generado en view apartado booking
           url: 'view/Booking/updateConfirmBooking.php',
-            data: {
+          
+          //Envia el campo rut extraido del metodo getElementById.
+          data: {
                 rut: rut
             },
             type: 'POST',
         }).done(function (response){
+
             // Respuesta del servidor, independiente si esta correcto o no.
             let resp = JSON.parse(response);
-            if(resp.code === 202){
+            if(resp['cod'] === '202'){
                 alert("se ha confirmado su hora");
                 location.reload();
-            }else if(resp.code ===404){
-                console.log(`${resp.code} ${resp.def}`)
+            }else if(resp['cod'] === '404'){
+                console.log(`${resp['cod']} ${resp['def']}`);
             }
-            console.table(resp);
-
             
         }).fail(function (err){
           // Respuesta de un error de peticion hacia el ajax       
-          console.log(err);
+          let resp = JSON.parse(err);
+          console.log(`${resp['cod']} ${resp['def']}`);
         });
       }
 }

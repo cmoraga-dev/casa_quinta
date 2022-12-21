@@ -1,11 +1,33 @@
+<?php
+    include("../login/validateSession.php");
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
-        <script src="../public/js/login-js.js"></script>        
+        <script src="../../public/js/home-index-js.js"></script>        
     </head>
     <body>
-        <h1>Casa Quinta</h1>
-        <h3>TABLA DE USUARIOS</h3>
+        <div class="header">
+        <button type="button" onclick="javascript:goToHome();">Home</button>
+            <h1><?= $_SESSION["user"]?></h1>
+            <button type="button" onclick="javascript:logOut();">Cerrar Sesion</button>
+        </div>
+        <div>
+            <h3>Pacientes en espera</h3>
+            <table>
+                <thead>
+                    <td>
+                        <th>Nombre de paciente</th>
+                        <th>Hora agendada</th>
+                        <th>Hora Llegada</th>
+                    </td>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div></div>
     </body>
 </html>

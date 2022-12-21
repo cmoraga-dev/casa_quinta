@@ -60,7 +60,7 @@ include_once __DIR__.'/User.php';
             // Si el valor traido es mayor a 0 se ejecuta el metodo para extraer el id
             if($responseRutByUser != 0 ){
                 $id_usuario = $user->getUserByRut($rut)->fetch(PDO::FETCH_ASSOC)["id"];
-                $query = $this->connect()->query("UPDATE bookings SET confirmed = 1 WHERE `user_id` = $id_usuario ");
+                $query = $this->connect()->query("UPDATE bookings SET confirmed = 1, confirmHour = NOW() WHERE `user_id` = $id_usuario ");
                 return $query;
             }
             return $responseRutByUser;

@@ -4,10 +4,14 @@ include_once __DIR__.'/../model/Account.php';
 
 class Account_controller{
 
+    /** Obtiene el usuario.
+     *  Consulta al modelo de cuentas si el usuario con la contrasena enviada existe, devolviendo una query para extraer sus datos.
+     * @return "202 || login exitoso , 204 || error usuario no existe o contrasena"
+     */
     function getAccount($name , $pass){
         $user = new Account();
         $users = array();
-        $users["users"] = array();
+        $users = array();
 
         $res = $user->getAccount($name, $pass);
 
@@ -17,15 +21,30 @@ class Account_controller{
                 $item = array(
                     "id" => $row['id'],
                     "account" => $row['usser_name'],
-                    "pass" => $row['pass'],
+                    "id_type_profile" => $row['id_type_profile'],
                 );
-                array_push($users["users"], $item);
+                array_push($users, $item);
             }
-            return $this->user = $users;
+
+            // iniciamos la session
+            session_start();
+
+            // guardamos el nombre de usuario como session name
+            $_SESSION['user'] = $users[0]["account"];
+            $_SESSION["user_profile"] = $users[0]["id_type_profile"];
+            
+
+            echo json_encode(array('cod' => '202', 
+                                    'def' => 'Obtenido con exito'));
+            return;
         } else {
-            $this->error = json_encode(array('cod' => '204', 
-                                    'msj' => 'Usuario o contraseña incorrecto'));
+            echo json_encode(array('cod' => '404',
+                                    'def' => 'Usuario o contraseña incorrecto'));
+            return;
         }
+        echo json_encode(array('cod' => '500', 
+                                'def' => 'Error por parte del servidor',
+                                'server'=> $res));
     }
 
     function getByUserAccount($name){
