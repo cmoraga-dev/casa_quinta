@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__.'\..\model\BoxUser.php';
+include_once __DIR__.'/../model/BoxUser.php';
 
 class BoxUser_controller{
 

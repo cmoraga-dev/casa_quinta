@@ -1,7 +1,7 @@
 <?php
 
 include_once 'db.php';
-include_once __DIR__.'\User.php';
+include_once __DIR__.'/User.php';
 
     class Booking extends DB{
 

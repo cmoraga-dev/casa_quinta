@@ -1,6 +1,6 @@
 <?php
 
-include_once __DIR__.'\..\model\Account.php';
+include_once __DIR__.'/../model/Account.php';
 
 class Account_controller{
 
@@ -28,12 +28,12 @@ class Account_controller{
         }
     }
 
-    function getByIdAccount($id){
+    function getByUserAccount($name){
         $user = new Account();
         $users = array();
         $users["users"] = array();
 
-        $res = $user->getByIdAccount($id);
+        $res = $user->getByUserAccount($name);
 
         if ($res->rowCount()) {
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {

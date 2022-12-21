@@ -1,7 +1,6 @@
 
 function confirmHour(){
     let rut = document.getElementById("rutUser").value;
-    console.log(getCheckDigit(rut));
     if(rut){    
         $.ajax({
           url: 'view/Booking/updateConfirmBooking.php',
