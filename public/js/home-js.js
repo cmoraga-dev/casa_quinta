@@ -65,5 +65,5 @@ function validateRUT(rut) {
       result += reversedRUT[i] * j;
     }
   
-    return (11 - (result % 11)) <= 9 ? String((11 - (result % 11))) : 'K'
+    return (11 - (result % 11)) <= 9 ? String((11 - (result % 11))) : '0'
   }

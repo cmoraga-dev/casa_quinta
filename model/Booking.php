@@ -13,13 +13,27 @@ include_once __DIR__.'/User.php';
             return $query;
         }
 
-        /** Obtiene todos las horas
-         * Devuelve todas las horas ingresadas en la base de datos.
+    /** Obtiene todos las horas
+     * Devuelve todas las horas ingresadas en la base de datos.
+     */
+    function getAllBooking()
+    {
+        $query = $this->connect()->query("SELECT DATE(datatime),DATE(NOW()),confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name'
+                                              FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id 
+                                              WHERE confirmed  = 1 AND active = 1 
+                                              AND DATE(confirmHour) = DATE(NOW());");
+        return $query;
+    }
+
+        /** Obtiene todos las horas confirmadas del dia.
+         * Devuelve todas las horas ingresadas en la base de datos que son del dia y que han sido confirmadas
+         * esta query es compleja debido a que mantiene join para extraer mas datos.
          */
-        function getAllBooking(){
-            $query = $this->connect()->query("SELECT * FROM bookings");
+        function getAllBookingToday(){
+            $query = $this->connect()->query("SELECT datatime,confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name' FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id WHERE confirmed  = 1;");
             return $query;
         }
+        
 
         /** Crea una nueva hora.
          * Se crea una hora en base a un usuario/paciente.

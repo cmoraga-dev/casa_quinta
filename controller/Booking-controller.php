@@ -30,6 +30,36 @@ class Booking_controller{
         }
     }
 
+    /** Obtener las reservas del dia.
+     * Busca todas las reservas del dia y que estan confirmadas en el dia de la consulta por ejemplo :
+     * Todas las de hoy 21/12/2022 y estan confirmadas.
+     * @return "202 || extraido con exito , 404 || error no encontrado o 500 || error servidor" 
+     */
+    function getAllBookingToday(){
+        $bookibng = new Booking();
+        $bookibngs = array();
+        $bookibngs["bookings"] = array();
+
+        $res = $bookibng->getAllBooking();
+
+        if ($res->rowCount()) {
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+
+                $item = array(
+                    "id" => $row['id'],
+                    "full_name_user" => $row['full_name'],
+                    "datatime_booking" => $row['datatime'],
+                    "datatime_confirmed" => $row['confirmHour']
+                );
+                array_push($bookibngs["bookings"], $item);
+            }
+            return $this->boxUser = $bookibngs;
+        } else {
+            $this->error = json_encode(array('cod' => '204', 
+                                    'def' => 'Booking no encontrado'));
+        }
+    }
+
     /** Buscar usuario por id.
      * Busca la reserva del usuario por su id y retorna un array con todos los datos de la reserva.
      * @return "mensaje exitosamente o 500 || error servidor"
