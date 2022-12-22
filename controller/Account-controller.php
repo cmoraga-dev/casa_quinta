@@ -13,7 +13,11 @@ class Account_controller{
         $users = array();
         $users = array();
 
-        $res = $user->getAccount($name, $pass);
+        // Encriptamos la password que nos llega.
+        $passEncryp  = hash('sha512',$pass);
+
+
+        $res = $user->getAccount($name, $passEncryp);
 
         if ($res->rowCount()) {
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
@@ -32,6 +36,7 @@ class Account_controller{
             // guardamos el nombre de usuario como session name
             $_SESSION['user'] = $users[0]["account"];
             $_SESSION["user_profile"] = $users[0]["id_type_profile"];
+            $_SESSION["id"] = $users[0]["id"];
             
 
             echo json_encode(array('cod' => '202', 

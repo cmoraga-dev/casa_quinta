@@ -13,27 +13,41 @@ include_once __DIR__.'/User.php';
             return $query;
         }
 
-    /** Obtiene todos las horas
-     * Devuelve todas las horas ingresadas en la base de datos.
-     */
-    function getAllBooking()
-    {
-        $query = $this->connect()->query("SELECT DATE(datatime),DATE(NOW()),confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name'
-                                              FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id 
-                                              WHERE confirmed  = 1 AND active = 1 
-                                              AND DATE(confirmHour) = DATE(NOW());");
-        return $query;
-    }
+        /** Obtiene todos las horas
+         * Devuelve todas las horas ingresadas en la base de datos.
+         */
+        function getAllBooking()
+        {
+            $query = $this->connect()->query("SELECT * FROM `bookings`");
+            return $query;
+        }
 
         /** Obtiene todos las horas confirmadas del dia.
          * Devuelve todas las horas ingresadas en la base de datos que son del dia y que han sido confirmadas
          * esta query es compleja debido a que mantiene join para extraer mas datos.
          */
-        function getAllBookingToday(){
-            $query = $this->connect()->query("SELECT datatime,confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name' FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id WHERE confirmed  = 1;");
+        function getAllBookingToday()
+        {
+            $query = $this->connect()->query("SELECT b.id as 'id', datatime,confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name'
+                                                FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id 
+                                                WHERE confirmed  = 1 AND active = 1 
+                                                AND DATE(confirmHour) = DATE(NOW())");
             return $query;
         }
-        
+
+        /** Obtiene todos las horas reservadas por el usuario.
+         * Devuelve todas las horas ingresadas en la base de datos.
+         */
+        function getAllBookingNotConfirmByUser($rut)
+        {
+            // Si el valor traido es mayor a 0 se ejecuta el metodo para extraer el id
+            $query = $this->connect()->query("SELECT b.id as 'id', datatime, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name', u.identification_number as 'rut'
+                                                FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id
+                                                WHERE u.identification_number = $rut AND confirmed = 0 AND active = 0
+                                                ORDER BY datatime ASC; ");
+            return $query;
+        }
+                
 
         /** Crea una nueva hora.
          * Se crea una hora en base a un usuario/paciente.
@@ -74,7 +88,7 @@ include_once __DIR__.'/User.php';
             // Si el valor traido es mayor a 0 se ejecuta el metodo para extraer el id
             if($responseRutByUser != 0 ){
                 $id_usuario = $user->getUserByRut($rut)->fetch(PDO::FETCH_ASSOC)["id"];
-                $query = $this->connect()->query("UPDATE bookings SET confirmed = 1, confirmHour = NOW() WHERE `user_id` = $id_usuario ");
+                $query = $this->connect()->query("UPDATE bookings SET confirmed = 1, active = 1, confirmHour = NOW() WHERE `user_id` = $id_usuario ");
                 return $query;
             }
             return $responseRutByUser;
@@ -97,4 +111,3 @@ include_once __DIR__.'/User.php';
             return $query;
         }
     }
-?>

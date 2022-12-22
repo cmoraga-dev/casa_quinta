@@ -6,7 +6,8 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <script src="../../public/js/home-index-js.js"></script>        
+        <script src="../../public/js/home-index-js.js"></script> 
+        <script  src="../../public/jquery-3.6.2.min.js"></script>       
     </head>
     <body>
         <div class="header">
@@ -16,15 +17,21 @@
         </div>
         <div>
             <h3>Pacientes en espera</h3>
-            <table>
+            <table id="tableBookingConfirm">
                 <thead>
-                    <td>
+                    <tr>
                         <th>Nombre de paciente</th>
                         <th>Hora agendada</th>
                         <th>Hora Llegada</th>
-                    </td>
+                    </tr>
                 </thead>
-                <tbody>
+                <tbody id = "tbodyConfirm">
+                    <tr>
+                        <td> Sin datos </td>
+                        <td> Sin datos </td>
+                        <td> Sin datos </td>
+                        <td> <input type="button" value="Llamar" disabled> </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

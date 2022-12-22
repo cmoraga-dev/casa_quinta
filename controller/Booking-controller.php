@@ -35,12 +35,13 @@ class Booking_controller{
      * Todas las de hoy 21/12/2022 y estan confirmadas.
      * @return "202 || extraido con exito , 404 || error no encontrado o 500 || error servidor" 
      */
-    function getAllBookingToday(){
-        $bookibng = new Booking();
-        $bookibngs = array();
-        $bookibngs["bookings"] = array();
+    function getAllBookingToday()
+    {
+        $booking = new Booking();
+        $bookings = array();
+        $bookings["bookings"] = array();
 
-        $res = $bookibng->getAllBooking();
+        $res = $booking->getAllBookingToday();
 
         if ($res->rowCount()) {
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
@@ -51,12 +52,20 @@ class Booking_controller{
                     "datatime_booking" => $row['datatime'],
                     "datatime_confirmed" => $row['confirmHour']
                 );
-                array_push($bookibngs["bookings"], $item);
+                array_push($bookings["bookings"], $item);
             }
-            return $this->boxUser = $bookibngs;
+            echo json_encode(array(
+                'cod' => '202',
+                'def' => 'Reservas obtenidas con exito',
+                'server' => $bookings
+            ));
+            return;
         } else {
-            $this->error = json_encode(array('cod' => '204', 
-                                    'def' => 'Booking no encontrado'));
+            echo json_encode(array(
+                'cod' => '404',
+                'def' => 'Reserva no encontrada'
+            ));
+            return;
         }
     }
 
@@ -89,6 +98,44 @@ class Booking_controller{
                                     'def' => 'Usuario de booking no encontrado'));
         }
     }
+
+        /** Busca todas las reservas del usuario no confirmadas.
+     * Se busca por rut del usuario todas sus reservas que tiene sin confirmar y extrae esa informacion para mostrarla en pantalla.
+     * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
+     */
+    function getAllBookingNotConfirmByUser($rut){
+        $box_user = new Booking();       
+        $bookibngs = array();
+        $bookibngs["bookings"] = array();
+
+        $res = $box_user->getAllBookingNotConfirmByUser( $rut );
+        
+        if ($res->rowCount()) {
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+
+                $item = array(
+                    "id" => $row['id'],
+                    "datatime" => $row['datatime'],
+                    "full_name" => $row['full_name'],
+                    "rut" => $row['rut']
+                );
+                array_push($bookibngs["bookings"], $item);
+            }
+            echo json_encode(array('cod' => '202', 
+                                    'def' => 'Reservas obtenidas con exito',
+                                    'server' => $bookibngs));
+            return;
+        } else {
+            echo json_encode(array('cod' => '404', 
+                                    'def' => 'Reserva no encontrada'));
+            return;
+        }
+        echo json_encode(array('cod' => '500', 
+                                'def' => 'Problemas con el servidor',
+                                'server' => $res));
+        return;
+    }
+    
 
     /** Crea una reserva.
      * Se genera una reserva de hora asociada al usuario paciente.
