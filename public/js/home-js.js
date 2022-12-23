@@ -3,7 +3,7 @@ $(document).ready(
     $('#rutUser').Rut({
         validation: false,
         format_on: 'keyup'
-    });
+    })
 );
 
 /* Confirmar hora.
