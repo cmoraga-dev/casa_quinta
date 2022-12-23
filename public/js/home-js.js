@@ -1,8 +1,10 @@
 // Auto formato para campo RUT
 $(document).ready(
-    $('#rutUser').Rut({
-        validation: false,
-        format_on: 'keyup'
+    $("#rutUser").change(function(){
+        $('#rutUser').Rut({
+            validation: false,
+            format_on: 'keyup'
+        })
     })
 );
 
