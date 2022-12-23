@@ -1,12 +1,11 @@
 // Auto formato para campo RUT
 $(function() {
-    $('#rutUser'.change(function(){
-        console.log($(this))
+    $('#rutUser').change(function(){
         $('#rutUser').Rut({
             validation: false,
             format_on: 'keyup'
         })
-    })
+    }
 )});
 
 /* Confirmar hora.
