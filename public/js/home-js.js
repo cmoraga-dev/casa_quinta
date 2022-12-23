@@ -1,3 +1,9 @@
+// Auto formato para campo RUT
+$('#rutUser').Rut({
+    validation: false,
+    format_on: 'keyup'
+});
+
 /* Confirmar hora.
 * Permite confirmar la hora a través del metodo AJAX de JQuery, esto a través de las variables
     obtenidas por el document.getElementById del input del rut.
