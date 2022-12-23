@@ -7,7 +7,7 @@ $(function() {
             format_on: 'keyup'
         })
     })
-);
+)});
 
 /* Confirmar hora.
 * Permite confirmar la hora a través del metodo AJAX de JQuery, esto a través de las variables
