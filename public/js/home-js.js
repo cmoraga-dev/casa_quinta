@@ -69,7 +69,7 @@ function validateRUT(rut) {
   }
 
 // Auto formato para campo RUT
-var rut = $('input[name ="user"]');
+var rut = $('#rutUser');
 
 rut .Rut({
 //  on_error: function(){return (s.length >= 11 && s.length < 13); },
