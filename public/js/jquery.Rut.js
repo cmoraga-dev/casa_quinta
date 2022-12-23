@@ -20,6 +20,7 @@
       format: true,
       format_on: 'change'
     };
+    console.log('a');
 
     var opts = $.extend(defaults, options);
 
