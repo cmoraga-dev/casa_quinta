@@ -1,7 +1,7 @@
 // Auto formato para campo RUT
 $('#rutUser').Rut({
-//  on_error: function(){return (s.length >= 11 && s.length < 13); },
-  format_on: 'keyup'
+    validation: false,
+    format_on: 'keyup'
 });
 
 
