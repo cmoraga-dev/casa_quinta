@@ -8,13 +8,6 @@
         <script src="public/js/jquery.Rut.js"></script>
         <script src="public/js/home-js.js"></script>
         <script src="../public/js/jquery.Rut.js"></script>
-        <script>
-            // Auto formato para campo RUT
-            $('#rutUser').Rut({
-                validation: false,
-                format_on: 'keyup'
-            });
-        </script>
 
     </head>
     <body>
