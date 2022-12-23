@@ -16,11 +16,10 @@
       },
       on_success: function() {
       },
-      validation: true,
+      validation: false,
       format: true,
       format_on: 'change'
     };
-    console.log('!!')
 
     var opts = $.extend(defaults, options);
 
