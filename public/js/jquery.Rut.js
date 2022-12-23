@@ -21,6 +21,8 @@
       format_on: 'change'
     };
     console.log('a');
+    console.log(this.val());
+    console.log(defaults);
 
     var opts = $.extend(defaults, options);
 
