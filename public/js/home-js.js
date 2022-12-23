@@ -14,7 +14,7 @@ $(function() {
 */
 function confirmHour(){
     let rut = document.getElementById("rutUser").value;
-    if(rut){    
+    if(rut){
         $.ajax({
             // envia la peticion URL al API generado en view apartado booking
           url: 'view/Booking/updateConfirmBooking.php',

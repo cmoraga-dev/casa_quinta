@@ -11,8 +11,7 @@
 		echo '<script>top.location.href = "/casa_quinta/view";</script>';
 		die;
 		
-	}
-	else{
+	}else{
 		
         // se extrae al momento de validar el login.
 		$user_profile = $_SESSION["user_profile"];

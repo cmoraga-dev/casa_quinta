@@ -13,6 +13,7 @@
         <div class="header">
         <button type="button" onclick="javascript:goToHome();">Home</button>
             <h1><?= $_SESSION["user"]?></h1>
+            <h1><?= $_SESSION["box_user_login"]?></h1>
             <button type="button" onclick="javascript:logOut();">Cerrar Sesion</button>
         </div>
         <div>

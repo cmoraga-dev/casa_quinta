@@ -27,7 +27,7 @@ class BoxUser_controller{
             return $this->boxUser = $box_users;
         } else {
             $this->error = json_encode(array('cod' => '204', 
-                                    'msj' => 'Usuario de box no encontrado'));
+                                    'def' => 'Usuario de box no encontrado'));
         }
     }
 
@@ -54,7 +54,7 @@ class BoxUser_controller{
             return $this->boxUser = $box_users;
         } else {
             $this->error = json_encode(array('cod' => '500', 
-                                    'msj' => 'Usuario de box no encontrado'));
+                                    'def' => 'Usuario de box no encontrado'));
         }
     }
 
@@ -67,7 +67,7 @@ class BoxUser_controller{
             echo 'Se guardo Existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro crear el usuario del box'));
+                                    'def' => 'No se logro crear el usuario del box'));
         }
     }
 
@@ -80,11 +80,15 @@ class BoxUser_controller{
             echo 'Se Elimino Existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro eliminar al usuario del box'));
+                                    'def' => 'No se logro eliminar al usuario del box'));
         }
     }
 
-    
+    /** Actualizar paramatros del usuario del box.
+     * Se actualiza los parametros del doctor que son los usuarios de box, permite actualizar
+     * todo menos su rut y su cuenta.
+     * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
+     */
     function updateBoxUser($id , $first_name, $last_name, $email){
         $box_user = new BoxUser();
 
@@ -94,9 +98,45 @@ class BoxUser_controller{
             echo 'Se guardo Existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro actualizar el parametro indicado',
+                                    'def' => 'No se logro actualizar el parametro indicado',
                                     'server' => $res));
         }
+    }
+
+    /** Actualizar paramatros box del usuario del box.
+     * Se actualiza el parametros box del doctor que son los usuarios de box, esto se 
+     * actualiza siempre que haga login el usuario del box , indicando su box actual, pasando su id de box user.
+     * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
+     */
+    function updateBoxLoginUser($id , $box_num){
+        $box_user = new BoxUser();
+        $box_users = array();
+
+        $res = $box_user->updateBoxLoginUser($id , $box_num);
+        $res2 = $box_user->getBox($id);
+        
+        if ($res->rowCount()) {
+            while ($row = $res2->fetch(PDO::FETCH_ASSOC)) {
+
+                $item = array(
+                    "id" => $row['id'],
+                    "box_user" => $row['box']
+                );
+                array_push($box_users, $item);
+            }
+            // guardamos el nombre de usuario como box_user_login.
+            $_SESSION['box_user_login'] = $box_users[0]["box_user"];
+            echo json_encode(array('cod' => '202', 
+                                    'def' => 'Obtenido con exito'));
+            return;
+        }else{
+            echo json_encode(array('cod' => '404',
+                                    'def' => 'Usuario o contraseña incorrecto'));
+            return;
+        }
+        echo json_encode(array('cod' => '500', 
+                                'def' => 'Error por parte del servidor',
+                                'server'=> $res));
     }
 }
 ?>

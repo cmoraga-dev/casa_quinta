@@ -7,8 +7,6 @@
         <script  src="public/jquery-3.6.2.min.js"></script>
         <script src="public/js/jquery.Rut.js"></script>
         <script src="public/js/home-js.js"></script>
-        <script src="../public/js/jquery.Rut.js"></script>
-
     </head>
     <body>
         <h1>Confirmar Hora</h1>

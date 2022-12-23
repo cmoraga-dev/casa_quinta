@@ -48,6 +48,19 @@ include_once __DIR__.'/User.php';
             return $query;
         }
                 
+        /** Obtener Dashboard de hoy.
+         * Se crea una consulta SQL para recrear los parametros de un dashboard solicitado que debera
+         * traer los datos solicitados por el usuario: Nombre de paciente, Hora agendada, Box, Nombre Doctor
+         */
+        function getDashboardConfirm(){
+            $query = $this->connect()->query("SELECT CONCAT(u.first_name,' ' ,u.last_name) as 'full_name_client', datatime, bu.box, 
+                                                CONCAT(bu.first_name,' ' ,bu.last_name) as 'full_name_user'
+                                                FROM `bookings` b 
+                                                INNER JOIN `users` u ON b.user_id = u.id
+                                                INNER JOIN `box_users` bu ON b.box_id = bu.id
+                                                WHERE DATE(b.confirmHour) = DATE(NOW());");
+            return $query;
+        }
 
         /** Crea una nueva hora.
          * Se crea una hora en base a un usuario/paciente.
@@ -88,7 +101,7 @@ include_once __DIR__.'/User.php';
             // Si el valor traido es mayor a 0 se ejecuta el metodo para extraer el id
             if($responseRutByUser != 0 ){
                 $id_usuario = $user->getUserByRut($rut)->fetch(PDO::FETCH_ASSOC)["id"];
-                $query = $this->connect()->query("UPDATE bookings SET confirmed = 1, active = 1, confirmHour = NOW() WHERE `user_id` = $id_usuario ");
+                $query = $this->connect()->query("UPDATE bookings SET confirmed = 1, active = 1, confirmHour = NOW() WHERE `user_id` = $id_usuario AND confirmed = 0");
                 return $query;
             }
             return $responseRutByUser;

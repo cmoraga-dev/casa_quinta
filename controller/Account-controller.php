@@ -11,7 +11,6 @@ class Account_controller{
     function getAccount($name , $pass){
         $user = new Account();
         $users = array();
-        $users = array();
 
         // Encriptamos la password que nos llega.
         $passEncryp  = hash('sha512',$pass);

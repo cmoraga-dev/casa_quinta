@@ -20,6 +20,14 @@ include_once 'db.php';
             return $query;
         }
 
+        /** Obtiene el numero del box del usuario doctor.
+         * Devuelve todos los usuarios de Box y sus datos.
+         */
+        function getBox($id){
+            $query = $this->connect()->query("SELECT id, `box` FROM box_users where id = $id");
+            return $query;
+        }
+
         /** Crear un usuario de Box.
          * Se crea un usuario para el box, donde se debe tener registrado un tipo de cuenta.
          */
@@ -56,5 +64,14 @@ include_once 'db.php';
                                                 email = '$email' WHERE id = $id ");
             return $query;
         }
+
+        /** Actualiza el parametro box del usuario de Box.
+         * Actualiza el parametro box del usuario por su id.
+         */
+        function updateBoxLoginUser($id, $box_num){
+            $query = $this->connect()->query("UPDATE box_users SET `box` = '$box_num'  WHERE id = $id ");
+            return $query;
+        }
+        
     }
 ?>

@@ -64,38 +64,41 @@ function loadBodyTable( tableArray = []){
     if(empyTable > 0){
         // Se busca el body de la tabla.
         const tbody = document.getElementById("tbodyConfirm");
-        
-        // Se limpia el tbody para ir actualizandolo.
-        tbody.innerHTML = '';
-     
-        // Se crea un map del array que llega con su parametro bookings
-        tableArray.bookings.map((e) => {
-            // Se crean las varibales de html.
-            let tr = document.createElement("tr");
-            let tdName = document.createElement("td");
-            let tdBooking = document.createElement("td");
-            let tdConfirm = document.createElement("td");
+       
+        // Se valida que existe el campo id
+        if(tbody){
+            // Se limpia el tbody para ir actualizandolo.
+            tbody.innerHTML = '';
 
-            let button = document.createElement("button");
+            // Se crea un map del array que llega con su parametro bookings
+            tableArray.bookings.map((e) => {
+                // Se crean las varibales de html.
+                let tr = document.createElement("tr");
+                let tdName = document.createElement("td");
+                let tdBooking = document.createElement("td");
+                let tdConfirm = document.createElement("td");
 
-            // Se asigna un hijo al tbody que es un tr
-            tbody.appendChild(tr);
+                let button = document.createElement("button");
 
-            // Se asignan valores a las variables creadas con los datos tomados del map.
-            tr.id = e.id;
-            tdName.textContent = e.full_name_user;
-            tdBooking.textContent = e.datatime_booking;
-            tdConfirm.textContent = e.datatime_confirmed;
-            
-            // Se da un nombre al boton que asginada un box.
-            button.textContent = "Llamar";
+                // Se asigna un hijo al tbody que es un tr
+                tbody.appendChild(tr);
 
-            // Se asignan los hijos al tr.
-            tr.appendChild(tdName);
-            tr.appendChild(tdBooking);
-            tr.appendChild(tdConfirm);
-            tr.appendChild(button);
+                // Se asignan valores a las variables creadas con los datos tomados del map.
+                tr.id = e.id;
+                tdName.textContent = e.full_name_user;
+                tdBooking.textContent = e.datatime_booking;
+                tdConfirm.textContent = e.datatime_confirmed;
+
+                // Se da un nombre al boton que asginada un box.
+                button.textContent = "Llamar";
+
+                // Se asignan los hijos al tr.
+                tr.appendChild(tdName);
+                tr.appendChild(tdBooking);
+                tr.appendChild(tdConfirm);
+                tr.appendChild(button);
         });
+        }        
     }
     
 }
