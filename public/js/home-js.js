@@ -1,6 +1,15 @@
+// Auto formato para campo RUT
+var rut = $('#rutUser');
+
+rut .Rut({
+//  on_error: function(){return (s.length >= 11 && s.length < 13); },
+  format_on: 'keyup'
+});
+
+
 
 /* Confirmar hora.
-* Permite confirmar la hora a travez del metodo AJAX de JQyuery, esto a tavez de las variables
+* Permite confirmar la hora a través del metodo AJAX de JQuery, esto a través de las variables
     obtenidas por el document.getElementById del input del rut.
 */
 function confirmHour(){
@@ -68,10 +77,3 @@ function validateRUT(rut) {
     return (11 - (result % 11)) <= 9 ? String((11 - (result % 11))) : '0'
   }
 
-// Auto formato para campo RUT
-var rut = $('#rutUser');
-
-rut .Rut({
-//  on_error: function(){return (s.length >= 11 && s.length < 13); },
-  format_on: 'keyup'
-});
