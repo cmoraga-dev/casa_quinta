@@ -70,6 +70,7 @@ jQuery.Rut = {
   formatear: function(Rut, digitoVerificador) {
 
     var sRut = new String(Rut);
+    console.log('sRut');
     console.log(sRut);
     var sRutFormateado = '';
     sRut = jQuery.Rut.quitarFormato(sRut);
