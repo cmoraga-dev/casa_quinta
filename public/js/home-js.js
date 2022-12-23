@@ -1,6 +1,7 @@
 // Auto formato para campo RUT
-$(document).ready(
-    $("#rutUser").change(function(){
+$(function() {
+    $('#rutUser'.change(function(){
+        console.log($(this))
         $('#rutUser').Rut({
             validation: false,
             format_on: 'keyup'
