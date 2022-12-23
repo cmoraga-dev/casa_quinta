@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <script  src="../public/jquery-3.6.2.min.js"></script>
         <script src="../public/js/login-js.js"></script>
+        <script src="../public/js/jquery.Rut.js"></script>
         <script>
             // Auto formato para campo RUT
             $('#rutUser').Rut({
