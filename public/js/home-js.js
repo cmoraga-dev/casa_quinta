@@ -67,3 +67,11 @@ function validateRUT(rut) {
   
     return (11 - (result % 11)) <= 9 ? String((11 - (result % 11))) : '0'
   }
+
+// Auto formato para campo RUT
+var rut = $('input[name ="user"]');
+
+rut .Rut({
+//  on_error: function(){return (s.length >= 11 && s.length < 13); },
+  format_on: 'keyup'
+});
