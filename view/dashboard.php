@@ -7,7 +7,7 @@
     </head>
     <body>
         <div>
-            <h3>Pacientes en espera</h3>
+            <h1>Sala de espera </h1>
             <table id="tableBookingConfirm">
                 <thead>
                     <tr>

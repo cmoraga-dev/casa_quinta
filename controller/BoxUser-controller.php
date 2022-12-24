@@ -108,13 +108,17 @@ class BoxUser_controller{
      * actualiza siempre que haga login el usuario del box , indicando su box actual, pasando su id de box user.
      * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
      */
-    function updateBoxLoginUser($id , $box_num){
+    function updateBoxLoginUser($id_account , $box_num){
         $box_user = new BoxUser();
         $box_users = array();
 
-        $res = $box_user->updateBoxLoginUser($id , $box_num);
-        $res2 = $box_user->getBox($id);
-        
+        // Actualiza el box del doctor.
+        $res = $box_user->updateBoxLoginUser($id_account , $box_num);
+
+        // Extrae el numero del box que encontro.
+        $res2 = $box_user->getBox($id_account);
+
+        // Validamos si se actualizo un parametro del res (update del box).
         if ($res->rowCount()) {
             while ($row = $res2->fetch(PDO::FETCH_ASSOC)) {
 
@@ -126,12 +130,38 @@ class BoxUser_controller{
             }
             // guardamos el nombre de usuario como box_user_login.
             $_SESSION['box_user_login'] = $box_users[0]["box_user"];
+
             echo json_encode(array('cod' => '202', 
                                     'def' => 'Obtenido con exito'));
             return;
         }else{
+            
+            // En caso que no actualice el parametro, validamos si existe un box asginado al doctor. 
+            if ($res2->rowCount()) {
+                while ($row = $res2->fetch(PDO::FETCH_ASSOC)) {
+                    $item = array(
+                        "id" => $row['id'],
+                        "box_user" => $row['box']
+                    );
+                    array_push($box_users, $item);
+                }
+                
+                // Validamos que el box que quiere asignar ya esta asignado al doctor.
+                // En caso de ser asi se responed con error 202 que es todo ok.
+                if($box_users[0]["box_user"] == $box_num){
+
+                    // guardamos el nombre de usuario como box_user_login.
+                    $_SESSION['box_user_login'] = $box_users[0]["box_user"];
+        
+                    echo json_encode(array('cod' => '202', 
+                                            'def' => 'Obtenido con exito'));
+                    return;
+                }
+            }
+
+            // Si no error 404 dato incorrecto
             echo json_encode(array('cod' => '404',
-                                    'def' => 'Usuario o contraseña incorrecto'));
+                                    'def' => 'Un dato es incorrecto'));
             return;
         }
         echo json_encode(array('cod' => '500', 

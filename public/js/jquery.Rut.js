@@ -20,7 +20,6 @@
       format: true,
       format_on: 'change'
     };
-    console.log('a');
     console.log(this.val());
     console.log(defaults);
 
