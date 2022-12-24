@@ -53,8 +53,8 @@ include_once __DIR__.'/User.php';
          * traer los datos solicitados por el usuario: Nombre de paciente, Hora agendada, Box, Nombre Doctor
          */
         function getDashboardConfirm(){
-            $query = $this->connect()->query("SELECT CONCAT(u.first_name,' ' ,u.last_name) as 'full_name_client', datatime, bu.box, 
-                                                CONCAT(bu.first_name,' ' ,bu.last_name) as 'full_name_user'
+            $query = $this->connect()->query("SELECT CONCAT(u.first_name,' ' ,u.last_name) as 'full_name_patient', datatime, bu.box, 
+                                                CONCAT(bu.first_name,' ' ,bu.last_name) as 'full_name_account', b.id
                                                 FROM `bookings` b 
                                                 INNER JOIN `users` u ON b.user_id = u.id
                                                 INNER JOIN `box_users` bu ON b.box_id = bu.id

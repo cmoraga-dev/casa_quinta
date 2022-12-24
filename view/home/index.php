@@ -26,7 +26,7 @@
                         <th>Hora Llegada</th>
                     </tr>
                 </thead>
-                <tbody id = "tbodyConfirm">
+                <tbody id = "tbody-Confirm">
                     <tr>
                         <td> Sin datos </td>
                         <td> Sin datos </td>

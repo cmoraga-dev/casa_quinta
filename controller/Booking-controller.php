@@ -100,7 +100,7 @@ class Booking_controller{
         }
     }
 
-        /** Busca todas las reservas del usuario no confirmadas.
+    /** Busca todas las reservas del usuario no confirmadas.
      * Se busca por rut del usuario todas sus reservas que tiene sin confirmar y extrae esa informacion para mostrarla en pantalla.
      * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
      */
@@ -119,6 +119,44 @@ class Booking_controller{
                     "datatime" => $row['datatime'],
                     "full_name" => $row['full_name'],
                     "rut" => $row['rut']
+                );
+                array_push($bookibngs["bookings"], $item);
+            }
+            echo json_encode(array('cod' => '202', 
+                                    'def' => 'Reservas obtenidas con exito',
+                                    'server' => $bookibngs));
+            return;
+        } else {
+            echo json_encode(array('cod' => '404', 
+                                    'def' => 'Reserva no encontrada'));
+            return;
+        }
+        echo json_encode(array('cod' => '500', 
+                                'def' => 'Problemas con el servidor',
+                                'server' => $res));
+        return;
+    }
+
+    /** Busca todas las reservas de los usuarios confirmados.
+     * Se busca todas sus reservas que tienen su hora confirmada y extrae esa informacion para mostrarla en pantalla.
+     * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
+     */
+    function getAllBookingDashboard(){
+        $box_user = new Booking();       
+        $bookibngs = array();
+        $bookibngs["bookings"] = array();
+
+        $res = $box_user->getDashboardConfirm( );
+        
+        if ($res->rowCount()) {
+            while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+
+                $item = array(
+                    "id" => $row['id'],
+                    "full_name_account" => $row['full_name_account'],
+                    "datatime" => $row['datatime'],
+                    "box_num" => $row['box'],
+                    "full_name_patient" => $row['full_name_patient']
                 );
                 array_push($bookibngs["bookings"], $item);
             }

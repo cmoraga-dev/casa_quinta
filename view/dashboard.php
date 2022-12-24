@@ -8,7 +8,7 @@
     <body>
         <div>
             <h1>Sala de espera </h1>
-            <table id="tableBookingConfirm">
+            <table id="tableBooking-dashboard">
                 <thead>
                     <tr>
                         <th>Nombre de paciente</th>
@@ -17,7 +17,7 @@
                         <th>Nombre Doctor</th>
                     </tr>
                 </thead>
-                <tbody id = "">
+                <tbody id = "tbody-dashboard">
                     <tr>
                         <td> Sin datos </td>
                         <td> Sin datos </td>

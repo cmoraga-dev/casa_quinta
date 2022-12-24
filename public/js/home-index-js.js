@@ -41,7 +41,6 @@ function getAllBookingConfirmToday() {
         // Respuesta del servidor, independiente si esta correcto o no.
         let resp = JSON.parse(response);
         if (resp['cod'] === '202') {
-            console.log(resp['server']);
             loadBodyTable(resp['server']);
         } else if (resp['cod'] === '404') {
             console.log(`${resp['cod']} ${resp['def']}`);
@@ -70,7 +69,7 @@ function loadBodyTable( tableArray = []){
     // Se valida si viene con datos para ejecutar la carga de tabla.
     if(empyTable > 0){
         // Se busca el body de la tabla.
-        const tbody = document.getElementById("tbodyConfirm");
+        const tbody = document.getElementById("tbody-Confirm");
        
         // Se valida que existe el campo id
         if(tbody){
@@ -124,7 +123,6 @@ $(document).on('click','#callUser',function(event) {
 
     // Se captura el id del tr que es el asignado con el booking id
     let id_tr = event.target.parentElement.id;
-    console.log(id_tr);
 
     $.ajax({
         // envia la peticion URL al API generado en view apartado booking
