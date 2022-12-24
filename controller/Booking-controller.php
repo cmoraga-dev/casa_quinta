@@ -50,7 +50,8 @@ class Booking_controller{
                     "id" => $row['id'],
                     "full_name_user" => $row['full_name'],
                     "datatime_booking" => $row['datatime'],
-                    "datatime_confirmed" => $row['confirmHour']
+                    "datatime_confirmed" => $row['confirmHour'],
+                    "id_box_user" => $row['box_id']
                 );
                 array_push($bookings["bookings"], $item);
             }
@@ -206,13 +207,20 @@ class Booking_controller{
         }
     }
 
+    /** Actualiza el box id del booking.
+     * Se actualiza el box id que esta asociado al doctor que llama al paciente, donde se le envia
+     * el id_box junto con el id del booking para su asociacion al id del doctor.
+     * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
+     */
     function updateBoxBooking($id , $box_id){
         $box_user = new Booking();
 
         $res = $box_user->updateBoxBooking($id , $box_id);
         
         if ($res->rowCount()) {
-            echo 'Se actualizo Existosamente';
+            echo json_encode(array('cod' => '202', 
+                                     'def' => 'Box actualizado con exito'));
+                return;
         }else{
             echo json_encode(array('cod' => '500', 
                                     'def' => 'No se logro actualizar el parametro indicado',

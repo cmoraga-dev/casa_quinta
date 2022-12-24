@@ -5,8 +5,16 @@
     esto se envia al archivo que elimina la session.
 */
 function logOut(){
-    console.log('Cerrar Session');
     top.location.href = "../login/exitSession.php"; 
+
+}
+
+/* Cierra Session.
+    Elimina el proceso de inicio de session,
+    esto se envia al archivo que elimina la session.
+*/
+function goToHome(){
+    top.location.href = "../../view/home"; 
 
 }
 
@@ -33,7 +41,6 @@ function getAllBookingConfirmToday() {
         // Respuesta del servidor, independiente si esta correcto o no.
         let resp = JSON.parse(response);
         if (resp['cod'] === '202') {
-            empyArray = [];
             console.log(resp['server']);
             loadBodyTable(resp['server']);
         } else if (resp['cod'] === '404') {
@@ -100,6 +107,11 @@ function loadBodyTable( tableArray = []){
                 tr.appendChild(tdBooking);
                 tr.appendChild(tdConfirm);
                 tr.appendChild(button);
+
+                // Antes de terminar determinamos si ya tienen un box id asignado y desabilitamos el boton.
+                if(e.id_box_user > 0){
+                    button.disabled = true;
+                }
         });
         }        
     }
@@ -109,5 +121,32 @@ function loadBodyTable( tableArray = []){
  * 
  */
 $(document).on('click','#callUser',function(event) {
-    console.log('funciona2');
+
+    // Se captura el id del tr que es el asignado con el booking id
+    let id_tr = event.target.parentElement.id;
+    console.log(id_tr);
+
+    $.ajax({
+        // envia la peticion URL al API generado en view apartado booking
+        url: '../../view/Booking/updateBoxBooking.php',
+        data: {
+            id_booking : id_tr,
+        },
+        type: 'POST',
+    }).done(function (response) {
+        //Respuesta del servidor, independiente si esta correcto o no.
+        let resp = JSON.parse(response);
+        if (resp['cod'] === '202') {
+            // Debemos desabilitar el boton para llamar, dado que ya se le asigno un box.
+            event.target.disabled = true
+
+        } else if (resp['cod'] === '404') {
+            console.log(`${resp['cod']} ${resp['def']}`);
+        }
+
+    }).fail(function (err) {
+        // Respuesta de un error de peticion hacia el ajax       
+        let resp = JSON.parse(err);
+        console.log(`${resp['cod']} ${resp['def']}`);
+    }); 
  });

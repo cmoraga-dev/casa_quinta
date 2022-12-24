@@ -130,6 +130,7 @@ class BoxUser_controller{
             }
             // guardamos el nombre de usuario como box_user_login.
             $_SESSION['box_user_login'] = $box_users[0]["box_user"];
+            $_SESSION['id_box_user'] = $box_users[0]["id"];
 
             echo json_encode(array('cod' => '202', 
                                     'def' => 'Obtenido con exito'));
@@ -152,6 +153,7 @@ class BoxUser_controller{
 
                     // guardamos el nombre de usuario como box_user_login.
                     $_SESSION['box_user_login'] = $box_users[0]["box_user"];
+                    $_SESSION['id_box_user'] = $box_users[0]["id"];
         
                     echo json_encode(array('cod' => '202', 
                                             'def' => 'Obtenido con exito'));

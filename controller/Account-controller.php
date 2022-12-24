@@ -35,7 +35,7 @@ class Account_controller{
             // guardamos el nombre de usuario como session name
             $_SESSION['user'] = $users[0]["account"];
             $_SESSION["user_profile"] = $users[0]["id_type_profile"];
-            $_SESSION["id"] = $users[0]["id"];
+            $_SESSION["id_account"] = $users[0]["id"];
             
 
             echo json_encode(array('cod' => '202', 

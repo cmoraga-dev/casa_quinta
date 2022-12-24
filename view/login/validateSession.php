@@ -15,7 +15,7 @@
 		
         // se extrae al momento de validar el login.
 		$user_profile = $_SESSION["user_profile"];
-        $user_id = $_SESSION["id"];
+        $user_id = $_SESSION["id_account"];
 	}
 
 ?>
