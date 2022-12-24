@@ -92,6 +92,9 @@ function loadBodyTable( tableArray = []){
                 // Se da un nombre al boton que asginada un box.
                 button.textContent = "Llamar";
 
+                // Se le asigna el evento onclick para llamar al metodo callUser
+                button.id = "callUser";
+
                 // Se asignan los hijos al tr.
                 tr.appendChild(tdName);
                 tr.appendChild(tdBooking);
@@ -100,5 +103,11 @@ function loadBodyTable( tableArray = []){
         });
         }        
     }
-    
 }
+
+/** Llamar a paciente.
+ * 
+ */
+$(document).on('click','#callUser',function(event) {
+    console.log('funciona2');
+ });
