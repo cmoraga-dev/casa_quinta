@@ -21,8 +21,8 @@ function confirmHour(){
             // Respuesta del servidor, independiente si esta correcto o no.
             let resp = JSON.parse(response);
             if(resp['cod'] === '202'){
-                alert("se ha confirmado su hora");
-                location.reload();
+                location.href = 'information.php';
+               // location.reload();
             }else if(resp['cod'] === '404'){
                 console.log(`${resp['cod']} ${resp['def']}`);
             }
@@ -43,7 +43,8 @@ function confirmHour(){
 $(document).on('click','#btn-num',function(event) {
     let val = document.getElementById("rutUser");
     val.value += event.target.value;
-    console.log(validateRut(val.value));
+
+    // Validamos que el rut que nos parcea este con mas de 1 caracter.
     if(validateRut(val.value)){
         val.value = validateRut(val.value);
     }
@@ -53,7 +54,7 @@ $(document).on('click','#btn-num',function(event) {
  * Permite validar el rut para agregar los puntos y los guion
  * cuando corresponde y devuelve el rut parceado.
  * @param {string} rut 
- * @returns 
+ * @returns rut {11.111.111-1} 
  */
 function validateRut(rut){
 
