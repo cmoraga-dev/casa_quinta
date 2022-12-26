@@ -37,9 +37,9 @@
                 <button type="button" value="2" class="btn btn-light waves-effect" id="btn-num">2</button>
                 <button type="button" value="3" class="btn btn-light waves-effect" id="btn-num">3</button>
 
-                <button type="button" class="btn btn-light waves-effect"></button>
+                <button type="button" value="Borrar" class="btn btn-danger" id="btn-del">Borrar</button>
                 <button type="button" value="0" class="btn btn-light waves-effect" id="btn-num">0</button>
-                <input type="submit" value="Confirmar" class="btn btn-primary">
+                <button type="submit" value="Confirmar" class="btn btn-primary">Confirmar</button>
 
             </div>
         </form>

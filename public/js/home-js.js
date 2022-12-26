@@ -1,13 +1,4 @@
-const USERUT = document.getElementById('rutUser');
-// // Auto formato para campo RUT
-// $(function() {
-//     $('#rutUser').change(function(){
-//         $('#rutUser').Rut({
-//             validation: false,
-//             format_on: 'change'
-//         })
-//     }
-// )});
+
 
 /* Confirmar hora.
 * Permite confirmar la hora a través del metodo AJAX de JQuery, esto a través de las variables
@@ -46,7 +37,8 @@ function confirmHour(){
 
 
 /** Agrega los numeros y valida rut.
- * 
+ * Permite agregar los digitos del rut al momento de hacer clic en los botones del numero,
+ * y formatea el rut para que posea los puntos y guion.
  */
 $(document).on('click','#btn-num',function(event) {
     let val = document.getElementById("rutUser");
@@ -57,7 +49,12 @@ $(document).on('click','#btn-num',function(event) {
     }
 })
 
-
+/** Transformar rut.
+ * Permite validar el rut para agregar los puntos y los guion
+ * cuando corresponde y devuelve el rut parceado.
+ * @param {string} rut 
+ * @returns 
+ */
 function validateRut(rut){
 
     var actual = rut.replace(/^0+/, "");
@@ -82,22 +79,24 @@ function validateRut(rut){
     return rutPuntos;
 }
 
-if(USERUT){
-    document.getElementById('rutUser').addEventListener('input', function(evt) {
-        let value = this.value.replace(/\./g, '').replace('-', '');
-        
-        if (value.match(/^(\d{2})(\d{3}){2}(\w{1})$/)) {
-          value = value.replace(/^(\d{2})(\d{3})(\d{3})(\w{1})$/, '$1.$2.$3-$4');
-        }
-        else if (value.match(/^(\d)(\d{3}){2}(\w{0,1})$/)) {
-          value = value.replace(/^(\d)(\d{3})(\d{3})(\w{0,1})$/, '$1.$2.$3-$4');
-        }
-        else if (value.match(/^(\d)(\d{3})(\d{0,2})$/)) {
-          value = value.replace(/^(\d)(\d{3})(\d{0,2})$/, '$1.$2.$3');
-        }
-        else if (value.match(/^(\d)(\d{0,2})$/)) {
-          value = value.replace(/^(\d)(\d{0,2})$/, '$1.$2');
-        }
-        this.value = value;
-      });
-}
+
+$(document).on('click','#btn-del',function() {
+    // Obtenemos el rut que esta actualmente en el campo rutUSer.
+    let rutDel = document.getElementById("rutUser").value;
+    let val = document.getElementById("rutUser");
+
+    // Lo limpiamos de puntos y del guion.
+    let cleanDot = rutDel.replace(/\./g, "");
+    let cleanDash = cleanDot.replace(/-/g, "");
+
+    // Le quitamos su ultimo caracter con el borrar.
+    let rutCleanLastDig = cleanDash.substring(0,cleanDash.length - 1);
+
+    // Luego de quitar el ultimo digito lo parciamos con el validateRut y lo agregamos como su actual valor, siempre y cuando este sea mayor a 1.
+    if(validateRut(rutCleanLastDig)){
+        val.value = validateRut(rutCleanLastDig);
+    }else{
+        // En caso de que quede en 1, se pasa el valor que quedo.
+        val.value = rutCleanLastDig;
+    }
+})
