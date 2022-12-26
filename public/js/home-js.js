@@ -1,12 +1,13 @@
-// Auto formato para campo RUT
-$(function() {
-    $('#rutUser').change(function(){
-        $('#rutUser').Rut({
-            validation: false,
-            format_on: 'keyup'
-        })
-    }
-)});
+const USERUT = document.getElementById('rutUser');
+// // Auto formato para campo RUT
+// $(function() {
+//     $('#rutUser').change(function(){
+//         $('#rutUser').Rut({
+//             validation: false,
+//             format_on: 'change'
+//         })
+//     }
+// )});
 
 /* Confirmar hora.
 * Permite confirmar la hora a través del metodo AJAX de JQuery, esto a través de las variables
@@ -43,37 +44,60 @@ function confirmHour(){
       }
 }
 
-function clearRUT(rut) {
-    return String(rut).replace(/[^0-9a-z]/gi, '');
-}
 
-function validateRUT(rut) {
-    if (typeof rut !== 'string' && typeof rut !== 'number') {
-        console.log(typeof rut)
-        throw new TypeError('Input parameter must be of type string or integer')
-    }
-
-    const cleanRUT = typeof rut === 'string' ? clearRUT(rut) : String(rut)
-    const checkDigit = [...cleanRUT].slice(-1)[0]
-    const withoutCheckDigitRUT = cleanRUT.slice(0, -1)
-    const obtainedCheckDigit = getCheckDigit(withoutCheckDigitRUT)
-
-    return checkDigit.toLowerCase() === obtainedCheckDigit.toLowerCase()
-}
-
-/**
- * @param {(string|number)} rut 
- * @returns {string}
+/** Agrega los numeros y valida rut.
+ * 
  */
- function getCheckDigit(rut) {
-    const cleanRUT = clearRUT(rut)
-    const reversedRUT = [...String(cleanRUT)].map(v => parseInt(v)).reverse()
-    let result = 0
-  
-    for (let i = 0, j = 2; i < reversedRUT.length; i++, j < 7 ? j++ : j = 2) {
-      result += reversedRUT[i] * j;
+$(document).on('click','#btn-num',function(event) {
+    let val = document.getElementById("rutUser");
+    val.value += event.target.value;
+    console.log(validateRut(val.value));
+    if(validateRut(val.value)){
+        val.value = validateRut(val.value);
     }
-  
-    return (11 - (result % 11)) <= 9 ? String((11 - (result % 11))) : '0'
-  }
+})
 
+
+function validateRut(rut){
+
+    var actual = rut.replace(/^0+/, "");
+    if (actual != '' && actual.length > 1) {
+        var sinPuntos = actual.replace(/\./g, "");
+        var actualLimpio = sinPuntos.replace(/-/g, "");
+        var inicio = actualLimpio.substring(0, actualLimpio.length - 1);
+        var rutPuntos = "";
+        var i = 0;
+        var j = 1;
+        for (i = inicio.length - 1; i >= 0; i--) {
+            var letra = inicio.charAt(i);
+            rutPuntos = letra + rutPuntos;
+            if (j % 3 == 0 && j <= inicio.length - 1) {
+                rutPuntos = "." + rutPuntos;
+            }
+            j++;
+        }
+        var dv = actualLimpio.substring(actualLimpio.length - 1);
+        rutPuntos = rutPuntos + "-" + dv;
+    }
+    return rutPuntos;
+}
+
+if(USERUT){
+    document.getElementById('rutUser').addEventListener('input', function(evt) {
+        let value = this.value.replace(/\./g, '').replace('-', '');
+        
+        if (value.match(/^(\d{2})(\d{3}){2}(\w{1})$/)) {
+          value = value.replace(/^(\d{2})(\d{3})(\d{3})(\w{1})$/, '$1.$2.$3-$4');
+        }
+        else if (value.match(/^(\d)(\d{3}){2}(\w{0,1})$/)) {
+          value = value.replace(/^(\d)(\d{3})(\d{3})(\w{0,1})$/, '$1.$2.$3-$4');
+        }
+        else if (value.match(/^(\d)(\d{3})(\d{0,2})$/)) {
+          value = value.replace(/^(\d)(\d{3})(\d{0,2})$/, '$1.$2.$3');
+        }
+        else if (value.match(/^(\d)(\d{0,2})$/)) {
+          value = value.replace(/^(\d)(\d{0,2})$/, '$1.$2');
+        }
+        this.value = value;
+      });
+}

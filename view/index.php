@@ -14,7 +14,7 @@
             </div>
             <div>
                 <p>Contraseña:</p>
-                <input type="text" name="pass" id="pass">
+                <input type="password" name="pass" id="pass">
             </div>
             <div>
                 <input type="submit">
