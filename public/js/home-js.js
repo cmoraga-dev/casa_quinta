@@ -21,9 +21,10 @@ function confirmHour(){
             // Respuesta del servidor, independiente si esta correcto o no.
             let resp = JSON.parse(response);
             if(resp['cod'] === '202'){
-                location.href = 'information.php';
+                postForm('information.php', {arg1: '202'}, 'POST');
                // location.reload();
             }else if(resp['cod'] === '404'){
+                postForm('information.php', {arg1: '404'}, 'POST');
                 console.log(`${resp['cod']} ${resp['def']}`);
             }
             
@@ -80,7 +81,10 @@ function validateRut(rut){
     return rutPuntos;
 }
 
-
+/** Metodo Borrar digito.
+ *  Borra el ultimo digito que posee el input del rut,
+ * para luego setearlo al formato de rut.
+ */
 $(document).on('click','#btn-del',function() {
     // Obtenemos el rut que esta actualmente en el campo rutUSer.
     let rutDel = document.getElementById("rutUser").value;
@@ -101,3 +105,26 @@ $(document).on('click','#btn-del',function() {
         val.value = rutCleanLastDig;
     }
 })
+
+
+function postForm(path, params, method) {
+    method = method || 'post';
+
+    var form = document.createElement('form');
+    form.setAttribute('method', method);
+    form.setAttribute('action', path);
+
+    for (var key in params) {
+        if (params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', key);
+            hiddenField.setAttribute('value', params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
