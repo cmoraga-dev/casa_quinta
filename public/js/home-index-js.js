@@ -20,7 +20,7 @@ function goToHome(){
 
 window.setTimeout( function() {
     getAllBookingConfirmToday();
-}, 1000);
+}, 100);
 
 window.setTimeout( function() {
     window.location.reload();
@@ -95,11 +95,14 @@ function loadBodyTable( tableArray = []){
                 tdBooking.textContent = e.datatime_booking;
                 tdConfirm.textContent = e.datatime_confirmed;
 
-                // Se da un nombre al boton que asginada un box.
-                button.textContent = "Llamar";
-
                 // Se le asigna el evento onclick para llamar al metodo callUser
                 button.id = "callUser";
+
+                // Se da un nombre al boton que asginada un box.
+                button.textContent = "Llamar";
+                
+                // Se le asgina la clase "btn btn-primary" para que aparesca en color azul
+                button.className = "btn btn-primary btn-lg";
 
                 // Se asignan los hijos al tr.
                 tr.appendChild(tdName);
@@ -109,8 +112,16 @@ function loadBodyTable( tableArray = []){
 
                 // Antes de terminar determinamos si ya tienen un box id asignado y desabilitamos el boton.
                 if(e.id_box_user > 0){
+                    // Se le asgina la clase "btn btn-primary" para que aparesca en color verde que ya se llamo a box.
+                    button.className = "btn btn-success";
+
+                    // Se da un nombre al boton dado que debe significar que ha sido llamado.
+                    button.textContent = "En proceso";
+
                     button.disabled = true;
+                    return;
                 }
+                
         });
         }        
     }
