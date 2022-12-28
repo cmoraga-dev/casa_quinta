@@ -59,7 +59,7 @@ if ($res == '202') {
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
                 <div class="card shadow-2-strong" style="border-radius: 1rem;">
                     <div class="card-body p-5 text-center">
-                        <h1>NO se ha podido confirmada su hora</h1>
+                        <h1>NO se ha podido confirmar su hora</h1>
                         <p>Por favor validar que su RUT este bien digitado.
                         </p>
                         <p>o que posea una Reserva activa.</p>
