@@ -8,7 +8,7 @@
 	if(empty($usser_account)){
 		
         //al estar vacia el usuario que es extraido del login se redirigue a la pagina de login.
-		echo '<script>top.location.href = "/casa_quinta/view";</script>';
+		echo '<script>top.location.href = "/";</script>';
 		die;
 		
 	}else{

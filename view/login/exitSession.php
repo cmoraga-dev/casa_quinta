@@ -7,6 +7,6 @@
 	
 	//Lo redirigue a la pagina de login.
 
-	header("Location: /casa_quinta/view");	
+	header("Location: /");	
 	
 ?>
