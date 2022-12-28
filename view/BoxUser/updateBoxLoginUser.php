@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__.'/../../controller/boxUser-controller.php';
+require_once __DIR__.'/../../controller/BoxUser-controller.php';
 
 session_start();
 
