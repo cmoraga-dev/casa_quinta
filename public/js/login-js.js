@@ -36,7 +36,7 @@ function validaUsuario(){
  */
 function updateBox() {
   let box_num = document.getElementById("box-num").value;
-  var host = window.location.host;
+  var host = window.location.origin;
 
   if(box_num){
     $.ajax({
