@@ -83,6 +83,7 @@ function loadBodyTable( tableArray = []){
                 let tdName = document.createElement("td");
                 let tdBooking = document.createElement("td");
                 let tdConfirm = document.createElement("td");
+                let tdButton = document.createElement("td");
 
                 let button = document.createElement("button");
 
@@ -99,16 +100,14 @@ function loadBodyTable( tableArray = []){
                 button.id = "callUser";
 
                 // Se da un nombre al boton que asginada un box.
-                button.textContent = "Llamar";
-                
-                // Se le asgina la clase "btn btn-primary" para que aparesca en color azul
-                button.className = "btn btn-primary btn-lg";
+                button.textContent = "Llamar";                
 
                 // Se asignan los hijos al tr.
+                tdButton.appendChild(button);
                 tr.appendChild(tdName);
                 tr.appendChild(tdBooking);
                 tr.appendChild(tdConfirm);
-                tr.appendChild(button);
+                tr.appendChild(tdButton);
 
                 // Antes de terminar determinamos si ya tienen un box id asignado y desabilitamos el boton.
                 if(e.id_box_user > 0){
@@ -121,6 +120,9 @@ function loadBodyTable( tableArray = []){
                     button.disabled = true;
                     return;
                 }
+
+                // Se le asgina la clase "btn btn-primary" para que aparesca en color azul
+                button.className = "btn btn-primary";
                 
         });
         }        
@@ -132,8 +134,9 @@ function loadBodyTable( tableArray = []){
  */
 $(document).on('click','#callUser',function(event) {
 
-    // Se captura el id del tr que es el asignado con el booking id
-    let id_tr = event.target.parentElement.id;
+    // Se captura el id del tr que es el asignado con el booking id y es el padre del td
+    // de donde esta asignado el button.
+    let id_tr = event.target.parentElement.parentElement.id;
 
     $.ajax({
         // envia la peticion URL al API generado en view apartado booking
@@ -148,6 +151,7 @@ $(document).on('click','#callUser',function(event) {
         if (resp['cod'] === '202') {
             // Debemos desabilitar el boton para llamar, dado que ya se le asigno un box.
             event.target.disabled = true
+            window.location.reload();
 
         } else if (resp['cod'] === '404') {
             console.log(`${resp['cod']} ${resp['def']}`);
