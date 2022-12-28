@@ -36,10 +36,11 @@ function validaUsuario(){
  */
 function updateBox() {
   let box_num = document.getElementById("box-num").value;
+  var host = window.location.host;
 
   if(box_num){
     $.ajax({
-      url: 'api/updateBoxLoginUser',
+      url: host +'/api/updateBoxLoginUser',
       data: {
         box_num_user: box_num
       },
