@@ -140,7 +140,7 @@ $(document).on('click','#callUser',function(event) {
 
     $.ajax({
         // envia la peticion URL al API generado en view apartado booking
-        url: '../../view/Booking/updateBoxBooking.php',
+        url: 'api/updateBoxBooking.php',
         data: {
             id_booking : id_tr,
         },

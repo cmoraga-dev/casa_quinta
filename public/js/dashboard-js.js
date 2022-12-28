@@ -13,7 +13,7 @@ function getAllBookingDashboard(){
 
     $.ajax({
         // envia la peticion URL al API generado en view apartado booking
-        url: '../view/Booking/getAllBookingDashboard.php',
+        url: 'api/getAllBookingDashboard',
         type: 'POST',
     }).done(function (response) {
 
