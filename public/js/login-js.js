@@ -17,7 +17,7 @@ function validaUsuario(){
           let resp = JSON.parse(response);
           console.log(resp['cod']);
           if(resp['cod'] === '202'){
-            window.location.href = 'home/checkin.php';
+            window.location.href = 'view/home/checkin.php';
           }else if(resp['cod'] === '404'){
               console.log(`${resp['cod']} ${resp['def']}`);
           }
