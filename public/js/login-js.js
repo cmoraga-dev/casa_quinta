@@ -6,7 +6,7 @@ function validaUsuario(){
     let passAcount = document.getElementById("pass").value;
    
     $.ajax({
-        url: 'login/validateUser.php',
+        url: 'api/validateUser',
           data: {
                 user: userAccount,
                 pass: passAcount
