@@ -2,5 +2,5 @@ Options -Indexes
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.rut*)$ /home.php [NC,L,QSA]
-RewriteRule ^(.login*)$ /view/index.php [NC,L,QSA]
+RewriteRule ^(rut)$ /home.php [NC,L,QSA]
+RewriteRule ^(login)$ /view/index.php [NC,L,QSA]
