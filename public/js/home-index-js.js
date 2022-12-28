@@ -31,10 +31,11 @@ window.setTimeout( function() {
  *  sin importar si han sido de dias pasados o futuros.
  */
 function getAllBookingConfirmToday() {
+    var host = window.location.origin;
 
     $.ajax({
         // envia la peticion URL al API generado en view apartado booking
-        url: 'api/getAllBookingToday',
+        url: host+'api/getAllBookingToday',
         type: 'POST',
     }).done(function (response) {
 

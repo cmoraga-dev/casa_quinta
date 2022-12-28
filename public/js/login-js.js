@@ -4,9 +4,10 @@
 function validaUsuario(){
     let userAccount = document.getElementById("user").value;
     let passAcount = document.getElementById("pass").value;
+    var host = window.location.origin;
    
     $.ajax({
-        url: 'api/validateUser',
+        url: host+'api/validateUser',
           data: {
                 user: userAccount,
                 pass: passAcount

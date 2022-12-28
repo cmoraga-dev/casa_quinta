@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="utf-8">
+    <title>Confirmar Hora</title>
     <script src="public/jquery-3.6.2.min.js"></script>
     <script src="public/js/jquery.Rut.js"></script>
     <script src="public/js/home-js.js"></script>
