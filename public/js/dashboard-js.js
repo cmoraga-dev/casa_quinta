@@ -10,10 +10,10 @@ window.setTimeout( function() {
 
 
 function getAllBookingDashboard(){
-
+    var host = window.location.origin;
     $.ajax({
         // envia la peticion URL al API generado en view apartado booking
-        url: 'api/getAllBookingDashboard',
+        url: host+'/api/getAllBookingDashboard',
         type: 'POST',
     }).done(function (response) {
 

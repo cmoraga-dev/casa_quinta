@@ -7,7 +7,7 @@ function validaUsuario(){
     var host = window.location.origin;
    
     $.ajax({
-        url: host+'api/validateUser',
+        url: host+'/api/validateUser',
           data: {
                 user: userAccount,
                 pass: passAcount
