@@ -7,6 +7,6 @@
 	
 	//Lo redirigue a la pagina de login.
 
-	header("Location: /");	
+	header("Location: /login");	
 	
 ?>
