@@ -34,7 +34,7 @@ function getAllBookingConfirmToday() {
 
     $.ajax({
         // envia la peticion URL al API generado en view apartado booking
-        url: '../../view/Booking/getAllBookingToday.php',
+        url: 'api/getAllBookingToday',
         type: 'POST',
     }).done(function (response) {
 

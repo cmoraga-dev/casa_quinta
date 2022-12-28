@@ -39,7 +39,7 @@ function updateBox() {
 
   if(box_num){
     $.ajax({
-      url: '../BoxUser/updateBoxLoginUser.php',
+      url: 'api/updateBoxLoginUser',
       data: {
         box_num_user: box_num
       },

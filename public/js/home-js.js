@@ -9,7 +9,7 @@ function confirmHour(){
     if(rut){
         $.ajax({
             // envia la peticion URL al API generado en view apartado booking
-          url: 'view/Booking/updateConfirmBooking.php',
+          url: 'api/updateConfirmBooking',
           
           //Envia el campo rut extraido del metodo getElementById.
           data: {

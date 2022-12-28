@@ -5,3 +5,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(rut)$ /home.php [NC,L,QSA]
 RewriteRule ^(login)$ /view/index.php [NC,L,QSA]
 RewriteRule ^(dashboard)$ /view/dashboard.php [NC,L,QSA]
+RewriteRule ^(api/updateConfirmBooking)$ /view/Booking/updateConfirmBooking.php [NC,L,QSA]
+RewriteRule ^(api/getAllBookingToday)$ /view/Booking/getAllBookingToday.php [NC,L,QSA]
+RewriteRule ^(api/updateBoxLoginUser)$ /view/BoxUser/updateBoxLoginUser.php [NC,L,QSA]
