@@ -139,9 +139,11 @@ $(document).on('click','#callUser',function(event) {
     // de donde esta asignado el button.
     let id_tr = event.target.parentElement.parentElement.id;
 
+    var host = window.location.origin;
     $.ajax({
+        
         // envia la peticion URL al API generado en view apartado booking
-        url: 'api/updateBoxBooking.php',
+        url: host+'/api/updateBoxBooking.php',
         data: {
             id_booking : id_tr,
         },
