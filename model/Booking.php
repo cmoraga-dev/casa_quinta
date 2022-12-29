@@ -28,7 +28,7 @@ include_once __DIR__.'/User.php';
          */
         function getAllBookingToday()
         {
-            $query = $this->connect()->query("SELECT b.id as 'id', datatime,confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name', NVL(box_id,0) as 'box_id'
+            $query = $this->connect()->query("SELECT b.id as 'id', datatime,confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name', ifnull(box_id,0) as 'box_id'
                                                 FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id 
                                                 WHERE confirmed  = 1 AND active = 1 
                                                 AND DATE(confirmHour) = DATE(NOW())");
@@ -101,7 +101,7 @@ include_once __DIR__.'/User.php';
             // Si el valor traido es mayor a 0 se ejecuta el metodo para extraer el id
             if($responseRutByUser != 0 ){
                 $id_usuario = $user->getUserByRut($rut)->fetch(PDO::FETCH_ASSOC)["id"];
-                $query = $this->connect()->query("UPDATE bookings SET confirmed = 1, active = 1, confirmHour = NOW() WHERE `user_id` = $id_usuario AND NVL(confirmed,0) = 0");
+                $query = $this->connect()->query("UPDATE bookings SET confirmed = 1, active = 1, confirmHour = NOW() WHERE `user_id` = $id_usuario AND ifnull(confirmed,0) = 0");
                 return $query;
             }
             return $responseRutByUser;
