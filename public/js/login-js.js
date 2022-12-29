@@ -4,6 +4,7 @@
 function validaUsuario(){
     let userAccount = document.getElementById("user").value;
     let passAcount = document.getElementById("pass").value;
+    let info_validate = document.getElementById("info-val-user");
     var host = window.location.origin;
    
     $.ajax({
@@ -20,14 +21,22 @@ function validaUsuario(){
           if(resp['cod'] === '202'){
             window.location.href = 'view/home/checkin.php';
           }else if(resp['cod'] === '404'){
-              console.log(`${resp['cod']} ${resp['def']}`);
+
+            //Se quita el atributo de hidden para mostrar el mensaje.
+            window.setTimeout( function() {
+              info_validate.setAttribute("hidden", false);
+            }, 100);
+
+            //Se assigna el atributo hidden de nuevo para que se esconda el msj.
+            window.setTimeout( function() {
+              info_validate.setAttribute("hidden", true);
+            }, 5000);
           }
 
           
       }).fail(function (err){
         // Respuesta de un error de peticion hacia el ajax       
         let resp = JSON.parse(err);
-        console.log(`${resp['cod']} ${resp['def']} `);
       });
 }
 
@@ -53,14 +62,14 @@ function updateBox() {
       if (resp['cod'] === '202') {
         window.location.href = '../home/index.php';
       } else if (resp['cod'] === '404') {
-        console.log(`${resp['cod']} ${resp['def']}`);
+        //console.log(`${resp['cod']} ${resp['def']}`);
       }
   
   
     }).fail(function (err) {
       // Respuesta de un error de peticion hacia el ajax       
       let resp = JSON.parse(err);
-      console.log(`${resp['cod']} ${resp['def']} `);
+      //console.log(`${resp['cod']} ${resp['def']} `);
     });
   }
   

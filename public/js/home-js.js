@@ -27,13 +27,13 @@ function confirmHour(){
                // location.reload();
             }else if(resp['cod'] === '404'){
                 postForm('information.php', {arg1: '404'}, 'POST');
-                console.log(`${resp['cod']} ${resp['def']}`);
+                //console.log(`${resp['cod']} ${resp['def']}`);
             }
             
         }).fail(function (err){
           // Respuesta de un error de peticion hacia el ajax       
           let resp = JSON.parse(err);
-          console.log(`${resp['cod']} ${resp['def']}`);
+          //console.log(`${resp['cod']} ${resp['def']}`);
         });
       }
 }

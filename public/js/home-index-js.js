@@ -44,13 +44,13 @@ function getAllBookingConfirmToday() {
         if (resp['cod'] === '202') {
             loadBodyTable(resp['server']);
         } else if (resp['cod'] === '404') {
-            console.log(`${resp['cod']} ${resp['def']}`);
+           // console.log(`${resp['cod']} ${resp['def']}`);
         }
 
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
         let resp = JSON.parse(err);
-        console.log(`${resp['cod']} ${resp['def']}`);
+        //console.log(`${resp['cod']} ${resp['def']}`);
     });
 
 }
