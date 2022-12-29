@@ -42,6 +42,10 @@
                 <button type="button" value="0" class="btn btn-light waves-effect" id="btn-num">0</button>
                 <button type="submit" value="Confirmar" class="btn btn-primary">Confirmar</button>
 
+                <button type="button" class="btn btn-light waves-effect"></button>
+                <button type="button" value="K" class="btn btn-light waves-effect" id="btn-num">K</button>
+                <button type="button" class="btn btn-light waves-effect"></button>
+
             </div>
         </form>
     </div>

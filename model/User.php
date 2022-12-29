@@ -8,7 +8,7 @@ include_once 'db.php';
          * Se obtiene un usuario paciente por su rut.
          */
         function getUser($rut){
-            $query = $this->connect()->query("SELECT * FROM users WHERE identification_number ='$rut'");
+            $query = $this->connect()->query("SELECT * FROM users WHERE LOWER(identification_number) = LOWER('$rut')");
             return $query;
         }
 
