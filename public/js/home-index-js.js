@@ -48,9 +48,10 @@ function getAllBookingConfirmToday() {
         }
 
     }).fail(function (err) {
+        console.table(err);
         // Respuesta de un error de peticion hacia el ajax       
-        let resp = JSON.parse(err);
-        console.log(`${resp['cod']} ${resp['def']}`);
+        // let resp = JSON.parse(err);
+        // console.log(`${resp['cod']} ${resp['def']}`);
     });
 
 }
