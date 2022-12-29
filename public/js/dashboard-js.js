@@ -2,7 +2,7 @@
 
 window.setTimeout( function() {
     getAllBookingDashboard();
-}, 1000);
+}, 100);
 
 window.setTimeout( function() {
     window.location.reload();
