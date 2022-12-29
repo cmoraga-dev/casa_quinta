@@ -6,7 +6,7 @@ function validaUsuario(){
     let passAcount = document.getElementById("pass").value;
     let info_validate = document.getElementById("info-val-user");
     var host = window.location.origin;
-   
+
     $.ajax({
         url: host+'/api/validateUser',
           data: {
@@ -24,12 +24,12 @@ function validaUsuario(){
 
             //Se quita el atributo de hidden para mostrar el mensaje.
             window.setTimeout( function() {
-              info_validate.setAttribute("hidden", false);
+              info_validate.removeAttribute("hidden");
             }, 100);
 
             //Se assigna el atributo hidden de nuevo para que se esconda el msj.
             window.setTimeout( function() {
-              info_validate.setAttribute("hidden", true);
+              info_validate.setAttribute("hidden");
             }, 5000);
           }
 
