@@ -29,7 +29,7 @@ function validaUsuario(){
 
             //Se assigna el atributo hidden de nuevo para que se esconda el msj.
             window.setTimeout( function() {
-              info_validate.setAttribute("hidden");
+              info_validate.setAttribute("hidden", true);
             }, 5000);
           }
 

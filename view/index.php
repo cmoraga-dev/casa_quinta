@@ -25,7 +25,7 @@
                      <input type="password" name="pass" id="pass" class="form-control form-control-lg" required>
                  </div>
                      <input type="submit" class="btn btn-primary btn-lg btn-block">
-                     <label id="info-val-user" hidden>Usuario o Contraseña incorrecta, intentar nuevamente</label>
+                     <label id="info-val-user" class="h5" style="color: red;" hidden >Usuario o Contraseña incorrecta, intentar nuevamente</label>
              </form>
           </div>
         </div>
