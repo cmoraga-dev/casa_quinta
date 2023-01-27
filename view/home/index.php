@@ -25,7 +25,7 @@ include("../login/validateSession.php");
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="">Home</a></li>
                     <li><a class="dropdown-item" href="/view/accounts/manager">Mantenedor de cuentas</a></li>
-                    <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar Sesion</button></li>
+                    <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
                 </ul>
             </div>
             <span class="navbar-text">
