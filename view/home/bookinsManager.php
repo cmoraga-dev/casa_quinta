@@ -23,9 +23,9 @@ include("../login/validateSession.php");
                     Menu
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="">Agendas activas</a></li>
+                    <li><a class="dropdown-item" href="/view/home/index.php">Agendas activas</a></li>
                     <li><a class="dropdown-item" href="/view/home/bookingsManager.php">Mantenedor de agendamiento</a></li>
-                    <li><a class="dropdown-item" href="/view/home/accountsManager.php">Mantenedor de cuentas</a></li>
+                    <li><a class="dropdown-item" href="">Mantenedor de cuentas</a></li>
                     <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
                 </ul>
             </div>
@@ -39,7 +39,7 @@ include("../login/validateSession.php");
 
     <div class="container" style="padding-top: 50px;">
     <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
-        <h3>Pacientes en espera</h3>
+        <h3>Mantenedor de agendas</h3>
     </div>
         <div class="table-responsive{-sm|-md|-lg|-xl}">
         <table id="tableBookingConfirm" class="table table-striped">
@@ -47,7 +47,7 @@ include("../login/validateSession.php");
                     <tr>
                         <th scope="col">Nombre de paciente</th>
                         <th scope="col">Hora agendada</th>
-                        <th scope="col">Hora Llegada</th>
+                        <th scope="col">Acciones</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
