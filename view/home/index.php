@@ -41,19 +41,17 @@ include("../login/validateSession.php");
         <h3>Mantenedor de cuentas de usuario</h3>
     </div>
         <div class="table-responsive{-sm|-md|-lg|-xl}">
-            <table id="tableAccounts" class="table table-striped">
+        <table id="tableBookingConfirm" class="table table-striped">
                 <thead class="table-primary">
                     <tr>
-                        <th scope="col">Nombre de cuenta</th>
-                        <th scope="col">Box</th>
-                        <th scope="col">Rol</th>
-                        <th scope="col">Acciones</th>
+                        <th scope="col">Nombre de paciente</th>
+                        <th scope="col">Hora agendada</th>
+                        <th scope="col">Hora Llegada</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody id="tbody-Confirm">
                     <tr>
-                        <td> Sin datos </td>
                         <td> Sin datos </td>
                         <td> Sin datos </td>
                         <td> Sin datos </td>
