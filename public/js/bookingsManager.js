@@ -30,12 +30,12 @@ window.setTimeout( function() {
  *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
  *  sin importar si han sido de dias pasados o futuros.
  */
-function getAllBookingConfirmToday() {
+function getAllBookings() {
     var host = window.location.origin;
 
     $.ajax({
         // envia la peticion URL al API generado en view apartado booking
-        url: host+'/api/getAllBookingToday',
+        url: host+'/api/getAllBookingDashboard',
         type: 'POST',
     }).done(function (response) {
 
