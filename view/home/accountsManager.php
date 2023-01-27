@@ -23,8 +23,8 @@ include("../login/validateSession.php");
                     Menu
                 </button>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="">Home</a></li>
-                    <li><a class="dropdown-item" href="/view/home/accountsManager.php">Mantenedor de cuentas</a></li>
+                    <li><a class="dropdown-item" href="/view/home/index.php">Home</a></li>
+                    <li><a class="dropdown-item" href="">Mantenedor de cuentas</a></li>
                     <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
                 </ul>
             </div>
@@ -52,9 +52,7 @@ include("../login/validateSession.php");
                 </thead>
                 <tbody id="tbody-Confirm">
                     <tr>
-                        <td> Sin datos </td>
-                        <td> Sin datos </td>
-                        <td> Sin datos </td>
+                        <td> AGREGAR MANTENEDOR AQUÍ !!!!! </td>
                         <td> <input type="button" value="Sin Datos" class="btn btn-warning" disabled> </td>
                     </tr>
                 </tbody>
