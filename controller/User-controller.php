@@ -26,7 +26,7 @@ class User_controller{
             return $this->user = $users;
         } else {
             $this->error = json_encode(array('cod' => '204', 
-                                    'msj' => 'Usuario no encontrado'));
+                                    'msj' => 'Sin usuarios en el sistema.'));
         }
     }
 
