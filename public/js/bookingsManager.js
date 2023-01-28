@@ -87,8 +87,6 @@ function getAllUsers() {
 }
 
 
-
-
 // Getting the value from the template
 // Store it as a global variable
 const table = $('.tableBookingConfirm')[0];
@@ -96,6 +94,7 @@ const headersNames = getHeadersIndex();
 mixedData = getAllBookings();
 loadBookingsIntoTable(mixedData);
 usersData = getAllUsers();
+console.log(usersData);
 
 makeCellsEditable();
 cellsChangeObserver();
