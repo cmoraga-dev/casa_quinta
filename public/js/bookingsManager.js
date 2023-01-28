@@ -71,12 +71,13 @@ function getAllUsers() {
 
         Object.entries(response).forEach(item => {
             console.log(item);
-            item["users"].forEach(innerItem =>   {
-                console.log(innerItem);
-                });
+            if (item == 'users') {
+                for (i in item){
+                    console.log(i)
+                }
+            }
         });
         
-
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
         var resp = JSON.parse(err);
