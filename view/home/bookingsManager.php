@@ -55,7 +55,7 @@ include("../login/validateSession.php");
                     <tr>
                         <td> Sin datos </td>
                         <td> Sin datos </td>
-                        <td> <input type="button" value="Ediar" class="btn btn-warning" disabled> <input type="button" value="Eliminar" class="btn btn-warning" disabled> </td>
+                        <td> <input type="button" value="Modificar" class="btn btn-primary" disabled> <input type="button" value="Eliminar" class="btn btn-danger" disabled> </td>
                     </tr>
                 </tbody>
             </table>
