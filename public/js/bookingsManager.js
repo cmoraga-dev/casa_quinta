@@ -56,6 +56,39 @@ function getAllBookings() {
 
 }
 
+
+/** Obtiene todas las reservas confirmadas del dia.
+ *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
+ *  sin importar si han sido de dias pasados o futuros.
+ */
+function getAllBookings() {
+    var host = window.location.origin;
+
+    $.ajax({
+        // envia la peticion URL al API generado en view apartado booking
+        url: host+'/api/getAllUsers',
+        type: 'POST',
+    }).done(function (response) {
+
+        // Respuesta del servidor, independiente si esta correcto o no.
+        let resp = JSON.parse(response);
+        if (resp['cod'] === '202') {
+            loadBodyTable(resp['server']);
+        } else if (resp['cod'] === '404') {
+           // console.log(`${resp['cod']} ${resp['def']}`);
+        }
+
+    }).fail(function (err) {
+        // Respuesta de un error de peticion hacia el ajax       
+        let resp = JSON.parse(err);
+        //console.log(`${resp['cod']} ${resp['def']}`);
+    });
+
+}
+
+
+
+
 // Getting the value from the template
 // Store it as a global variable
 const table = $('.tableBookingConfirm')[0];
