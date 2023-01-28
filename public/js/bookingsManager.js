@@ -73,7 +73,7 @@ function getAllUsers() {
             console.log(item);
             if (item[0] == 'users') {
                 for (i in item[1]){
-                    console.log(i)
+                    console.log(i['id'],i['rut'], i['first_name'], i['last_name'], i['email']);
                 }
             }
         });
