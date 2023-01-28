@@ -65,12 +65,10 @@ function getAllUsers() {
     var host = window.location.origin;
 
     $.ajax({
-        // envia la peticion URL al API generado en view apartado booking
         url: host+'/api/getAllUsers',
         type: 'POST',
     }).done(function (response) {
-
-        // Respuesta del servidor, independiente si esta correcto o no.
+        console.log(response);
         var resp = JSON.parse(response);
         if (resp['cod'] === '202') {
             loadBodyTable(resp['server']);
