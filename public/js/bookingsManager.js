@@ -77,7 +77,8 @@ function getAllUsers() {
                 item[0].forEach(innerItem =>   {
                     console.log(innerItem);
                 });
-            });
+            }
+        });
 
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
