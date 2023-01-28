@@ -103,26 +103,26 @@ function loadBodyTable( tableArray = []){
                 // Se da un nombre al boton que asginada un box.
                 button.textContent = "Llamar";                
 
-                // Se asignan los hijos al tr.
+                // assign child(s) to TR element.
                 tdButton.appendChild(button);
                 tr.appendChild(tdName);
                 tr.appendChild(tdBooking);
                 tr.appendChild(tdConfirm);
                 tr.appendChild(tdButton);
 
-                // Antes de terminar determinamos si ya tienen un box id asignado y desabilitamos el boton.
+                // Antes de terminar determinamos si ya tienen un box id asignado y deshabilitamos el botón.
                 if(e.id_box_user > 0){
-                    // Se le asgina la clase "btn btn-primary" para que aparesca en color verde que ya se llamo a box.
+                    // Se le asgina la clase "btn btn-primary" para que aparezca en color verde si ya se llamó a box.
                     button.className = "btn btn-success";
 
                     // Se da un nombre al boton dado que debe significar que ha sido llamado.
-                    button.textContent = "En proceso";
+                    button.textContent = "Llamado";
 
                     button.disabled = true;
                     return;
                 }
 
-                // Se le asgina la clase "btn btn-primary" para que aparesca en color azul
+                // Se le asgina la clase "btn btn-primary" para que aparezca en color azul
                 button.className = "btn btn-primary";
                 
         });
