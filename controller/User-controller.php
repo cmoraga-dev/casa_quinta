@@ -66,10 +66,10 @@ class User_controller{
         $res = $user->createUser($first_name , $last_name, $rut, $email);
         
         if ($res->rowCount()) {
-            echo 'Se guardo Existosamente';
+            echo 'Se guardó Existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro crear el usuario'));
+                                    'msj' => 'No se logró crear el usuario'));
         }
     }
 
@@ -79,10 +79,10 @@ class User_controller{
         $res = $user->deleteUser($id);
         
         if ($res->rowCount()) {
-            echo 'Se Elimino Existosamente';
+            echo 'Se eliminó existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro eliminar el usuario'));
+                                    'msj' => 'No se logró eliminar el usuario'));
         }
     }
 
@@ -93,10 +93,10 @@ class User_controller{
         $res = $user->updateUser($id , $first_name, $last_name, $email);
         
         if ($res->rowCount()) {
-            echo 'Se actualizo Existosamente';
+            echo 'Se actualizó existosamente';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro actualizar el parametro indicado',
+                                    'msj' => 'No se logró actualizar el parámetro indicado',
                                     'server' => $res));
         }
     }
