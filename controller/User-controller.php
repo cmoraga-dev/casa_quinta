@@ -5,10 +5,7 @@ include_once __DIR__.'/../model/User.php';
 class User_controller{
 
     function getAlluser(){
-        $this->error = json_encode(array('cod' => '204', 
-        'msj' => 'Prueba.'));
-        return $this->error;
-
+        
         $userModel = new User();
         $users = array();
         $users["users"] = array();
@@ -16,10 +13,7 @@ class User_controller{
         $res = $userModel->getAll();
 
         if ($res->rowCount() > 0) {
-            $this->error = json_encode(array('cod' => '204', 
-                                    'msj' => 'Prueba.'));
-            return;
-    
+
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
 
                 $item = array(
