@@ -47,7 +47,7 @@ include_once 'db.php';
         function createUser($first_name, $last_name, $rut, $email){
             try {
 
-                $duplicateKey = $this->connect()->query("SELECT * FROM box_users WHERE identification_number ='$rut'");
+                $duplicateKey = $this->connect()->query("SELECT * FROM `users` WHERE identification_number ='$rut'");
                 $query = $this->connect()->prepare("INSERT INTO `users` (first_name, last_name, identification_number, email, can_book) 
                                                     VALUES('$first_name', '$last_name', '$rut', '$email', 0)");
                 if($duplicateKey->rowCount() < 1){

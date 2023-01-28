@@ -5,11 +5,11 @@ include_once __DIR__.'/../model/User.php';
 class User_controller{
 
     function getAlluser(){
-        $user = new User();
+        $userModel = new User();
         $users = array();
         $users["users"] = array();
 
-        $res = $user->getAllUsers();
+        $res = $userModel->getAllUsers();
 
         if ($res->rowCount()) {
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
