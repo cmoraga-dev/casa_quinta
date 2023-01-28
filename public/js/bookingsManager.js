@@ -19,7 +19,7 @@ function goToHome(){
 }
 
 window.setTimeout( function() {
-    getAllBookingConfirmToday();
+    getAllBookings();
 }, 100);
 
 window.setTimeout( function() {
