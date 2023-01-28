@@ -70,6 +70,7 @@ function getAllUsers() {
     }).done(function (response) {
 
         Object.entries(response).forEach(item => {
+            console.log(item);
             item["users"].forEach(innerItem =>   {
                 console.log(innerItem);
                 });
