@@ -73,8 +73,9 @@ function getAllUsers() {
 
         Object.entries(response).forEach(item => {
             if (item[0] == "users"){
-                item[0].forEach(innerItem =>   
-                    console.log(innerItem);
+                
+                item[0].forEach(innerItem =>   {
+                    console.log(innerItem);}
                 );
             }
 
