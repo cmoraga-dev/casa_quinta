@@ -14,7 +14,7 @@ class User_controller{
         if ($res->rowCount()) {
             $this->error = json_encode(array('cod' => '204', 
                                     'msj' => 'Prueba.'));
-        }
+        
     
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
 
