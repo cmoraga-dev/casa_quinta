@@ -8,4 +8,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     $api->getAlluser();
     return 'Error!';
 }
+
+return 'Error!';
 ?>
