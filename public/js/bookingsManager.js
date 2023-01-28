@@ -130,6 +130,15 @@ function loadBodyTable( tableArray = []){
     }
 }
 
+const addButton = document.querySelector('Añadir');
+
+$(document).on('click',addButton, function(event) {
+    alert('works!!')
+});
+
+
+
+
 /** Llamar a paciente.
  * 
  */

@@ -63,5 +63,4 @@ include("../login/validateSession.php");
         </div>
     </div>
 </body>
-
 </html>
