@@ -68,6 +68,7 @@ function getAllUsers() {
         url: host+'/api/getAllUsers',
         type: 'POST',
     }).done(function (response) {
+        console.log('test');
         console.log(response);
         var resp = JSON.parse(response);
         if (resp['cod'] === '202') {
