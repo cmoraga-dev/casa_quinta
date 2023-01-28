@@ -61,7 +61,7 @@ function getAllBookings() {
  *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
  *  sin importar si han sido de dias pasados o futuros.
  */
-function getAllBookings() {
+function getAllUsers() {
     var host = window.location.origin;
 
     $.ajax({
@@ -71,7 +71,7 @@ function getAllBookings() {
     }).done(function (response) {
 
         // Respuesta del servidor, independiente si esta correcto o no.
-        let resp = JSON.parse(response);
+        var resp = JSON.parse(response);
         if (resp['cod'] === '202') {
             loadBodyTable(resp['server']);
         } else if (resp['cod'] === '404') {
@@ -80,10 +80,10 @@ function getAllBookings() {
 
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
-        let resp = JSON.parse(err);
+        var resp = JSON.parse(err);
         //console.log(`${resp['cod']} ${resp['def']}`);
     });
-
+    return resp;
 }
 
 
@@ -93,8 +93,10 @@ function getAllBookings() {
 // Store it as a global variable
 const table = $('.tableBookingConfirm')[0];
 const headersNames = getHeadersIndex();
-mixedData = data = getAllBookings();
-loadPeriodsIntoTable(mixedData);
+mixedData = getAllBookings();
+loadBookingsIntoTable(mixedData);
+usersData = getAllUsers();
+
 makeCellsEditable();
 cellsChangeObserver();
 rebind();
@@ -103,12 +105,12 @@ rebind();
  * Insert the candles data into the html table.
  * @param  data 
  */
-function loadPeriodsIntoTable(data) {
-    let candlesMap = sortCandles(data);
-    //console.log (table); OK
-    //console.log(allCandlesMap);// map OK
-    deactivateLoadingRow();
-    candlesMap.forEach((candleValues, time) => {
+function loadBookingsIntoTable(data) {
+    let entriesMap = sortEntries(data);
+    console.log (table); OK
+    console.log(entriesMap);// map OK
+
+    entriesMap.forEach((candleValues, time) => {
         //console.log ('da candle', candleValues, time); //OK
         let singleCandleMap = new Map(Object.entries(candleValues, time));
         singleCandleMap.set('datetime', formatTime(time));
@@ -116,7 +118,7 @@ function loadPeriodsIntoTable(data) {
         singleCandleMap.set('timespan', '5m');
         addDataRow(singleCandleMap);
     });
-    if (candlesMap.size == 0) {
+    if (entriesMap.size == 0) {
         console.log('No candles data!');
     }
 }
@@ -139,15 +141,6 @@ function addDataRow(rowValues) {
     }
 }
 
-
-/**
- * Removes the first row of the table
- */
-function deactivateLoadingRow() {
-    var table = document.getElementById('tableBookingConfirm');
-    var td = table.children[1];
-    td.children[0].remove()
-}
 
 /**
  * Add a row when there are no candles to show
@@ -191,7 +184,7 @@ function formatTime(s) {
  * Receives an ascending sorted JS Object with the candles.
  * @returns A descending sorted JS Map of candles.
  */
-function sortCandles(unsortedCandles) {
+function sortEntries(unsortedCandles) {
     // By default, JS can't sort a map
     // Instead, it's neccesary to convert the map to an array and then call sort functions.
     let unsortedCandlesMap = new Map(Object.entries(unsortedCandles));
