@@ -12,6 +12,10 @@ class User_controller{
         $res = $userModel->getAllUsers();
 
         if ($res->rowCount()) {
+            $this->error = json_encode(array('cod' => '204', 
+                                    'msj' => 'Prueba.'));
+        }
+    
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
 
                 $item = array(
@@ -30,6 +34,7 @@ class User_controller{
         }
     }
 
+    
     function getUser($rut){
         $user = new User();
         $users = array();
