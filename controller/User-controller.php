@@ -11,7 +11,7 @@ class User_controller{
 
         $res = $userModel->getAllUsers();
 
-        if ($res->rowCount()) {
+        if ($res->rowCount() > 0) {
             $this->error = json_encode(array('cod' => '204', 
                                     'msj' => 'Prueba.'));
         
