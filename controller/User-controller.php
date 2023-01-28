@@ -9,7 +9,7 @@ class User_controller{
         $users = array();
         $users["users"] = array();
 
-        $res = $userModel->getAllUsers();
+        $res = $userModel->getAll();
 
         if ($res->rowCount() > 0) {
             $this->error = json_encode(array('cod' => '204', 

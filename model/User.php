@@ -8,17 +8,23 @@ include_once 'db.php';
          * Se obtiene un usuario paciente por su rut.
          */
         function getUser($rut){
-            $query = $this->connect()->query("SELECT * FROM `users` WHERE LOWER(identification_number) = LOWER('$rut')");
+            $query = $this->connect()->query("SELECT * FROM users WHERE LOWER(identification_number) = LOWER('$rut')");
             return $query;
         }
 
         /** Obtener todos los usuarios/pacientes.
          * Se obtiene todos los usuarios pacientes que estan ingresados en el sistema.
          */
-        function getAllUsers(){
-            $query = $this->connect()->query("SELECT * FROM `users`");
-            return $query;
+        function getAll(){
+            try {
+                $query = $this->connect()->query("SELECT * FROM users");
+                return $query;
+        
+            } catch (PDOException $e) {
+                return $e->getMessage();
+            }
         }
+
 
         /** Obtiene el usuario/paciente.
          * Se obtiene el id del usuario paciente que esta ingresado en el sistema.
@@ -26,7 +32,7 @@ include_once 'db.php';
         function getUserByRut($rut){
 
             // Validamos que el rut exista
-            $queryRut = $this->connect()->query("SELECT count(id) as exist FROM `users` WHERE identification_number = '$rut'");
+            $queryRut = $this->connect()->query("SELECT count(id) as exist FROM users WHERE identification_number = '$rut'");
 
             //extraemos el valor de la query
             $validateRutExist = $queryRut->fetch(PDO::FETCH_ASSOC)["exist"];
@@ -65,7 +71,7 @@ include_once 'db.php';
          * Elimina un usuario paciente por su id.
          */
         function deleteUser($id){
-            $query = $this->connect()->query("DELETE FROM `users` WHERE id = $id ");
+            $query = $this->connect()->query("DELETE FROM users WHERE id = $id ");
             return $query;
         }
 
@@ -73,7 +79,7 @@ include_once 'db.php';
          * Permite actualizar un parametro del usuario paciente, no permite actualizar un rut.
          */
         function updateUser($id, $first_name, $last_name, $email){
-            $query = $this->connect()->query("UPDATE `users` SET first_name = '$first_name', last_name = '$last_name',
+            $query = $this->connect()->query("UPDATE users SET first_name = '$first_name', last_name = '$last_name',
                                                 email = '$email' WHERE id = $id ");
             return $query;
         }
