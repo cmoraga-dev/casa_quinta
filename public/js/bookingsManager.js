@@ -70,12 +70,13 @@ function getAllUsers() {
     }).done(function (response) {
         console.log('test');
         console.log(response);
-        var resp = JSON.parse(response);
-        if (resp['cod'] === '202') {
-            loadBodyTable(resp['server']);
-        } else if (resp['cod'] === '404') {
-           // console.log(`${resp['cod']} ${resp['def']}`);
-        }
+
+        Object.entries(response).forEach(item => {
+            if (item[0] == "users"){
+                item[0].forEach(innerItem =>   
+                    console.log(innerItem);
+                );
+            }
 
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
