@@ -26,6 +26,7 @@ window.setTimeout( function() {
     window.location.reload();
   }, 30000);
 
+
 /** Obtiene todas las reservas confirmadas del dia.
  *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
  *  sin importar si han sido de dias pasados o futuros.
@@ -141,43 +142,11 @@ $(document).on('click',addButton, function(event) {
     alert('works!!')
 });
 
-
-
-
-Skip to content
-Pulls
-Issues
-Codespaces
-Marketplace
-Explore
-@cmoraga-dev
-cmoraga-dev /
-agora
-Private
-
-Cannot fork because you own this repository and are not a member of any organizations.
-
-Code
-Issues
-Pull requests
-Actions
-Projects
-Security
-Insights
-
-    Settings
-
-agora/static/js/candlesEditor.js /
-carlos 1st commit
-Latest commit 869bb3a Aug 10, 2022
-History
-0 contributors
-357 lines (321 sloc) 12 KB
 // Getting the value from the template
 // Store it as a global variable
-const table = $('.candles')[0];
+const table = $('.tableBookingConfirm')[0];
 const headersNames = getHeadersIndex();
-
+mixedData = data = getAllBookings();
 loadPeriodsIntoTable(mixedData);
 makeCellsEditable();
 cellsChangeObserver();
@@ -217,31 +186,10 @@ function addDataRow(rowValues) {
     let currentRow = table.insertRow(-1);
     for (var index = 0; index < Object.keys(headersNames).length; index++) {
         let currentCell = currentRow.insertCell(index);
-        if (headersNames[index] == 'sma20'){
-            let sma20 = rowValues.get('indicators')['sma20'];
-            console.log(sma20);
-            if (sma20 != null){
-                sma20 = parseFloat(sma20).toFixed(4);
-            }else {
-                sma20 = ''
-            }
-            var textElement = document.createTextNode(sma20);
-        } else {
-            var textElement = document.createTextNode(rowValues.get(headersNames[index]));
-        }
+        var textElement = document.createTextNode(rowValues.get(headersNames[index]));
+
         currentCell.appendChild(textElement);
     }
-    let missingCandleSpan = document.createElement('span');
-    let missingCandleIcon = document.createElement('i');
-    missingCandleIcon.className = 'fas fa-exclamation-triangle';
-    missingCandleIcon.title = 'Missing candle!';
-    let currentCell = currentRow.insertCell(index);
-    missingCandleIcon.appendChild(missingCandleSpan);
-    if (!rowValues.has('missing')) {
-        missingCandleIcon.style.visibility = 'hidden';
-    }
-    currentCell.appendChild(missingCandleIcon);
-
 }
 
 
@@ -249,7 +197,7 @@ function addDataRow(rowValues) {
  * Removes the first row of the table
  */
 function deactivateLoadingRow() {
-    var table = document.getElementById('candles_table');
+    var table = document.getElementById('tableBookingConfirm');
     var td = table.children[1];
     td.children[0].remove()
 }
@@ -258,7 +206,7 @@ function deactivateLoadingRow() {
  * Add a row when there are no candles to show
  */
 function addEmptyRow() {
-    var table = document.getElementById('candles_table');
+    var table = document.getElementById('tableBookingConfirm');
     var td = table.children[1];
     td.children[0].remove()
 }
@@ -268,7 +216,7 @@ function addEmptyRow() {
  */
 function getHeadersIndex() {
     let headersIndex = {}
-    $('#candles_table > thead > tr > th').each(function (index, element) {
+    $('#tableBookingConfirm > thead > tr > th').each(function (index, element) {
         let columnName = $(this).text().replace(/\s+/g, '').toLowerCase();
         headersIndex[index] = columnName;
     });
