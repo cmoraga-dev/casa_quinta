@@ -19,10 +19,6 @@ function goToHome(){
 }
 
 window.setTimeout( function() {
-    getAllBookings();
-}, 100);
-
-window.setTimeout( function() {
     window.location.reload();
   }, 30000);
 
