@@ -45,7 +45,8 @@ dialog = $("#dialog-form").dialog({
 
 form = dialog.find("form").on( "submit", function( event ) {
     event.preventDefault();
-    addBooking();
+    dialog.dialog( "close" );
+    return true;
 });
 
 /** Obtiene todas las reservas confirmadas del dia.
@@ -122,10 +123,7 @@ function updateTips( t ) {
 }
  
 
-function addBooking() {
-    dialog.dialog( "close" );
-    return true;
-}
+
  
 
 /**
