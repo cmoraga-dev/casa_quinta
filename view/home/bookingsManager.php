@@ -44,8 +44,27 @@ include("../login/validateSession.php");
     <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
         <h3>Mantenedor de agendas</h3>
     </div>
+        <div id="dialog-form" title="Añadir agendamiento">
+            <p class="validateTips">Todos los campos son requeridos.</p> 
+            <form>
+                <fieldset>
+                <label for="name">Nombre de paciente</label>
+                <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
+                <label for="rut">RUT</label>
+                <input type="text" name="rut" id="rut" value="" class="text ui-widget-content ui-corner-all">
+                <label for="booking_datetime">Hora</label>
+                <input type='text' class="form-control" id='booking_datetime' />
+                <script type="text/javascript">
+                    $(document).on("click", "#booking_datetime", function(){
+                         //$(this).datetimepicker();
+                    });
+                </script>
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
         <div class="table-responsive{-sm|-md|-lg|-xl}">
-        <table id="tableBookingConfirm" class="table table-striped">
+            <table id="tableBookingConfirm" class="table table-striped">
                 <thead class="table-primary">
                     <tr>
                         <th scope="col">Nombre de paciente</th>
@@ -64,25 +83,6 @@ include("../login/validateSession.php");
             </table>
         </div>
         <button id="create-booking"> Añadir agendamiento</button>
-        <div id="dialog-form" title="Añadir agendamiento">
-            <p class="validateTips">Todos los campos son requeridos.</p> 
-            <form>
-                <fieldset>
-                <label for="name">Nombre de paciente</label>
-                <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
-                <label for="rut">RUT</label>
-                <input type="text" name="rut" id="rut" value="" class="text ui-widget-content ui-corner-all">
-                <label for="booking_datetime">Hora</label>
-                <input type='text' class="form-control" id='booking_datetime' />
-                <script type="text/javascript">
-                    $(document).on("click", "#booking_datetime", function(){
-                         $(this).datetimepicker();
-                    });
-                </script>
-                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-                </fieldset>
-            </form>
-        </div>
     </div>
 </body>
 </html>
