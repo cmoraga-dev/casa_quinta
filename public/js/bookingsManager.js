@@ -21,12 +21,12 @@ window.setTimeout( function() {
   }, 30000);
 
 
-$( "#create-booking" ).button().on( "click", function() {
+$("#create-booking" ).button().on( "click", function() {
     dialog.dialog( "open" );
 });
 
 
-dialog = $( "#dialog-form" ).dialog({
+dialog = $("#dialog-form").dialog({
     autoOpen: false,
     height: 400,
     width: 350,
@@ -43,7 +43,7 @@ dialog = $( "#dialog-form" ).dialog({
     }
 });
 
-form = dialog.find( "form" ).on( "submit", function( event ) {
+form = dialog.find("form").on( "submit", function( event ) {
     event.preventDefault();
     addBooking();
 });
@@ -104,13 +104,13 @@ function getAllUsers() {
     });
 }
 
-const table = $('.tableBookingConfirm')[0];
+//const table = $('.tableBookingConfirm')[0];
 bookingData = getAllBookings();
 //loadBookingsIntoTable(bookingData);
-usersData = getAllUsers();
-console.log(usersData);
+//usersData = getAllUsers();
+//console.log(usersData);
 
-rebind();
+//rebind();
 
 function updateTips( t ) {
     tips
