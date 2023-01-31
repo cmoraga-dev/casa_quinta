@@ -91,8 +91,6 @@ console.log(usersData);
 
 rebind();
 
-
- 
 function updateTips( t ) {
     tips
     .text( t )
