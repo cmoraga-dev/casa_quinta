@@ -123,15 +123,8 @@ function updateTips( t ) {
  
 
 function addBooking() {
-    var valid = true;
-    allFields.removeClass( "ui-state-error" );
-
-    $( "#users tbody" ).append( "<tr>" +
-        "<td>" + name.val() + "</td>" +
-        "<td>" + email.val() + "</td>" +
-        "<td>" + password.val() + "</td>" +
-    "</tr>" );
     dialog.dialog( "close" );
+    return true;
 }
  
 
