@@ -27,6 +27,33 @@ window.setTimeout( function() {
   }, 30000);
 
 
+$( "#create-booking" ).button().on( "click", function() {
+    dialog.dialog( "open" );
+});
+
+
+dialog = $( "#dialog-form" ).dialog({
+    autoOpen: false,
+    height: 400,
+    width: 350,
+    modal: true,
+    buttons: {
+    "Add booking": addBooking,
+    Cancel: function() {
+        dialog.dialog( "close" );
+    }
+    },
+    close: function() {
+    form[ 0 ].reset();
+    //allFields.removeClass( "ui-state-error" );
+    }
+});
+
+form = dialog.find( "form" ).on( "submit", function( event ) {
+    event.preventDefault();
+    addBooking();
+});
+
 /** Obtiene todas las reservas confirmadas del dia.
  *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
  *  sin importar si han sido de dias pasados o futuros.
@@ -113,31 +140,6 @@ function addBooking() {
     dialog.dialog( "close" );
 }
  
-dialog = $( "#dialog-form" ).dialog({
-    autoOpen: false,
-    height: 400,
-    width: 350,
-    modal: true,
-    buttons: {
-    "Add booking": addBooking,
-    Cancel: function() {
-        dialog.dialog( "close" );
-    }
-    },
-    close: function() {
-    form[ 0 ].reset();
-    //allFields.removeClass( "ui-state-error" );
-    }
-});
-
-form = dialog.find( "form" ).on( "submit", function( event ) {
-    event.preventDefault();
-    addBooking();
-});
-
-$( "#create-booking" ).button().on( "click", function() {
-    dialog.dialog( "open" );
-});
 
 /**
  * Insert the candles data into the html table.
