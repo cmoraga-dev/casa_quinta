@@ -41,9 +41,9 @@ dialog = $("#dialog-form").dialog({
     }
 });
 
-$("#create-booking" ).button().on( "click", function() {
-    dialog.dialog( "open" );
-});
+//$("#create-booking" ).button().on( "click", function() {
+//    dialog.dialog( "open" );
+//});
 
 form = dialog.find("form").on( "submit", function( event ) {
     event.preventDefault();
