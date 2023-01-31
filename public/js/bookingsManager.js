@@ -85,7 +85,7 @@ function getAllUsers() {
 
 const table = $('.tableBookingConfirm')[0];
 bookingData = getAllBookings();
-loadBookingsIntoTable(mixedData);
+loadBookingsIntoTable(bookingData);
 usersData = getAllUsers();
 console.log(usersData);
 
