@@ -17,9 +17,8 @@ include("../login/validateSession.php");
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
 
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
 
 
 </head>
@@ -70,7 +69,7 @@ include("../login/validateSession.php");
                 </tbody>
             </table>
         </div>
-        <button id="create-booking">Añadir agendamiento</button>
+        <button id="create-booking", toggle="modal" data-target="#myModal">>Añadir agendamiento</button>
         <div id="dialog-form" title="Añadir agendamiento">
             <p class="validateTips">Todos los campos son requeridos.</p> 
             <form>

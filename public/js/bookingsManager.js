@@ -92,17 +92,6 @@ console.log(usersData);
 rebind();
 
 
-
-// Pop-up
-var dialog, form;
- 
-// From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-emailRegex = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
-name = $( "#name" ),
-email = $( "#email" ),
-password = $( "#password" ),
-allFields = $( [] ).add( name ).add( email ).add( password ),
-tips = $( ".validateTips" );
  
 function updateTips( t ) {
     tips
@@ -139,7 +128,7 @@ dialog = $( "#dialog-form" ).dialog({
     },
     close: function() {
     form[ 0 ].reset();
-    allFields.removeClass( "ui-state-error" );
+    //allFields.removeClass( "ui-state-error" );
     }
 });
 
