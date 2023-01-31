@@ -40,11 +40,7 @@ include("../login/validateSession.php");
             </span>
     </nav>
 
-    <div class="container" style="padding-top: 50px;">
-    <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
-        <h3>Mantenedor de agendas</h3>
-    </div>
-        <div id="dialog-form" title="Añadir agendamiento">
+    <div id="dialog-form" title="Añadir agendamiento">
             <p class="validateTips">Todos los campos son requeridos.</p> 
             <form>
                 <fieldset>
@@ -63,6 +59,12 @@ include("../login/validateSession.php");
                 </fieldset>
             </form>
         </div>
+        
+
+    <div class="container" style="padding-top: 50px;">
+    <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
+        <h3>Mantenedor de agendas</h3>
+    </div>
         <div class="table-responsive{-sm|-md|-lg|-xl}">
             <table id="tableBookingConfirm" class="table table-striped">
                 <thead class="table-primary">
