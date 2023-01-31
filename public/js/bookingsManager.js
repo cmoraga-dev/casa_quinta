@@ -21,9 +21,7 @@ window.setTimeout( function() {
   }, 30000);
 
 
-$("#create-booking" ).button().on( "click", function() {
-    dialog.dialog( "open" );
-});
+
 
 
 dialog = $("#dialog-form").dialog({
@@ -41,6 +39,10 @@ dialog = $("#dialog-form").dialog({
     form[ 0 ].reset();
     //allFields.removeClass( "ui-state-error" );
     }
+});
+
+$("#create-booking" ).button().on( "click", function() {
+    dialog.dialog( "open" );
 });
 
 form = dialog.find("form").on( "submit", function( event ) {
