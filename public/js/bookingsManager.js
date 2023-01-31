@@ -69,15 +69,10 @@ function getAllUsers() {
         url: host+'/api/getAllUsers',
         type: 'POST',
     }).done(function (response) {
-
-        var resp = [];
         Object.entries(response).forEach(item => {
             console.log(item);
             if (item[0] == 'users') {
-                for (i in item[1]){
-                    console.log(i);
-                    console.log(i['id'],i['rut'], i['first_name'], i['last_name'], i['email']);
-                }
+                return item[1];
             }
         });
         
@@ -88,17 +83,12 @@ function getAllUsers() {
     });
 }
 
-
-// Getting the value from the template
-// Store it as a global variable
 const table = $('.tableBookingConfirm')[0];
 bookingData = getAllBookings();
-//loadBookingsIntoTable(mixedData);
+loadBookingsIntoTable(mixedData);
 usersData = getAllUsers();
 console.log(usersData);
 
-makeCellsEditable();
-cellsChangeObserver();
 rebind();
 
 /**

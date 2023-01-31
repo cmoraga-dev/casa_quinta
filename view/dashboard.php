@@ -35,6 +35,22 @@
                 </tbody>
             </table>
         </div>
+        <div id="dialog-form" title="Create new user">
+            <p class="validateTips">All form fields are required.</p> 
+            <form>
+                <fieldset>
+                <label for="name">Nombre de paciente</label>
+                <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
+                <label for="rut">RUT</label>
+                <input type="text" name="rut" id="rut" value="" class="text ui-widget-content ui-corner-all">
+                <label for="booking_datetime">Hora</label>
+                <input type="" name="booking_datetime" id="booking_datetime" value="" class="text ui-widget-content ui-corner-all">
+            
+                <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
     </div>
 </body>
 
