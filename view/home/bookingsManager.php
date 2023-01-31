@@ -70,7 +70,12 @@ include("../login/validateSession.php");
                 <label for="rut">RUT</label>
                 <input type="text" name="rut" id="rut" value="" class="text ui-widget-content ui-corner-all">
                 <label for="booking_datetime">Hora</label>
-                <input type="" name="booking_datetime" id="booking_datetime" value="" class="text ui-widget-content ui-corner-all">
+                <input type='text' class="form-control" id='booking_datetime' />
+                <script type="text/javascript">
+                    $(function () {
+                        $('#booking_datetime').datetimepicker();
+                    });
+                </script>
                 <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
                 </fieldset>
             </form>
