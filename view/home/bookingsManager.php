@@ -60,6 +60,21 @@ include("../login/validateSession.php");
                 </tbody>
             </table>
         </div>
+        <button id="create-booking">Añadir agendamiento</button>
+        <div id="dialog-form" title="Añadir agendamiento">
+            <p class="validateTips">Todos los campos son requeridos.</p> 
+            <form>
+                <fieldset>
+                <label for="name">Nombre de paciente</label>
+                <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
+                <label for="rut">RUT</label>
+                <input type="text" name="rut" id="rut" value="" class="text ui-widget-content ui-corner-all">
+                <label for="booking_datetime">Hora</label>
+                <input type="" name="booking_datetime" id="booking_datetime" value="" class="text ui-widget-content ui-corner-all">
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                </fieldset>
+            </form>
+        </div>
     </div>
 </body>
 </html>
