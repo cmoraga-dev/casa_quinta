@@ -69,7 +69,7 @@ include("../login/validateSession.php");
                 </tbody>
             </table>
         </div>
-        <button id="create-booking", toggle="modal" data-target="#myModal">>Añadir agendamiento</button>
+        <button id="create-booking", toggle="modal" data-target="#myModal"> Añadir agendamiento</button>
         <div id="dialog-form" title="Añadir agendamiento">
             <p class="validateTips">Todos los campos son requeridos.</p> 
             <form>
