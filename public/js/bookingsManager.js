@@ -43,7 +43,8 @@ function getAllBookings() {
         // Respuesta del servidor, independiente si esta correcto o no.
         let resp = JSON.parse(response);
         if (resp['cod'] === '202') {
-            loadBodyTable(resp['server']);
+            console.log(resp['server']);
+            return resp['server'];
         } else if (resp['cod'] === '404') {
            // console.log(`${resp['cod']} ${resp['def']}`);
         }
@@ -69,10 +70,12 @@ function getAllUsers() {
         type: 'POST',
     }).done(function (response) {
 
+        var resp = [];
         Object.entries(response).forEach(item => {
             console.log(item);
             if (item[0] == 'users') {
                 for (i in item[1]){
+                    console.log(i);
                     console.log(i['id'],i['rut'], i['first_name'], i['last_name'], i['email']);
                 }
             }
@@ -83,14 +86,13 @@ function getAllUsers() {
         var resp = JSON.parse(err);
         //console.log(`${resp['cod']} ${resp['def']}`);
     });
-    return resp;
 }
 
 
 // Getting the value from the template
 // Store it as a global variable
 const table = $('.tableBookingConfirm')[0];
-mixedData = getAllBookings();
+bookingData = getAllBookings();
 //loadBookingsIntoTable(mixedData);
 usersData = getAllUsers();
 console.log(usersData);
@@ -139,28 +141,6 @@ function addDataRow(rowValues) {
     }
 }
 
-
-/**
- * Add a row when there are no candles to show
- */
-function addEmptyRow() {
-    var table = document.getElementById('tableBookingConfirm');
-    var td = table.children[1];
-    td.children[0].remove()
-}
-
-/**
- * Return the column name as a key and the index as the value
- */
-function getHeadersIndex() {
-    let headersIndex = {}
-    $('#tableBookingConfirm > thead > tr > th').each(function (index, element) {
-        let columnName = $(this).text().replace(/\s+/g, '').toLowerCase();
-        headersIndex[index] = columnName;
-    });
-    return headersIndex;
-}
-
 /**
  * 
  */
@@ -182,126 +162,15 @@ function formatTime(s) {
  * Receives an ascending sorted JS Object with the candles.
  * @returns A descending sorted JS Map of candles.
  */
-function sortEntries(unsortedCandles) {
+function sortEntries(unsortedEntries) {
     // By default, JS can't sort a map
     // Instead, it's neccesary to convert the map to an array and then call sort functions.
-    let unsortedCandlesMap = new Map(Object.entries(unsortedCandles));
+    let unsortedCandlesMap = new Map(Object.entries(unsortedEntries));
     let unsortedCandlesArray = [...unsortedCandlesMap];
     let sortedCandlesArray = unsortedCandlesArray.sort().reverse();
     let sortedCandlesMap = new Map(sortedCandlesArray);
     return sortedCandlesMap;
 }
-
-/**
- * Make the cells temporary editable on double click,
- * using the property 'contenteditable'.
- */
-function makeCellsEditable() {
-    const tableCells = $('table tbody tr td')
-
-    tableCells.dblclick(function () {
-        let isIcon = $(this).text() == 'Missing candle!';
-        //console.log('is icon?', isIcon); // OK
-        if (!isIcon) $(this).attr('contenteditable', 'true').focus();
-    });
-    tableCells.on('keydown', function (e) {
-        var keyCode = e.keyCode || e.which;
-        // console.log('key code', keyCode); //OK
-        if (keyCode == 9) {
-            // Change here
-            let isIconNext = $(this).next('td').text() == 'Missing candle!';
-            e.preventDefault();
-            if (!isIconNext) {
-                calculateSMA($(this));
-                $(this).next('td').attr('contenteditable', 'true').focus().selectText();
-                //console.log($(this).parent());
-                $(this).parent().addClass('updated');
-            }
-            let userValue = $(this)[0].childNodes[0].nodeValue;
-            console.log('user value', userValue);
-            let validValue = Math.abs(parseFloat(userValue)) >= 0 ? Math.abs(parseFloat(userValue)) : '';
-            $(this)[0].childNodes[0].nodeValue = '';
-            $(this)[0].childNodes[0].nodeValue = validValue;
-            console.log('valid value', validValue);
-    
-            if (userValue.endsWith('.')) {
-                $(this)[0].childNodes[0].nodeValue = `${validValue}.`;
-            }else if (userValue.endsWith('.0'))
-                $(this)[0].childNodes[0].nodeValue = `${userValue}.`;
-            
-        }
-        if (keyCode == 13) {
-            e.preventDefault();
-        }
-    });
-    tableCells.on('input', function () {
-        $(this).focus();
-        setCursorAtEndOfContenteditable($(this)[0]);
-
-    });
-
-
-    $(document).click(function (e) {
-        if (!tableCells.toArray().some(f => f.contains(e.target))) {
-            tableCells.removeAttr('contenteditable');
-            $(this).removeAttr('contenteditable');
-        }
-    })
-}
-
-
-/**
- * Starts the MutationObserver object.
- * Checks constantly for every change on the cells content.
- * On change: adds the class 'updated' to the parent row.
- */
-function cellsChangeObserver() {
-
-    // Observer options
-    const observerOptions = {
-        attributes: false,
-        childList: false,
-        subtree: true,
-        characterData: true,
-        attributeOldValue: false,
-        characterDataOldValue: false
-    };
-
-    // Element to observe
-    var dataCells = $('table tbody')[0];
-
-    // Observer constructor and callback
-    const observer = new MutationObserver((mutationList) => {
-        mutationList.forEach((mutation) => {
-            console.log('data updated!', mutation);
-            console.log(mutation.target.nodeValue, typeof (mutation.target));
-            let mutatedRow = mutation.target.parentElement.parentElement;
-            mutatedRow.className = 'updated';
-
-        })
-    });
-    observer.observe(dataCells, observerOptions);
-}
-
-/**
- * Detect the candle data from updated rows only.
- * Also performs validation (to prevent sending garbage).
- */
-function getUpdatedDataRows() {
-    var updatedRows = $('table > tbody > tr.updated');
-    let processedRows = {};
-    $.each(updatedRows, function (key, valueObject) {
-        let singleRow = {}
-        for (let index in headersNames) {
-            //alert(headersNames[index] + '' + valueObject.cells[index].innerHTML);
-            singleRow[headersNames[index]] = valueObject.cells[index].innerHTML;
-        }
-        processedRows[key] = singleRow;
-    });
-    //alert(JSON.stringify(processedRows));
-    return JSON.stringify(processedRows);
-}
-
 
 function rebind() {
     $("#saveBtn").unbind().click(function () {
