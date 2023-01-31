@@ -82,7 +82,7 @@ include("../login/validateSession.php");
                 <input type='text' class="form-control" id='booking_datetime' />
                 <script type="text/javascript">
                     $(document).on("click", "#booking_datetime", function(){
-                         $(this).datetimepicker();
+                         //$(this).datetimepicker();
                     });
                 </script>
                 <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
