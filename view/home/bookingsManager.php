@@ -82,8 +82,8 @@ include("../login/validateSession.php");
                 <label for="booking_datetime">Hora</label>
                 <input type='text' class="form-control" id='booking_datetime' />
                 <script type="text/javascript">
-                    $(document).ready(function(){
-                         $('#booking_datetime').datetimepicker();
+                    $(document).on("click", "#booking_datetime", function(){
+                         $(this).datetimepicker();
                     });
                 </script>
                 <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
