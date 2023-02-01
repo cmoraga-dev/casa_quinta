@@ -43,7 +43,7 @@ $( function() {
       modal: true,
       buttons: {
         "Crear agendamiento": function() {},
-        Cancel: function() {
+        Cancelar: function() {
           dialog.dialog( "close" );
         }
       },
