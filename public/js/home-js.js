@@ -6,16 +6,18 @@
 */
 function confirmHour(){
     let rut = document.getElementById("rutUser").value;
+    let fechaReserva = new Date();
     var host = window.location.origin;
 
     if(rut){
         $.ajax({
             // envia la peticion URL al API generado en view apartado booking
-          url: host+'/api/updateConfirmBooking',
+          url: host+'/api/createBooking',
           
           //Envia el campo rut extraido del metodo getElementById.
           data: {
-                rut: rut
+                rut: rut,
+                fechaReserva: fechaReserva
             },
             type: 'POST',
         }).done(function (response){

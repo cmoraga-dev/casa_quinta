@@ -187,10 +187,10 @@ class Booking_controller{
         $res = $box_user->createBooking($id_account, $fechaReserva );
         
         if ($res->rowCount()) {
-            echo 'Se guardo Existosamente';
+            echo 'Ingreso exitoso';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'def' => 'No se logro crear el booking'));
+                                    'def' => 'No se logró crear el booking'));
         }
     }
 
