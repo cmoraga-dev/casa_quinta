@@ -190,7 +190,7 @@ class Booking_controller{
             echo 'Ingreso exitoso';
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'def' => 'No se logró crear el booking'));
+                                    'def' => 'No se logró crear el booking'.$id_account.$fechaReserva));
         }
     }
 
