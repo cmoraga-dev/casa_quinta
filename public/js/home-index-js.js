@@ -83,7 +83,7 @@ function loadBodyTable( tableArray = []){
                 let tr = document.createElement("tr");
                 let tdName = document.createElement("td");
                 let tdBooking = document.createElement("td");
-                let tdConfirm = document.createElement("td");
+                //let tdConfirm = document.createElement("td");
                 let tdButton = document.createElement("td");
 
                 let button = document.createElement("button");
@@ -95,7 +95,7 @@ function loadBodyTable( tableArray = []){
                 tr.id = e.id;
                 tdName.textContent = e.full_name_user;
                 tdBooking.textContent = e.datatime_booking;
-                tdConfirm.textContent = e.datatime_confirmed;
+                //tdConfirm.textContent = e.datatime_confirmed;
 
                 // Se le asigna el evento onclick para llamar al metodo callUser
                 button.id = "callUser";
@@ -107,7 +107,7 @@ function loadBodyTable( tableArray = []){
                 tdButton.appendChild(button);
                 tr.appendChild(tdName);
                 tr.appendChild(tdBooking);
-                tr.appendChild(tdConfirm);
+                //tr.appendChild(tdConfirm);
                 tr.appendChild(tdButton);
 
                 // Antes de terminar determinamos si ya tienen un box id asignado y desabilitamos el boton.
