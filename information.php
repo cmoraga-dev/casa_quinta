@@ -29,7 +29,7 @@ if ($res == '202') {
                         <h1>Su hora ha sido confirmada</h1>
                         <p>Por favor, esperar pacientemente su hora de llamada.
                         </p>
-                        <p>En nuestro panel de informacion vera el BOX al cual sera llamado/a</p>
+                        <p>En nuestro panel de información verá el BOX al cual será llamado/a.</p>
                         <button id="btn-back" class="btn btn-primary btn-lg btn-block">Volver</button>
                     </div>
                 </div>
