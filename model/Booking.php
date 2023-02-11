@@ -32,7 +32,7 @@ include_once __DIR__.'/User.php';
                                                 FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id 
                                                 WHERE active = 1 
                                                 AND DATE(datatime) = DATE(NOW()) or DATE(confirmHour) = DATE(NOW())
-                                                ORDER BY datatime DESC");
+                                                ORDER BY datatime ASC");
             return $query;
         }
 
