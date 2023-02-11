@@ -184,7 +184,7 @@ class Booking_controller{
     function createBookingUser($id_account,$fechaReserva ){
         $box_user = new Booking();
 
-        $id_account = str_replace('+','',$id_account);
+        //$id_account = str_replace('+','',$id_account);
 
         $res = $box_user->createBooking($id_account, $fechaReserva );
         
