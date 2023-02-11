@@ -6,7 +6,7 @@
 */
 function confirmHour(){
     let rut = document.getElementById("rutUser").value.replace('\t','');
-    rut = rut.replace('+', '')
+    rut = rut.replace('\+', '')
     let fechaReserva = new Date().toISOString().slice(0, 19).replace('T', ' ');
     var host = window.location.origin;
 
