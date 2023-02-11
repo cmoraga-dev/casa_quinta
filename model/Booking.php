@@ -31,7 +31,8 @@ include_once __DIR__.'/User.php';
             $query = $this->connect()->query("SELECT b.id as 'id', datatime,confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name', ifnull(box_id,0) as 'box_id'
                                                 FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id 
                                                 WHERE active = 1 
-                                                AND DATE(datatime) = DATE(NOW()) or DATE(confirmHour) = DATE(NOW())");
+                                                AND DATE(datatime) = DATE(NOW()) or DATE(confirmHour) = DATE(NOW())
+                                                ORDER BY datatime DESC");
             return $query;
         }
 
