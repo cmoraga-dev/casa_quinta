@@ -68,7 +68,7 @@ include_once __DIR__.'/User.php';
         function createBooking($user_id, $dataTime){
             try {
                 
-                $query = $this->connect()->prepare("INSERT INTO bookings (`user_id`, datatime) 
+                $query = $this->connect()->prepare("INSERT INTO bookings (`user_id`, `datatime`) 
                                                 VALUES((SELECT users.id FROM users WHERE users.identification_number =  '$user_id'), '$dataTime')");
                 
                 $query->execute();
