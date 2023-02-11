@@ -87,6 +87,7 @@ function loadBodyTable( tableArray = []){
                 let tdButton = document.createElement("td");
 
                 let button = document.createElement("button");
+                let buttonDeactivate = document.createElement("button");
 
                 // Se asigna un hijo al tbody que es un tr
                 tbody.appendChild(tr);
@@ -99,12 +100,16 @@ function loadBodyTable( tableArray = []){
 
                 // Se le asigna el evento onclick para llamar al metodo callUser
                 button.id = "callUser";
+                buttonDeactivate.id = 'deactivateBooking';
 
-                // Se da un nombre al boton que asginada un box.
+
+                // Se da un nombre al botón que asigna box.
                 button.textContent = "Llamar";                
+                buttonDeactivate.textContent = 'Desactivar';
 
                 // Se asignan los hijos al tr.
                 tdButton.appendChild(button);
+                tdButton.appendChild(buttonDeactivate);
                 tr.appendChild(tdName);
                 tr.appendChild(tdBooking);
                 //tr.appendChild(tdConfirm);
