@@ -67,6 +67,8 @@ function loadBodyTable( tableArray = []){
     // Se asigna un valor a la constante para saber si viene vacio el arreglo.
     const empyTable = tableArray.bookings.length
 
+    console.log(tableArray.bookings);
+
     // Se valida si viene con datos para ejecutar la carga de tabla.
     if(empyTable > 0){
         // Se busca el body de la tabla.
