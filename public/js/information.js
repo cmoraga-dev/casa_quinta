@@ -4,4 +4,4 @@ $(document).on('click','#btn-back',function() {
     location.href = '/';
 })
 
-setInterval(function () {$('#btn-back').click();},5000);
+setTimeout(function(){history.back();}, 3000);
