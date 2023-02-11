@@ -46,14 +46,12 @@ include("../login/validateSession.php");
                 <thead class="table-primary">
                     <tr>
                         <th scope="col">Nombre de paciente</th>
-                        <th scope="col">Hora agendada</th>
-                        <th scope="col">Hora Llegada</th>
+                        <th scope="col">Hora de llegada</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody id="tbody-Confirm">
                     <tr>
-                        <td> Sin datos </td>
                         <td> Sin datos </td>
                         <td> Sin datos </td>
                         <td> <input type="button" value="Sin Datos" class="btn btn-warning" disabled> </td>
