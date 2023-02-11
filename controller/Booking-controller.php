@@ -189,7 +189,9 @@ class Booking_controller{
         $res = $box_user->createBooking($id_account, $fechaReserva );
         
         if ($res->rowCount()) {
-            echo 'Ingreso exitoso';
+            echo json_encode(array('cod' => '202', 
+            'def' => 'Usuario confirmado con éxito'));
+
         }else{
             echo json_encode(array('cod' => '500', 
                                     'def' => 'No se logró crear el booking'.$id_account.$fechaReserva));
