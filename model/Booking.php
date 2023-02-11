@@ -69,7 +69,7 @@ include_once __DIR__.'/User.php';
             try {
                 
                 $query = $this->connect()->prepare("INSERT INTO bookings (`user_id`, datatime) 
-                                                VALUES(SELECT users.id FROM users WHERE users.identification_number =  '$user_id'), '$dataTime')");
+                                                VALUES((SELECT users.id FROM users WHERE users.identification_number =  '$user_id'), '$dataTime')");
                 
                 $query->execute();
                 return $query;
