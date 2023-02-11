@@ -6,7 +6,8 @@
 */
 function confirmHour(){
     let rut = document.getElementById("rutUser").value.replace('\t','');
-    let fechaReserva = new Date().toISOString().slice(0, 19).replace('T', ' ');
+    let fechaReserva = new Date().toLocaleString('en-US', { timeZone: 'America/Santiago' });
+    //toISOString().slice(0, 19).replace('T', ' ');
     var host = window.location.origin;
 
     if(rut){
