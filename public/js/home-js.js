@@ -28,8 +28,9 @@ function confirmHour(){
             if(resp['cod'] === '202'){
                 postForm('information.php', {arg1: '202'}, 'POST');
                // location.reload();
-            }else if(resp['cod'] === '404'){
-                postForm('information.php', {arg1: '404'}, 'POST');
+            //}else if(resp['cod'] === '404'){
+            }else { 
+                postForm('information.php', {arg1: resp['cod']}, 'POST');
                 //console.log(`${resp['cod']} ${resp['def']}`);
             }
             
