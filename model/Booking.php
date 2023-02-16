@@ -41,7 +41,7 @@ include_once __DIR__.'/User.php';
          */
         function getAllBookingNotConfirmByUser($rut)
         {
-            // Si el valor traido es mayor a 0 se ejecuta el metodo para extraer el id
+            // Si el valor traido es mayor a 0 se ejecuta e l metodo para extraer el id
             $query = $this->connect()->query("SELECT b.id as 'id', datatime, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name', u.identification_number as 'rut'
                                                 FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id
                                                 WHERE u.identification_number = $rut AND confirmed = 0 AND active = 0
