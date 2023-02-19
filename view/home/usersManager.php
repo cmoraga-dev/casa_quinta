@@ -123,9 +123,11 @@ $( function() {
                 <thead class="table-primary">
                     <tr>
                         <th scope="col">Id</th>
-                        <th scope="col">Nombre de paciente</th>
-                        <th scope="col">Acciones</th>
-                        <th scope="col"></th>
+                        <th scope="col">RUT</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Email</th>
+                        <!--<th scope="col">Acciones</th><!-->
                     </tr>
                 </thead>
                 <tbody id="tbody-Confirm">
