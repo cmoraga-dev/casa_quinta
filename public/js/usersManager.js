@@ -92,7 +92,7 @@ function updateTips( t ) {
  * aaand also the save button - which is at the end of every row.
  */
 function addDataRow(rowValues) {
-    console.log(table); OK
+    table = $('tableUsers');
     console.log(rowValues); //OK
     console.log(rowValues.size);    
 
