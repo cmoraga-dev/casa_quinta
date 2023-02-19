@@ -61,8 +61,8 @@ function getAllUsers() {
             //console.log(item);
             if (item[0] == 'users') {
                 console.log('yesss');
-                console.log(item[0]);
-                return item[0][1];
+                //console.log(item[0]);
+                return item;
             }
         });
         
