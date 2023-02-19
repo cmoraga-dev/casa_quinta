@@ -37,6 +37,9 @@ function addUser() {
         }
     }).done(function (response) {
         console.log(response);        
+        if(resp['cod'] === '202'){
+          location.reload();
+        }
 
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
@@ -44,8 +47,6 @@ function addUser() {
         console.log(`${resp['cod']} ${resp['def']}`);
     });
 }
-
-
 
 
 $( function() {

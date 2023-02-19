@@ -69,7 +69,9 @@ class User_controller{
         $res = $user->createUser($first_name , $last_name, $rut, $email);
         
         if ($res->rowCount()) {
-            echo 'Usuario creado con éxito.';
+            echo json_encode(array('cod' => '202', 
+                                    'msj' => 'Usuario creado con éxito.'));
+
         }else{
             echo json_encode(array('cod' => '500', 
                                     'msj' => 'No se logró crear el usuario'));
