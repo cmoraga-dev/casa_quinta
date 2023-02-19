@@ -61,7 +61,7 @@ function getAllUsers() {
             //console.log(item);
             if (item[0] == 'users') {
                 //console.log('yesss');
-                //console.log(item);
+                console.log(item[1]);
                 return item[1];
             }
         });
@@ -73,11 +73,8 @@ function getAllUsers() {
     });
 }
 
-//const table = $('.tableBookingConfirm')[0];
 usersData = getAllUsers();
 console.log(usersData);
-
-//rebind();
 
 function updateTips( t ) {
     tips
