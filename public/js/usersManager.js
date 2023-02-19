@@ -61,7 +61,7 @@ function getAllUsers() {
             //console.log(item);
             if (item[0] == 'users') {
                 //console.log('yesss');
-                console.log(item[1]);
+                //console.log(item[1]);
                 return item[1];
             }
         });
@@ -73,8 +73,7 @@ function getAllUsers() {
     });
 }
 
-usersData = getAllUsers();
-console.log(usersData);
+
 
 function updateTips( t ) {
     tips
@@ -103,6 +102,8 @@ function addDataRow(rowValues) {
     }
 }
 
+usersData = getAllUsers();
+console.log(usersData);
 addDataRow(usersData);
 
 /**
