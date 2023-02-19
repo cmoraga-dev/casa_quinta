@@ -130,7 +130,7 @@ $( function() {
                         <!--<th scope="col">Acciones</th><!-->
                     </tr>
                 </thead>
-                <tbody id="tbody-Confirm">
+                <tbody id="tbody-users">
                     <tr>
                     <td colspan="1000"><i class="fas fa-spinner spinning"></i> Loading...</td>
                       <td> <input type="button" value="Guardar cambios" class="btn btn-success"> <input type="button" value="Eliminar" class="btn btn-danger" disabled> </td>

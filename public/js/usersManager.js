@@ -201,7 +201,7 @@ function loadBodyTable( tableArray = []){
     // Se valida si viene con datos para ejecutar la carga de tabla.
     if(table > 0){
         // Se busca el body de la tabla.
-        const tbody = document.getElementById("tableUsers");
+        const tbody = document.getElementById("tbody-users");
        
         // Se valida que existe el campo id
         if(tbody){
