@@ -57,14 +57,8 @@ function getAllUsers() {
         url: host+'/api/getAllUsers',
         type: 'POST',
     }).done(function (response) {
-        Object.entries(response).forEach(item => {
-            //console.log(item);
-            if (item[0] == 'users') {
-                //console.log('yesss');
-                //console.log(item[1]);
-                return item[1];
-            }
-        });
+        console.log(response);
+        return response;
         
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
