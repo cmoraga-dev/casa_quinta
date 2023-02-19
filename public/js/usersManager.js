@@ -226,9 +226,9 @@ function loadBodyTable( tableArray = []){
                 tr.id = e.id;
                 tdId.textContent = e.id;
                 tdRut.textContent = e.rut;
-                tdFirstName = e.first_name
-                tdLastName = e.last_name
-                tdEmail = e.email
+                tdFirstName.textContent = e.first_name
+                tdLastName.textContent = e.last_name
+                tdEmail.textContent = e.email
 
 
                 tr.appendChild(tdId);
