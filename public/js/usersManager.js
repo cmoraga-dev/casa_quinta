@@ -46,25 +46,7 @@ form = dialog.find("form").on( "submit", function( event ) {
 });
 
 
-/** Obtiene todas las reservas confirmadas del dia.
- *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
- *  sin importar si han sido de dias pasados o futuros.
- */
-function getAllUsers() {
-    var host = window.location.origin;
 
-    $.ajax({
-        url: host+'/api/getAllUsers',
-        type: 'POST',
-    }).done(function (response) {
-        addDataRow(response);
-        
-    }).fail(function (err) {
-        // Respuesta de un error de peticion hacia el ajax       
-        var resp = JSON.parse(err);
-        //console.log(`${resp['cod']} ${resp['def']}`);
-    });
-}
 
 
 
@@ -189,3 +171,24 @@ $.fn.selectText = function () {
     }
 };
 
+
+
+/** Obtiene todas las reservas confirmadas del dia.
+ *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
+ *  sin importar si han sido de dias pasados o futuros.
+ */
+function getAllUsers() {
+    var host = window.location.origin;
+
+    $.ajax({
+        url: host+'/api/getAllUsers',
+        type: 'POST',
+    }).done(function (response) {
+        addDataRow(response);
+        
+    }).fail(function (err) {
+        // Respuesta de un error de peticion hacia el ajax       
+        var resp = JSON.parse(err);
+        //console.log(`${resp['cod']} ${resp['def']}`);
+    });
+}
