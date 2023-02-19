@@ -162,8 +162,8 @@ function loadBodyTable( tableArray = []){
                 edit_btn.textContent = "Editar";
                 delete_btn.textContent = "Eliminar";
 
-                edit_btn.className = 'btn btn-info';
-                delete_btn.className = 'btn btn-info';
+                edit_btn.className = 'btn btn-primary';
+                delete_btn.className = 'btn btn-danger';
 
                 tr.appendChild(tdId);
                 tr.appendChild(tdRut);
