@@ -208,7 +208,6 @@ function loadBodyTable( tableArray = []){
             // Se limpia el tbody para ir actualizandolo.
             tbody.innerHTML = '';
 
-            // Se crea un map del array que llega con su parametro bookings
             tableArray.users.map((e) => {
                 // Se crean las varibales de html.
                 let tr = document.createElement("tr");
@@ -217,7 +216,6 @@ function loadBodyTable( tableArray = []){
                 let tdFirstName = document.createElement("td");
                 let tdLastName = document.createElement("td");
                 let tdEmail = document.createElement("td");
-
 
                 // Se asigna un hijo al tbody que es un tr
                 tbody.appendChild(tr);
