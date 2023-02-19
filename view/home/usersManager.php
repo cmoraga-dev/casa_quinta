@@ -92,18 +92,18 @@ $( function() {
             </span>
     </nav>
 
-    <div id="dialog-form" title="Añadir paciente">
+    <div id="dialog-form" class="form-control" title="Añadir paciente">
             <p class="validateTips">Todos los campos son requeridos.</p> 
             <form>
                 <fieldset>
                 <label for="name">Nombre de paciente</label>
-                <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
+                <input type="text" name="name" id="name" value="" class="form-control"">
 
                 <label for="apellido">Apellido de paciente</label>
-                <input type="text" name="apellido" id="apellido" value="" class="text ui-widget-content ui-corner-all">
+                <input type="text" name="apellido" id="apellido" value="" class="form-control">
 
                 <label for="rut">RUT</label>
-                <input type="text" name="rut" id="rut" value="" class="text ui-widget-content ui-corner-all">
+                <input type="text" name="rut" id="rut" value="" class="form-control">
 
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all">
