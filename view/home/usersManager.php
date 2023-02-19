@@ -21,11 +21,12 @@ $( function() {
     var dialog, form,
  
       // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
-      name = $( "#name" ),
+      first_name = $( "#nombre" ),
+      last_name = $( "#apellido" ),
       rut = $( "#rut" ),
       email = $( "#email" ),
 
-      allFields = $( [] ).add( name ).add( rut ).add( email ),
+      allFields = $( [] ).add( first_name ).add( last_name).add( rut ).add( email ),
       tips = $( ".validateTips" );
  
     function updateTips( t ) {
