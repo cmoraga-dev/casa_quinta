@@ -118,7 +118,8 @@ $( function() {
     <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
         <h3>Mantenedor de pacientes</h3>
     </div>
-        <div class="table-responsive{-sm|-md|-lg|-xl}">
+      <button id="create-user" class="btn btn-success"> Añadir paciente</button>
+      <div class="table-responsive{-sm|-md|-lg|-xl}">
             <table id="tableUsers" class="table table-striped">
                 <thead class="table-primary">
                     <tr>
@@ -133,12 +134,10 @@ $( function() {
                 <tbody id="tbody-users">
                     <tr>
                     <td colspan="1000"><i class="fas fa-spinner spinning"></i> Loading...</td>
-                      <td> <input type="button" value="Guardar cambios" class="btn btn-success"> <input type="button" value="Eliminar" class="btn btn-danger" disabled> </td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <button id="create-user"> Añadir paciente</button>
     </div>
 </body>
 </html>
