@@ -1,4 +1,4 @@
-const headersNames = getHeadersIndex();
+
 
 /* Cierra Session.
     Elimina el proceso de inicio de session,
@@ -52,34 +52,6 @@ form = dialog.find("form").on( "submit", function( event ) {
 
 
 
-function updateTips( t ) {
-    tips
-    .text( t )
-    .addClass( "ui-state-highlight" );
-    setTimeout(function() {
-    tips.removeClass( "ui-state-highlight", 1500 );
-    }, 500 );
-}
- 
-/**
- * Add a single row with the candle information
- * aaand also the save button - which is at the end of every row.
- */
-function addDataRow(rowValues) {
-    table = $('#tableUsers')[0];
-    console.log(table);
-    console.log(rowValues); //OK
-    console.log(rowValues.size);    
-
-
-    for (var index = 0; index < Object.keys(headersNames).length; index++) {
-        let currentCell = currentRow.insertCell(index);
-        var textElement = document.createTextNode(rowValues.get(headersNames[index]));
-        currentCell.appendChild(textElement);
-    }
-}
-
-
 
 /**
  * Receives an ascending sorted JS Object with the candles.
@@ -93,58 +65,6 @@ function sortEntries(unsortedEntries) {
     let sortedCandlesArray = unsortedCandlesArray.sort(); //.reverse();
     let sortedCandlesMap = new Map(sortedCandlesArray);
     return sortedCandlesMap;
-}
-
-
-/**
- * Return the column name as a key and the index as the value
- */
-function getHeadersIndex() {
-    let headersIndex = {}
-    $('#candles_table > thead > tr > th').each(function (index, element) {
-        let columnName = $(this).text().replace(/\s+/g, '').toLowerCase();
-        headersIndex[index] = columnName;
-    });
-    console.log(headersIndex);
-    return headersIndex;
-}
-
-
-
-function rebind() {
-    $("#saveBtn").unbind().click(function () {
-        //var updatedRows = JSON.stringify (getUpdatedRows());
-        var updatedRows = getUpdatedDataRows();
-        //alert(updatedRows);
-        $.ajax({
-                url: "addOrUpdate",
-                method: "POST",
-                beforeSend: function (xhr) {
-                    xhr.setRequestHeader("X-CSRFToken", $("[name=csrfmiddlewaretoken]").val())
-                },
-
-                data: {
-                    //sp: "addOrUpdate",
-                    //selectedTicker: $("select").children("option").filter(":selected").val(),
-                    //data: updatedRows
-                }
-            })
-            .done(function (data) {
-                res = data
-                console.log(res)
-
-                if (res.error) {
-                    alert(res.error)
-                } else {
-                    //console.log('Ok');
-                }
-
-            }).fail(function (xhr, status, error) {
-                console.log(xhr);
-                console.log(status);
-                console.log(error);
-            });
-    });
 }
 
 /**
@@ -188,7 +108,6 @@ $.fn.selectText = function () {
         selection.addRange(range);
     }
 };
-
 
 
 function loadBodyTable( tableArray = []){
