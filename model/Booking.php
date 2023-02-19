@@ -28,7 +28,7 @@ include_once __DIR__.'/User.php';
          */
         function getAllBookingToday()
         {
-            $query = $this->connect()->query("SELECT b.id as 'id', datatime,confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name', ifnull(box_id,0) as 'box_id'
+            $query = $this->connect()->query("SELECT b.id as 'id', datatime,confirmHour, CONCAT(u.first_name,' ' ,u.last_name) as 'full_name', ifnull(box_id,0) as 'box_id', active
                                                 FROM `bookings` b INNER JOIN `users` u ON b.user_id = u.id 
                                                 WHERE DATE(datatime) = DATE(NOW()) or DATE(confirmHour) = DATE(NOW())
                                                 ORDER BY datatime DESC");
