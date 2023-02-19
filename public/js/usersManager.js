@@ -208,6 +208,7 @@ function getAllUsers() {
         usersMap.forEach((candleValues, time) => {
             console.log ('da value', candleValues, time); //OK
             let singleUser = new Map(Object.entries(candleValues, time));
+            console.log(singleUser);
             addDataRow(singleUser);
         });
         console.log('ok');        
