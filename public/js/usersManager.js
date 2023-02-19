@@ -154,6 +154,17 @@ function loadBodyTable( tableArray = []){
                 tdLastName.textContent = e.last_name
                 tdEmail.textContent = e.email
 
+                // Se le asigna el evento onclick para llamar al metodo callUser
+                edit_btn.id = "editUser";
+                delete_btn.id = "deleteUser";
+
+                // Se da un nombre al botón que asigna box.
+                edit_btn.textContent = "Editar";
+                delete_btn.textContent = "Eliminar";
+
+                edit_btn.className = 'btn btn-info';
+                delete_btn.className = 'btn btn-info';
+
                 tr.appendChild(tdId);
                 tr.appendChild(tdRut);
                 tr.appendChild(tdFirstName);
