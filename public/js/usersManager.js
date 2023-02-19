@@ -21,9 +21,6 @@ window.setTimeout( function() {
   }, 30000);
 
 
-
-
-
 dialog = $("#dialog-form").dialog({
     autoOpen: false,
     height: 400,
@@ -41,45 +38,12 @@ dialog = $("#dialog-form").dialog({
     }
 });
 
-//$("#create-booking" ).button().on( "click", function() {
-//    dialog.dialog( "open" );
-//});
 
 form = dialog.find("form").on( "submit", function( event ) {
     event.preventDefault();
     dialog.dialog( "close" );
     return true;
 });
-
-/** Obtiene todas las reservas confirmadas del dia.
- *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
- *  sin importar si han sido de dias pasados o futuros.
- */
-function getAllBookings() {
-    var host = window.location.origin;
-
-    $.ajax({
-        // envia la peticion URL al API generado en view apartado booking
-        url: host+'/api/getAllBookingDashboard',
-        type: 'POST',
-    }).done(function (response) {
-
-        // Respuesta del servidor, independiente si esta correcto o no.
-        let resp = JSON.parse(response);
-        if (resp['cod'] === '202') {
-            console.log(resp['server']);
-            return resp['server'];
-        } else if (resp['cod'] === '404') {
-           // console.log(`${resp['cod']} ${resp['def']}`);
-        }
-
-    }).fail(function (err) {
-        // Respuesta de un error de peticion hacia el ajax       
-        let resp = JSON.parse(err);
-        //console.log(`${resp['cod']} ${resp['def']}`);
-    });
-
-}
 
 
 /** Obtiene todas las reservas confirmadas del dia.
@@ -108,9 +72,7 @@ function getAllUsers() {
 }
 
 //const table = $('.tableBookingConfirm')[0];
-bookingData = getAllBookings();
-//loadBookingsIntoTable(bookingData);
-//usersData = getAllUsers();
+usersData = getAllUsers();
 //console.log(usersData);
 
 //rebind();
@@ -124,32 +86,6 @@ function updateTips( t ) {
     }, 500 );
 }
  
-
-
- 
-
-/**
- * Insert the candles data into the html table.
- * @param  data 
- */
-function loadBookingsIntoTable(data) {
-    let entriesMap = sortEntries(data);
-    console.log (table); OK
-    console.log(entriesMap);// map OK
-
-    entriesMap.forEach((candleValues, time) => {
-        //console.log ('da candle', candleValues, time); //OK
-        let singleCandleMap = new Map(Object.entries(candleValues, time));
-        singleCandleMap.set('datetime', formatTime(time));
-        singleCandleMap.set('unixtime', time);
-        singleCandleMap.set('timespan', '5m');
-        addDataRow(singleCandleMap);
-    });
-    if (entriesMap.size == 0) {
-        console.log('No candles data!');
-    }
-}
-
 /**
  * Add a single row with the candle information
  * aaand also the save button - which is at the end of every row.
@@ -168,22 +104,6 @@ function addDataRow(rowValues) {
     }
 }
 
-/**
- * 
- */
-function formatTime(s) {
-    const dtFormat = new Intl.DateTimeFormat('en-US', {
-        year: 'numeric',
-        month: 'numeric',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: 'numeric',
-        second: 'numeric',
-        timeZone: 'America/Santiago',
-        timeZoneName: 'short'
-    });
-    return dtFormat.format(new Date(s * 1e3));
-}
 
 /**
  * Receives an ascending sorted JS Object with the candles.

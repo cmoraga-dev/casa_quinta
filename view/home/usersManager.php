@@ -22,8 +22,9 @@ $( function() {
       // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
       name = $( "#name" ),
       rut = $( "#rut" ),
-      booking_datetime = $( "#booking_datetime" ),
-      allFields = $( [] ).add( name ).add( rut ).add( booking_datetime ),
+      email = $( "#email" ),
+
+      allFields = $( [] ).add( name ).add( rut ).add( email ),
       tips = $( ".validateTips" );
  
     function updateTips( t ) {
@@ -42,7 +43,7 @@ $( function() {
       width: 350,
       modal: true,
       buttons: {
-        "Crear agendamiento": function() {},
+        "Añadir paciente": function() {},
         Cancelar: function() {
           dialog.dialog( "close" );
         }
@@ -58,7 +59,7 @@ $( function() {
       //addUser();
     });
  
-    $( "#create-booking" ).button().on( "click", function() {
+    $( "#create-user" ).button().on( "click", function() {
       dialog.dialog( "open" );
     });
   } );
