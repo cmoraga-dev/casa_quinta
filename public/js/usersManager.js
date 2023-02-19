@@ -62,7 +62,7 @@ function getAllUsers() {
             if (item[0] == 'users') {
                 console.log('yesss');
                 console.log(item);
-                return item;
+                return item[1];
             }
         });
         
