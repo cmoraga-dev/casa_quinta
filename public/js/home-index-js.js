@@ -85,7 +85,6 @@ function loadBodyTable( tableArray = []){
                 let tr = document.createElement("tr");
                 let tdName = document.createElement("td");
                 let tdBooking = document.createElement("td");
-                //let tdConfirm = document.createElement("td");
                 let tdButton = document.createElement("td");
 
                 let button = document.createElement("button");
@@ -115,10 +114,9 @@ function loadBodyTable( tableArray = []){
                 tdButton.appendChild(buttonDeactivate);
                 tr.appendChild(tdName);
                 tr.appendChild(tdBooking);
-                //tr.appendChild(tdConfirm);
                 tr.appendChild(tdButton);
 
-                // Antes de terminar determinamos si ya tienen un box id asignado y desabilitamos el boton.
+                // Antes de terminar determinamos si ya tienen un box id asignado y deshabilitamos el botón.
                 if(e.id_box_user > 0){
                     // Se le asgina la clase "btn btn-primary" para que aparesca en color verde que ya se llamo a box.
                     button.className = "btn btn-success";
@@ -130,7 +128,19 @@ function loadBodyTable( tableArray = []){
                     return;
                 }
 
-                // Se le asgina la clase "btn btn-primary" para que aparesca en color azul
+                if(e.id_box_user > 0){
+                    // Se le asgina la clase "btn btn-primary" para que aparesca en color verde que ya se llamo a box.
+                    button.className = "btn btn-success";
+
+                    // Se da un nombre al boton dado que debe significar que ha sido llamado.
+                    button.textContent = "En proceso";
+
+                    button.disabled = true;
+                    return;
+                }
+
+
+                // Se le asigna la clase "btn btn-primary" 
                 button.className = "btn btn-primary";
                 
         });
@@ -174,3 +184,7 @@ $(document).on('click','#callUser',function(event) {
         console.log(`${resp['cod']} ${resp['def']}`);
     }); 
  });
+
+ $(document).on('click','#deactivateBooking',function(event) {
+    console.log();
+});
