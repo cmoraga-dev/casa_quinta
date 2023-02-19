@@ -70,11 +70,13 @@ class User_controller{
         
         if ($res->rowCount()) {
             echo json_encode(array('cod' => '202', 
-                                    'msj' => 'Usuario creado con éxito.'));
+                                    'msj' => 'Usuario creado con éxito.',
+                                'full_tb' => $res));
 
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logró crear el usuario'));
+                                    'msj' => 'No se logró crear el usuario',
+                                    'full_tb' => $res));
         }
     }
 

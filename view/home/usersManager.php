@@ -25,7 +25,7 @@ function addUser() {
     var last_name = document.getElementById("dialog_last_name").value;
     var email = document.getElementById("dialog_email").value;
     
-
+    console.log
     $.ajax({
         url: host+'/api/createUser',
         type: 'POST',
