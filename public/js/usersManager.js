@@ -1,4 +1,3 @@
-const table = $('#tableUsers')[0];
 const headersNames = getHeadersIndex();
 
 /* Cierra Session.
@@ -67,6 +66,7 @@ function updateTips( t ) {
  * aaand also the save button - which is at the end of every row.
  */
 function addDataRow(rowValues) {
+    table = $('#tableUsers')[0];
     console.log(table);
     console.log(rowValues); //OK
     console.log(rowValues.size);    
