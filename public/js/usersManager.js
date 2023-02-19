@@ -235,7 +235,7 @@ function loadBodyTable( tableArray = []){
                 tr.appendChild(tdRut);
                 tr.appendChild(tdFirstName);
                 tr.appendChild(tdLastName);
-                tr.atr.appendChild(tdEmail);
+                tr.appendChild(tdEmail);
                 
             });
 
