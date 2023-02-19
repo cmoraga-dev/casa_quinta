@@ -51,7 +51,8 @@ class Booking_controller{
                     "full_name_user" => $row['full_name'],
                     "datatime_booking" => $row['datatime'],
                     "datatime_confirmed" => $row['confirmHour'],
-                    "id_box_user" => $row['box_id']
+                    "id_box_user" => $row['box_id'],
+                    "active" => $row['active']
                 );
                 array_push($bookings["bookings"], $item);
             }
