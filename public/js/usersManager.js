@@ -18,40 +18,9 @@ function goToHome(){
 
 }
 
-window.setTimeout( function() {
-    window.location.reload();
-  }, 30000);
-
-
-dialog = $("#dialog-form").dialog({
-    autoOpen: false,
-    height: 400,
-    width: 350,
-    modal: true,
-    buttons: {
-    "Add booking": null,
-    Cancel: function() {
-        dialog.dialog( "close" );
-    }
-    },
-    close: function() {
-    form[ 0 ].reset();
-    //allFields.removeClass( "ui-state-error" );
-    }
-});
-
-
-form = dialog.find("form").on( "submit", function( event ) {
-    event.preventDefault();
-    dialog.dialog( "close" );
-    return true;
-});
-
-
-
-
-
-
+//window.setTimeout( function() {
+//    window.location.reload();
+//  }, 30000);
 
 /**
  * Receives an ascending sorted JS Object with the candles.
