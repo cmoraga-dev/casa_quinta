@@ -230,7 +230,6 @@ function loadBodyTable( tableArray = []){
                 tdLastName.textContent = e.last_name
                 tdEmail.textContent = e.email
 
-
                 tr.appendChild(tdId);
                 tr.appendChild(tdRut);
                 tr.appendChild(tdFirstName);
