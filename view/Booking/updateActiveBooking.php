@@ -5,6 +5,6 @@ session_start();
 $api = new Booking_controller();
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    $api->updateBoxBooking($_POST['id_booking'], $_POST['status_booking']);
+    $api->updateActiveBooking($_POST['id_booking'], $_POST['status_booking']);
 }
 ?>
