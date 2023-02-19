@@ -191,6 +191,59 @@ $.fn.selectText = function () {
 
 
 
+function loadBodyTable( tableArray = []){
+
+    // Se asigna un valor a la constante para saber si viene vacio el arreglo.
+    const table = tableArray.users.length
+
+    console.log(tableArray.users);
+
+    // Se valida si viene con datos para ejecutar la carga de tabla.
+    if(table > 0){
+        // Se busca el body de la tabla.
+        const tbody = document.getElementById("tableUsers");
+       
+        // Se valida que existe el campo id
+        if(tbody){
+            // Se limpia el tbody para ir actualizandolo.
+            tbody.innerHTML = '';
+
+            // Se crea un map del array que llega con su parametro bookings
+            tableArray.bookings.map((e) => {
+                // Se crean las varibales de html.
+                let tr = document.createElement("tr");
+                let tdId = document.createElement("td");
+                let tdRut = document.createElement("td");
+                let tdFirstName = document.createElement("td");
+                let tdLastName = document.createElement("td");
+                let tdEmail = document.createElement("td");
+
+
+                // Se asigna un hijo al tbody que es un tr
+                tbody.appendChild(tr);
+
+                // Se asignan valores a las variables creadas con los datos tomados del map.
+                tr.id = e.id;
+                tdId.textContent = e.id;
+                tdRut.textContent = e.rut;
+                tdFirstName = e.first_name
+                tdLastName = e.last_name
+                tdEmail = e.email
+
+
+                tr.appendChild(tdId);
+                tr.appendChild(tdRut);
+                tr.appendChild(tdFirstName);
+                tr.appendChild(tdLastName);
+                tr.atr.appendChild(tdEmail);
+                
+            });
+
+        }
+    }
+}
+
+
 /** Obtiene todas las reservas confirmadas del dia.
  *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
  *  sin importar si han sido de dias pasados o futuros.
@@ -202,16 +255,9 @@ function getAllUsers() {
         url: host+'/api/getAllUsers',
         type: 'POST',
     }).done(function (response) {
-        console.log(response);
-
-        let usersMap = sortEntries(response);
-        usersMap.forEach((candleValues, time) => {
-            console.log ('da value', candleValues, time); //OK
-            let singleUser = new Map(Object.entries(candleValues, time));
-            console.log(singleUser);
-            addDataRow(singleUser);
-        });
+        loadBodyTable(response);
         console.log('ok');        
+
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
         var resp = JSON.parse(err);
