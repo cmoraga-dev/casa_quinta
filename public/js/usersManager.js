@@ -105,6 +105,7 @@ function getHeadersIndex() {
         let columnName = $(this).text().replace(/\s+/g, '').toLowerCase();
         headersIndex[index] = columnName;
     });
+    console.log(headersIndex);
     return headersIndex;
 }
 
