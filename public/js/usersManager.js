@@ -57,8 +57,7 @@ function getAllUsers() {
         url: host+'/api/getAllUsers',
         type: 'POST',
     }).done(function (response) {
-        console.log(response);
-        return response;
+        addDataRow(response);
         
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
@@ -96,9 +95,7 @@ function addDataRow(rowValues) {
     }
 }
 
-usersData = getAllUsers();
-console.log(usersData);
-addDataRow(usersData);
+
 
 /**
  * Receives an ascending sorted JS Object with the candles.
