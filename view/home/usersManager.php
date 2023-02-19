@@ -106,9 +106,9 @@ $( function() {
                 <input type="text" name="rut" id="rut" value="" class="form-control">
 
                 <label for="email">Email</label>
-                <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all">
+                <input type="text" name="email" id="email" value="" class="form-control">
 
-                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px" >
                 </fieldset>
             </form>
         </div>
