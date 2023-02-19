@@ -69,11 +69,10 @@ function addDataRow(rowValues) {
     console.log(rowValues); //OK
     console.log(rowValues.size);    
 
-    let currentRow = table.insertRow(-1);
+
     for (var index = 0; index < Object.keys(headersNames).length; index++) {
         let currentCell = currentRow.insertCell(index);
         var textElement = document.createTextNode(rowValues.get(headersNames[index]));
-
         currentCell.appendChild(textElement);
     }
 }
@@ -89,7 +88,7 @@ function sortEntries(unsortedEntries) {
     // Instead, it's neccesary to convert the map to an array and then call sort functions.
     let unsortedCandlesMap = new Map(Object.entries(unsortedEntries));
     let unsortedCandlesArray = [...unsortedCandlesMap];
-    let sortedCandlesArray = unsortedCandlesArray.sort().reverse();
+    let sortedCandlesArray = unsortedCandlesArray.sort(); //.reverse();
     let sortedCandlesMap = new Map(sortedCandlesArray);
     return sortedCandlesMap;
 }
@@ -186,7 +185,13 @@ function getAllUsers() {
         type: 'POST',
     }).done(function (response) {
         console.log(response);
-        addDataRow(response);
+
+        let usersMap = sortEntries(response);
+        usersMap.forEach((candleValues, time) => {
+            console.log ('da value', candleValues, time); //OK
+            let singleUser = new Map(Object.entries(candleValues, time));
+            addDataRow(singleUser);
+        });
         console.log('ok');        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
