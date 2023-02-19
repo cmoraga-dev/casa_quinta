@@ -131,7 +131,7 @@ function loadBodyTable( tableArray = []){
                 if(e.active == 0){
                     // Se le asgina la clase "btn btn-primary" para que aparesca en color verde que ya se llamo a box.
                     button.className = "btn btn-outline-secondary";
-
+                    buttonDeactivate.className =  "btn btn-outline-secondary";
                     // Se da un nombre al boton dado que debe significar que ha sido llamado.
                     button.textContent = "Inactivo";
                     buttonDeactivate.disabled = true;
@@ -185,6 +185,43 @@ $(document).on('click','#callUser',function(event) {
     }); 
  });
 
+
+
+/**
+ * Desactivar atención.
+ * 
+ */
  $(document).on('click','#deactivateBooking',function(event) {
-    console.log();
+
+    let id_tr = event.target.parentElement.parentElement.id;
+
+    var host = window.location.origin;
+    $.ajax({
+        
+        // envia la peticion URL al API generado en view apartado booking
+        url: host+'/api/updateActiveBooking',
+        data: {
+            id_booking : id_tr,
+            status_booking: 0
+        },
+        type: 'POST',
+    }).done(function (response) {
+        //Respuesta del servidor, independiente si esta correcto o no.
+        let resp = JSON.parse(response);
+        if (resp['cod'] === '202') {
+            // Debemos desabilitar el boton para llamar, dado que ya se le asigno un box.
+            event.target.disabled = true
+            window.location.reload();
+
+        } else if (resp['cod'] === '404') {
+            console.log(`${resp['cod']} ${resp['def']}`);
+        }
+
+    }).fail(function (err) {
+        // Respuesta de un error de peticion hacia el ajax       
+        let resp = JSON.parse(err);
+        console.log(`${resp['cod']} ${resp['def']}`);
+    }); 
+
+    
 });
