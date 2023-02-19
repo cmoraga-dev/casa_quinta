@@ -76,7 +76,8 @@ class User_controller{
         }else{
             echo json_encode(array('cod' => '500', 
                                     'msj' => 'No se logró crear el usuario',
-                                    'full_tb' => $res));
+                                    'full_tb' => $res,
+                                'extra' => $rut));
         }
     }
 
