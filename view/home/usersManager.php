@@ -76,7 +76,7 @@ $( function() {
       width: 350,
       modal: true,
       buttons: {
-        "Añadir paciente": function() {},
+        "Añadir paciente": function() {addUser()},
         Cancelar: function() {
           dialog.dialog( "close" );
         }
@@ -89,7 +89,7 @@ $( function() {
  
     form = dialog.find( "form" ).on( "submit", function( event ) {
       event.preventDefault();
-      addUser();
+      //addUser();
     });
  
     $( "#create-user" ).button().on( "click", function() {

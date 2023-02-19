@@ -61,7 +61,7 @@ class User_controller{
 
     /** Crear usuario/paciente.
      * Crea un usuario enviando la solicitud a la base de datos, enviando los parametros de:
-     * @return "mensaje exitosamente o 505 || error servidor"
+     * @return "mensaje exitosamente o 500 || error servidor"
      */
     function createUser($first_name, $last_name, $rut ,$email){
         $user = new User();
@@ -69,7 +69,7 @@ class User_controller{
         $res = $user->createUser($first_name , $last_name, $rut, $email);
         
         if ($res->rowCount()) {
-            echo 'Se guardó Existosamente';
+            echo 'Usuario creado con éxito.';
         }else{
             echo json_encode(array('cod' => '500', 
                                     'msj' => 'No se logró crear el usuario'));

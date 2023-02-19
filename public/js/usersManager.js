@@ -160,7 +160,6 @@ function getAllUsers() {
     }).done(function (response) {
         loadBodyTable(response);
         console.log('ok');        
-
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
         var resp = JSON.parse(err);
