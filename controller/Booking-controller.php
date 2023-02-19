@@ -242,10 +242,12 @@ class Booking_controller{
         $res = $box_user->updateActiveBooking($id , $active );
         
         if ($res->rowCount()) {
-            echo 'Se actualizo Existosamente';
+            echo json_encode(array('cod' => '202', 
+                                    'def' => 'Actualización correcta.',
+                                    'server' => $res));
         }else{
             echo json_encode(array('cod' => '500', 
-                                    'def' => 'No se logro actualizar el parametro indicado',
+                                    'def' => 'No se logró actualizar el parámetro indicado',
                                     'server' => $res));
         }
     }
