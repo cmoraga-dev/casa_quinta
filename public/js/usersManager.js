@@ -58,13 +58,10 @@ function getAllUsers() {
         type: 'POST',
     }).done(function (response) {
         Object.entries(response).forEach(item => {
-            console.log(item);
+            //console.log(item);
             if (item[0] == 'users') {
-                console.log('yesss');
+                //console.log('yesss');
                 return item[0][1];
-            }else{
-                console.log('noooo');
-                console.log(item);
             }
         });
         
