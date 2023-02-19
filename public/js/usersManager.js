@@ -27,7 +27,7 @@ dialog = $("#dialog-form").dialog({
     width: 350,
     modal: true,
     buttons: {
-    "Add booking": addBooking,
+    "Add booking": null,
     Cancel: function() {
         dialog.dialog( "close" );
     }
@@ -73,7 +73,7 @@ function getAllUsers() {
 
 //const table = $('.tableBookingConfirm')[0];
 usersData = getAllUsers();
-//console.log(usersData);
+console.log(usersData);
 
 //rebind();
 
