@@ -209,7 +209,7 @@ function loadBodyTable( tableArray = []){
             tbody.innerHTML = '';
 
             // Se crea un map del array que llega con su parametro bookings
-            tableArray.bookings.map((e) => {
+            tableArray.users.map((e) => {
                 // Se crean las varibales de html.
                 let tr = document.createElement("tr");
                 let tdId = document.createElement("td");
