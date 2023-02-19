@@ -60,8 +60,8 @@ function getAllUsers() {
         Object.entries(response).forEach(item => {
             //console.log(item);
             if (item[0] == 'users') {
-                console.log('yesss');
-                console.log(item);
+                //console.log('yesss');
+                //console.log(item);
                 return item[1];
             }
         });
