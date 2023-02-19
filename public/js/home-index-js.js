@@ -108,6 +108,7 @@ function loadBodyTable( tableArray = []){
                 // Se da un nombre al botón que asigna box.
                 button.textContent = "Llamar";                
                 buttonDeactivate.textContent = 'Desactivar';
+                buttonDeactivate.className = 'btn btn-info';
 
                 // Se asignan los hijos al tr.
                 tdButton.appendChild(button);
