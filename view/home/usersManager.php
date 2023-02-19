@@ -36,7 +36,8 @@ function addUser() {
             email : email,
         }
     }).done(function (response) {
-        console.log(response);        
+        console.log(response);
+        resp = JSON.parse(response)
         if(resp['cod'] === '202'){
           location.reload();
         }
