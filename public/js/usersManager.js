@@ -193,3 +193,4 @@ function getAllUsers() {
         console.log(`${resp['cod']} ${resp['def']}`);
     });
 }
+getAllUsers();
