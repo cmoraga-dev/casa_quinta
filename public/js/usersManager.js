@@ -184,11 +184,12 @@ function getAllUsers() {
         url: host+'/api/getAllUsers',
         type: 'POST',
     }).done(function (response) {
+        console.log(response);
         addDataRow(response);
-        
+        console.log('ok');        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
         var resp = JSON.parse(err);
-        //console.log(`${resp['cod']} ${resp['def']}`);
+        console.log(`${resp['cod']} ${resp['def']}`);
     });
 }
