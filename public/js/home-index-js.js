@@ -128,13 +128,13 @@ function loadBodyTable( tableArray = []){
                     return;
                 }
 
-                if(e.id_box_user > 0){
+                if(e.active == 0){
                     // Se le asgina la clase "btn btn-primary" para que aparesca en color verde que ya se llamo a box.
-                    button.className = "btn btn-success";
+                    button.className = "btn btn-outline-secondary";
 
                     // Se da un nombre al boton dado que debe significar que ha sido llamado.
-                    button.textContent = "En proceso";
-
+                    button.textContent = "Inactivo";
+                    buttonDeactivate.disabled = true;
                     button.disabled = true;
                     return;
                 }
