@@ -91,9 +91,9 @@ function updateTips( t ) {
  * aaand also the save button - which is at the end of every row.
  */
 function addDataRow(rowValues) {
-    //console.log(table); OK
-    //console.log(rowValues); //OK
-    //console.log(rowValues.size);    
+    console.log(table); OK
+    console.log(rowValues); //OK
+    console.log(rowValues.size);    
 
     let currentRow = table.insertRow(-1);
     for (var index = 0; index < Object.keys(headersNames).length; index++) {
@@ -104,6 +104,7 @@ function addDataRow(rowValues) {
     }
 }
 
+addDataRow(usersData);
 
 /**
  * Receives an ascending sorted JS Object with the candles.
