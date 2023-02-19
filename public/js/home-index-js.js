@@ -207,6 +207,7 @@ $(document).on('click','#callUser',function(event) {
         type: 'POST',
     }).done(function (response) {
         //Respuesta del servidor, independiente si esta correcto o no.
+        console.log(response);
         let resp = JSON.parse(response);
         if (resp['cod'] === '202') {
             // Debemos desabilitar el boton para llamar, dado que ya se le asigno un box.
