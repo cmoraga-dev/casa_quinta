@@ -65,6 +65,7 @@ function updateTips( t ) {
  */
 function addDataRow(rowValues) {
     table = $('tableUsers');
+    console.log(table);
     console.log(rowValues); //OK
     console.log(rowValues.size);    
 
