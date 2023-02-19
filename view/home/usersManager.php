@@ -17,6 +17,37 @@ include("../login/validateSession.php");
 
     <script src="../../public/js/usersManager.js"></script>
     <script>
+function addUser() {
+    var host = window.location.origin;
+
+    var rut = document.getElementById("dialog_rut").value;
+    var first_name = document.getElementById("dialog_first_name").value;
+    var last_name = document.getElementById("dialog_last_name").value;
+    var email = document.getElementById("dialog_email").value;
+    
+
+    $.ajax({
+        url: host+'/api/createUser',
+        type: 'POST',
+        data: {
+            rut : rut,
+            first_name : first_name,
+            last_name : last_name,
+            email : email,
+        }
+    }).done(function (response) {
+        console.log(response);        
+
+    }).fail(function (err) {
+        // Respuesta de un error de peticion hacia el ajax       
+        var resp = JSON.parse(err);
+        console.log(`${resp['cod']} ${resp['def']}`);
+    });
+}
+
+
+
+
 $( function() {
     var dialog, form,
  
@@ -58,7 +89,7 @@ $( function() {
  
     form = dialog.find( "form" ).on( "submit", function( event ) {
       event.preventDefault();
-      //addUser();
+      addUser();
     });
  
     $( "#create-user" ).button().on( "click", function() {
@@ -97,17 +128,17 @@ $( function() {
             <p class="validateTips">Todos los campos son requeridos.</p> 
             <form>
                 <fieldset>
-                <label for="name">Nombre de paciente</label>
-                <input type="text" name="name" id="name" value="" class="form-control"">
+                <label for="dialog_first_name">Nombre de paciente</label>
+                <input type="text" name="dialog_first_name" id="dialog_first_name" value="" class="form-control"">
 
-                <label for="apellido">Apellido de paciente</label>
-                <input type="text" name="apellido" id="apellido" value="" class="form-control">
+                <label for="dialog_last_name">Apellido de paciente</label>
+                <input type="text" name="dialog_last_name" id="dialog_last_name" value="" class="form-control">
 
-                <label for="rut">RUT</label>
-                <input type="text" name="rut" id="rut" value="" class="form-control">
+                <label for="dialog_rut">RUT</label>
+                <input type="text" name="dialog_rut" id="dialog_rut" value="" class="form-control">
 
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" value="" class="form-control">
+                <label for="dialog_email">Email</label>
+                <input type="text" name="dialog_email" id="dialog_email" value="" class="form-control">
 
                 <input type="submit" tabindex="-1" style="position:absolute; top:-1000px" >
                 </fieldset>
