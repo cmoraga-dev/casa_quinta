@@ -135,6 +135,13 @@ function loadBodyTable( tableArray = []){
                 let tdFirstName = document.createElement("td");
                 let tdLastName = document.createElement("td");
                 let tdEmail = document.createElement("td");
+                let tdButtons = document.createElement("td");
+
+                let edit_btn = document.createElement("button");
+                let delete_btn = document.createElement("button");
+
+                tdButtons.appendChild(edit_btn);
+                tdButtons.appendChild(delete_btn);
 
                 // Se asigna un hijo al tbody que es un tr
                 tbody.appendChild(tr);
@@ -152,7 +159,7 @@ function loadBodyTable( tableArray = []){
                 tr.appendChild(tdFirstName);
                 tr.appendChild(tdLastName);
                 tr.appendChild(tdEmail);
-                
+                tr.appendChild(tdButtons);
             });
 
         }
