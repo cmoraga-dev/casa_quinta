@@ -1,3 +1,6 @@
+const table = $('#tableUsers')[0];
+const headersNames = getHeadersIndex();
+
 /* Cierra Session.
     Elimina el proceso de inicio de session,
     esto se envia al archivo que elimina la session.
@@ -64,7 +67,6 @@ function updateTips( t ) {
  * aaand also the save button - which is at the end of every row.
  */
 function addDataRow(rowValues) {
-    table = $('#tableUsers')[0];
     console.log(table);
     console.log(rowValues); //OK
     console.log(rowValues.size);    
@@ -92,6 +94,21 @@ function sortEntries(unsortedEntries) {
     let sortedCandlesMap = new Map(sortedCandlesArray);
     return sortedCandlesMap;
 }
+
+
+/**
+ * Return the column name as a key and the index as the value
+ */
+function getHeadersIndex() {
+    let headersIndex = {}
+    $('#candles_table > thead > tr > th').each(function (index, element) {
+        let columnName = $(this).text().replace(/\s+/g, '').toLowerCase();
+        headersIndex[index] = columnName;
+    });
+    return headersIndex;
+}
+
+
 
 function rebind() {
     $("#saveBtn").unbind().click(function () {
