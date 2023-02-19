@@ -11,5 +11,6 @@ RewriteRule ^(api/getAllBookingToday)$ /view/Booking/getAllBookingToday.php [NC,
 RewriteRule ^(api/getAllBookingDashboard)$ /view/Booking/getAllBookingDashboard.php [NC,L,QSA]
 RewriteRule ^(api/updateBoxBooking)$ /view/Booking/updateBoxBooking.php [NC,L,QSA]
 RewriteRule ^(api/updateBoxLoginUser)$ /view/BoxUser/updateBoxLoginUser.php [NC,L,QSA]
+RewriteRule ^(api/updateActiveBooking)$ /view/Booking/updateActiveBooking.php [NC,L,QSA]
 RewriteRule ^(api/validateUser)$ /view/login/validateUser.php [NC,L,QSA]
 RewriteRule ^(api/getAllUsers)$ /view/User/getAllUser.php [NC,L,QSA]
