@@ -173,7 +173,7 @@ var rut = $('#dialog_rut');
 //      format_on: 'keyup'
 //    }));
 
-$(document).on('change','#dialog_rut',function(event) {
+$(document).on('keyup','#dialog_rut',function(event) {
     rut.Rut({
         //  on_error: function(){return (s.length >= 11 && s.length < 13); },
           format_on: 'keyup'
