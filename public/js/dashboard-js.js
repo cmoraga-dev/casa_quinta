@@ -16,7 +16,7 @@ function getAllBookingDashboard(){
         url: host+'/api/getAllBookingDashboard',
         type: 'POST',
     }).done(function (response) {
-
+        console.log(response)
         // Respuesta del servidor, independiente si esta correcto o no.
         let resp = JSON.parse(response);
         if (resp['cod'] === '202') {

@@ -58,7 +58,9 @@ include_once __DIR__.'/User.php';
                                                 FROM `bookings` b 
                                                 INNER JOIN `users` u ON b.user_id = u.id
                                                 INNER JOIN `box_users` bu ON b.box_id = bu.id
-                                                WHERE DATE(b.confirmHour) = DATE(NOW());");
+                                                WHERE DATE(b.datatime) = DATE(NOW())
+                                                and b.active == 1
+                                                order by b.datatime desc;");
             return $query;
         }
 
