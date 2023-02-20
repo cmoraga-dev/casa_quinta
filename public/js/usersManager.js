@@ -166,15 +166,8 @@ function getAllUsers() {
 }
 getAllUsers();
 
-var rut = $('#dialog_rut');
-
-//rut.change( rut.Rut({
-//    //  on_error: function(){return (s.length >= 11 && s.length < 13); },
-//      format_on: 'keyup'
-//    }));
-
 $(document).on('keyup','#dialog_rut',function(event) {
-    rut.Rut({
+    $('#dialog_rut').Rut({
         //  on_error: function(){return (s.length >= 11 && s.length < 13); },
           format_on: 'keyup'
         })
