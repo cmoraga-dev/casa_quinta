@@ -1,4 +1,4 @@
-
+im
 
 /* Cierra Session.
     Elimina el proceso de inicio de session,
@@ -167,3 +167,10 @@ function getAllUsers() {
     });
 }
 getAllUsers();
+
+var rut = $('#dialog_rut');
+
+rut .Rut({
+//  on_error: function(){return (s.length >= 11 && s.length < 13); },
+  format_on: 'keyup'
+});

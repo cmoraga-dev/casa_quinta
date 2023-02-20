@@ -102,7 +102,7 @@ $(document).on('click','#btn-del',function() {
     // Le quitamos su ultimo caracter con el borrar.
     let rutCleanLastDig = cleanDash.substring(0,cleanDash.length - 1);
 
-    // Luego de quitar el ultimo digito lo parciamos con el validateRut y lo agregamos como su actual valor, siempre y cuando este sea mayor a 1.
+    // Luego de quitar el ultimo digito lo parseamos con el validateRut y lo agregamos como su actual valor, siempre y cuando este sea mayor a 1.
     if(validateRut(rutCleanLastDig)){
         val.value = validateRut(rutCleanLastDig);
     }else{

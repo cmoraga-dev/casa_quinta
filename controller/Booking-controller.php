@@ -213,7 +213,7 @@ class Booking_controller{
     }
 
     /** Actualiza confirmacion reserva.
-     * Se actualiza la confirmacion de la reserva a travez del rut al momento de digitarlo.
+     * Se actualiza la confirmacion de la reserva a traves del rut al momento de digitarlo.
      * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
      */
     function updateConfirmBooking($rut ){
