@@ -168,7 +168,7 @@ getAllUsers();
 
 var rut = $('#dialog_rut');
 
-rut .Rut({
-//  on_error: function(){return (s.length >= 11 && s.length < 13); },
-  format_on: 'keyup'
-});
+rut.change( rut.Rut({
+    //  on_error: function(){return (s.length >= 11 && s.length < 13); },
+      format_on: 'keyup'
+    })); 
