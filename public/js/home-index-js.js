@@ -117,7 +117,7 @@ function loadBodyTable( tableArray = []){
                 tr.appendChild(tdButton);
 
                 // Antes de terminar determinamos si ya tienen un box id asignado y deshabilitamos el botón.
-                if(e.id_box_user > 0){
+                if(e.id_box_user > 0 && e.active == 1){
                     // Se le asgina la clase "btn btn-primary" para que aparesca en color verde que ya se llamo a box.
                     button.className = "btn btn-success";
 
@@ -126,10 +126,7 @@ function loadBodyTable( tableArray = []){
 
                     button.disabled = true;
                     return;
-                }
-
-                if(e.active == 0){
-                    // Se le asgina la clase "btn btn-primary" para que aparesca en color verde que ya se llamo a box.
+                }else if(e.active == 0){
                     button.className = "btn btn-outline-secondary";
                     buttonDeactivate.className =  "btn btn-outline-secondary";
                     // Se da un nombre al boton dado que debe significar que ha sido llamado.
