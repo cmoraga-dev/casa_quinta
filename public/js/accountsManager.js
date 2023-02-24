@@ -15,11 +15,10 @@ function goToHome(){
     top.location.href = "../../view/home"; 
 
 }
-document.getElementById("   form_btn").addEventListener("click", function(event){
-    event.preventDefault()
-  });
 
-function updateAccount () {
+function updateAccount (e) {
+
+    e.preventDefault();
     var host = window.location.origin;
 
     var user_id = document.getElementById("user_id").value;
