@@ -41,9 +41,11 @@ function updateAccount (e) {
     $.ajax({
         url: host+'/api/updateAccount',
         type: 'POST',
-        idAccount: user_id,
-        pass: valid_pass,
-        name: valid_name
+        data:{
+            idAccount: user_id,
+            pass: valid_pass,
+            name: valid_name
+        }
     }).done(function (response) {
         console.log(response);        
     }).fail(function (err) {
