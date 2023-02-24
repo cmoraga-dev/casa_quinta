@@ -31,11 +31,3 @@ function getAccountDetails () {
         console.log(`${resp['cod']} ${resp['def']}`);
     });
 }
-getAllUsers();
-
-$(document).on('keyup','#dialog_rut',function(event) {
-    $('#dialog_rut').Rut({
-        //  on_error: function(){return (s.length >= 11 && s.length < 13); },
-          format_on: 'keyup'
-        })
-});
