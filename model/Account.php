@@ -63,8 +63,7 @@ include_once 'db.php';
             return $query;
         }
 
-        /** Actualizar Clave.
-         * Actualiza la contrasena de una cuenta asociada a un id unico, este parametro debe llegar encriptado y de tipo string.
+        /** Actualizar Nombre.
          */
         function updateAccountName($idAccount, $name){
             $query = $this->connect()->query("UPDATE accounts SET user_name = '$name' WHERE id = $idAccount ");
