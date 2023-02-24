@@ -66,7 +66,7 @@ include_once 'db.php';
         /** Actualizar Nombre.
          */
         function updateAccountName($idAccount, $name){
-            $query = $this->connect()->query("UPDATE accounts SET user_name = '$name' WHERE id = $idAccount ");
+            $query = $this->connect()->query("UPDATE accounts SET alias = '$name' WHERE id = $idAccount ");
             return $query;
         }
 
