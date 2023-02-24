@@ -15,7 +15,7 @@ function goToHome(){
     top.location.href = "../../view/home"; 
 
 }
-document.getElementById("form_btn").addEventListener("click", function(event){
+document.getElementById("   form_btn").addEventListener("click", function(event){
     event.preventDefault()
   });
 
