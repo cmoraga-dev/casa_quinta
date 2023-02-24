@@ -42,7 +42,7 @@ include("../login/validateSession.php");
             <h3>Detalles de cuenta</h3>
         </div>
         <div class="container mt-3">
-            <form action="" method="POST">
+            <form action="" method="POST" onsubmit="updateAccount()">
                 <div class="form-group">
                 <label for="alias">Alias:</label>
                 <input type="text" id="alias" name="alias" class="form-control" value="<?= $_SESSION["user"] ?>" required>

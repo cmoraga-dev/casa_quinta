@@ -18,7 +18,8 @@ function goToHome(){
 
 function updateAccount () {
     var host = window.location.origin;
-
+    console.log('wena');
+    return;
     $.ajax({
         url: host+'/api/getAccount',
         type: 'POST',
