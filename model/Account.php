@@ -8,7 +8,7 @@ include_once 'db.php';
          * Funcion para obtener una cuenta a travez de las variables indicadas, deben ser tipo string para su guardado y encriptada la clave.
          */
         function getAccount($name, $pass){
-            $query = $this->connect()->query("SELECT * FROM accounts WHERE usser_name ='$name' AND pass ='$pass'");
+            $query = $this->connect()->query("SELECT * FROM accounts WHERE user_name ='$name' AND pass ='$pass'");
             return $query;
         }
 
@@ -24,7 +24,7 @@ include_once 'db.php';
          * Devuelve el usuario buscado y sus datos.
          */
         function getByUserAccount($user){
-            $query = $this->connect()->query("SELECT * FROM accounts WHERE usser_name = $user");
+            $query = $this->connect()->query("SELECT * FROM accounts WHERE user_name = $user");
             return $query;
         }
 
@@ -34,8 +34,8 @@ include_once 'db.php';
         function createAccount($name, $pass, $id_typeProfile){
             try {
 
-                $duplicateKey = $this->connect()->query("SELECT * FROM accounts WHERE usser_name ='$name'");
-                $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, usser_name, pass) VALUES($id_typeProfile, '$name', '$pass')");
+                $duplicateKey = $this->connect()->query("SELECT * FROM accounts WHERE user_name ='$name'");
+                $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, user_name, pass) VALUES($id_typeProfile, '$name', '$pass')");
                 if($duplicateKey->rowCount() < 1){
                     $query->execute();
                 }
@@ -62,6 +62,15 @@ include_once 'db.php';
             $query = $this->connect()->query("UPDATE accounts SET pass = '$pass' WHERE id = $idAccount ");
             return $query;
         }
+
+        /** Actualizar Clave.
+         * Actualiza la contrasena de una cuenta asociada a un id unico, este parametro debe llegar encriptado y de tipo string.
+         */
+        function updateAccountName($idAccount, $name){
+            $query = $this->connect()->query("UPDATE accounts SET pass = '$pass' WHERE id = $idAccount ");
+            return $query;
+        }
+
 
         /** Actualizar Perfil.
          * Actualiza el tipo de perfil de la cuenta para aumentar o quitar los acceso al usuario seleccionado.

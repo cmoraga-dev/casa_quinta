@@ -15,7 +15,6 @@ class Account_controller{
         // Encriptamos la password que nos llega.
         $passEncryp  = hash('sha512',$pass);
 
-
         $res = $user->getAccount($name, $passEncryp);
 
         if ($res->rowCount()) {
@@ -23,7 +22,7 @@ class Account_controller{
 
                 $item = array(
                     "id" => $row['id'],
-                    "account" => $row['usser_name'],
+                    "account" => $row['user_name'],
                     "id_type_profile" => $row['id_type_profile'],
                 );
                 array_push($users, $item);
@@ -63,7 +62,7 @@ class Account_controller{
 
                 $item = array(
                     "id" => $row['id'],
-                    "account" => $row['usser_name'],
+                    "account" => $row['user_name'],
                     "pass" => $row['pass'],
                 );
                 array_push($users["users"], $item);
@@ -87,7 +86,7 @@ class Account_controller{
 
                 $item = array(
                     "id" => $row['id'],
-                    "account" => $row['usser_name'],
+                    "account" => $row['user_name'],
                     "pass" => $row['pass'],
                 );
                 array_push($users["users"], $item);
@@ -130,20 +129,43 @@ class Account_controller{
         }
     }
 
-    
     function updatePassAccount($idAccount , $pass){
         $user = new Account();
+        $passEncryp  = hash('sha512',$pass);
 
-        $res = $user->updateAccountPassword($idAccount , $pass);
+        $res = $user->updateAccountPassword($idAccount , $passEncryp);
         
         if ($res->rowCount()) {
-            echo 'Se actualizo Existosamente';
+            echo json_encode(array('cod' => '202', 
+                                    'msj' => 'Se actualizó contraseña de cuenta existosamente',
+                                    'server' => $res));
         }else{
             echo json_encode(array('cod' => '500', 
                                     'msj' => 'No se logro actualizar la clave del usuario',
                                     'server' => $res));
         }
     }
+
+
+    function updateNameAccount($idAccount , $name){
+        $user = new Account();
+
+        $res = $user->updateAccountName($idAccount , $name);
+        
+        if ($res->rowCount()) {
+            echo json_encode(array('cod' => '202', 
+                                    'msj' => 'Se actualizó nombre de cuenta existosamente',
+                                    'server' => $res));
+
+        }else{
+            echo json_encode(array('cod' => '500', 
+                                    'msj' => 'No se logro actualizar la clave del usuario',
+                                    'server' => $res));
+        }
+    }
+
+
+
 
     function updateProfileAccount($idAccount , $id_type_profile){
         $user = new Account();
