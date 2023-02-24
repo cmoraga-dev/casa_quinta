@@ -62,7 +62,7 @@ include("../login/validateSession.php");
                 <input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION["id_account"] ?>">
                 </div>
 
-                <button type="submit" class="btn btn-primary" id = "form_btn" onclick="updateAccount()">Actualizar</button>
+                <button type="submit" class="btn btn-primary" id = "form_btn" onclick="updateAccount(event)">Actualizar</button>
             </form>
             </div>
     </div>
