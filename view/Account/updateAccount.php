@@ -10,6 +10,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     }
     if (isset($_POST['name'])){
         $api->updateNameAccount(intval($_POST['idAccount']),$_POST['name']);
+        $_SESSION["user"] = $_POST['name'];
     }
 }
 ?>
