@@ -58,7 +58,7 @@ include("../login/validateSession.php");
                 <input type="password" id="confirm_password" name="confirm_password" class="form-control">
                 </div>
 
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Actualizar</button>
             </form>
             </div>
     </div>
