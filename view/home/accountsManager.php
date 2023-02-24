@@ -41,21 +41,31 @@ include("../login/validateSession.php");
         <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
             <h3>Mantenedor de cuentas de usuario</h3>
         </div>
-        <form action="update_account.php" method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+        <div class="container mt-3">
+            <form action="update_account.php" method="POST">
+                <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" class="form-control" required>
+                </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+                <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+                </div>
 
-            <label for="password">New Password:</label>
-            <input type="password" id="password" name="password">
+                <div class="form-group">
+                <label for="password">New Password:</label>
+                <input type="password" id="password" name="password" class="form-control">
+                </div>
 
-            <label for="confirm_password">Confirm New Password:</label>
-            <input type="password" id="confirm_password" name="confirm_password">
+                <div class="form-group">
+                <label for="confirm_password">Confirm New Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" class="form-control">
+                </div>
 
-            <input type="submit" value="Update">
-        </form>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+            </div>
     </div>
 </body>
 
