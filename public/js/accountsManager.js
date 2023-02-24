@@ -35,14 +35,14 @@ function updateAccount () {
         console.log('valid pass')
         valid_pass = pass;
     }
-    console.log(user_id);
 
-    return;
     $.ajax({
         url: host+'/api/updateAccount',
         type: 'POST',
+        idAccount: user_id,
+        pass: valid_pass,
+        name: valid_name
     }).done(function (response) {
-        //loadData(response);
         console.log(response);        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
