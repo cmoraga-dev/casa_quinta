@@ -15,6 +15,9 @@ function goToHome(){
     top.location.href = "../../view/home"; 
 
 }
+document.getElementById("form_btn").addEventListener("click", function(event){
+    event.preventDefault()
+  });
 
 function updateAccount () {
     var host = window.location.origin;
