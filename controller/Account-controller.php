@@ -153,14 +153,16 @@ class Account_controller{
         $res = $user->updateAccountName($idAccount , $name);
         
         if ($res->rowCount()) {
-            echo json_encode(array('cod' => '202', 
-                                    'msj' => 'Se actualizó nombre de cuenta existosamente',
-                                    'server' => $res));
+            echo json_encode(array(
+                'cod' => '202', 
+                'msj' => 'Se actualizó nombre de cuenta existosamente',
+                'server' => $res));
 
         }else{
-            echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro actualizar la clave del usuario',
-                                    'server' => $res));
+            echo json_encode(array(
+                'cod' => '500', 
+                'msj' => 'No se logro actualizar la clave del usuario',
+                'server' => $res));
         }
     }
 
