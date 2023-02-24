@@ -39,7 +39,7 @@ include("../login/validateSession.php");
 
     <div class="container" style="padding-top: 50px;">
         <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
-            <h3>Mantenedor de cuentas de usuario</h3>
+            <h3>Detalles de cuenta</h3>
         </div>
         <div class="container mt-3">
             <form action="update_account.php" method="POST">
