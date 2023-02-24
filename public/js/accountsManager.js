@@ -19,7 +19,6 @@ function goToHome(){
 function updateAccount () {
     var host = window.location.origin;
 
-    user_id
     var user_id = document.getElementById("user_id").value;
     var name = document.getElementById("alias").value;
     var pass = document.getElementById("password").value;
