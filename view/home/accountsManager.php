@@ -45,7 +45,7 @@ include("../login/validateSession.php");
             <form action="" method="POST">
                 <div class="form-group">
                 <label for="alias">Alias:</label>
-                <input type="text" id="alias" name="alias" class="form-control" required>
+                <input type="text" id="alias" name="alias" class="form-control" value="<?= $_SESSION["user"] ?>" required>
                 </div>
 
                 <div class="form-group">

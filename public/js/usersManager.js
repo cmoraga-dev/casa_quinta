@@ -16,7 +16,7 @@ function goToHome(){
 
 }
 
-function loadBodyTable( tableArray = []){
+function loadData( tableArray = []){
 
     // Se asigna un valor a la constante para saber si viene vacio el arreglo.
     const table = tableArray.users.length
@@ -95,7 +95,7 @@ function getAllUsers() {
         url: host+'/api/getAllUsers',
         type: 'POST',
     }).done(function (response) {
-        loadBodyTable(response);
+        loadData(response);
         console.log('ok');        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
