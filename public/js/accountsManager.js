@@ -16,7 +16,7 @@ function goToHome(){
 
 }
 
-function getAccountDetails () {
+function updateAccount () {
     var host = window.location.origin;
 
     $.ajax({
