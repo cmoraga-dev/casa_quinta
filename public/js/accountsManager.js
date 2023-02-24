@@ -19,21 +19,28 @@ function goToHome(){
 function updateAccount () {
     var host = window.location.origin;
 
+    user_id
+    var user_id = document.getElementById("user_id").value;
     var name = document.getElementById("alias").value;
     var pass = document.getElementById("password").value;
     var confirm_password = document.getElementById("confirm_password").value;
+    var valid_name = false;
+    var valid_pass = false;
 
     if (name != null && name != '') {
-        console.log('valid name')
+        console.log('valid name');
+        valid_name = name;
     }
 
     if (pass != null && pass != '' && pass == confirm_password) {
         console.log('valid pass')
+        valid_pass = pass;
     }
+    console.log(user_id);
 
     return;
     $.ajax({
-        url: host+'/api/getAccount',
+        url: host+'/api/updateAccount',
         type: 'POST',
     }).done(function (response) {
         //loadData(response);

@@ -58,6 +58,8 @@ include("../login/validateSession.php");
                 <input type="password" id="confirm_password" name="confirm_password" class="form-control">
                 </div>
 
+                <input type="hidden" name="user_id" value="<?= $_SESSION["id_account"] ?>">
+
                 <button type="submit" class="btn btn-primary">Actualizar</button>
             </form>
             </div>
