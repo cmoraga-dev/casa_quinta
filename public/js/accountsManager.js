@@ -29,12 +29,10 @@ function updateAccount (e) {
     var valid_pass = false;
 
     if (name != null && name != '') {
-        console.log('valid name');
         valid_name = name;
     }
 
     if (pass != null && pass != '' && pass == confirm_password) {
-        console.log('valid pass')
         valid_pass = pass;
     }
 
@@ -47,7 +45,8 @@ function updateAccount (e) {
             name: valid_name
         }
     }).done(function (response) {
-        console.log(response);        
+        console.log(response);
+        window.location.reload();  
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
         //var resp = JSON.parse(err);
