@@ -19,6 +19,18 @@ function goToHome(){
 function updateAccount () {
     var host = window.location.origin;
     console.log('wena');
+    var name = document.getElementById("alias").value;
+    var pass = document.getElementById("password").value;
+    var confirm_password = document.getElementById("confirm_password").value;
+
+    if (name != null && name != '') {
+        console.log('valid name')
+    }
+
+    if (pass != null && pass != '' && pass == confirm_password) {
+        console.log('valid pass')
+    }
+
     return;
     $.ajax({
         url: host+'/api/getAccount',
