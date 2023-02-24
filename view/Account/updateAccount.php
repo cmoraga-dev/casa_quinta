@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
     if ($_POST['pass'] != false){
         $api->updatePassAccount($_POST['idAccount'],$_POST['pass']);
     }
-    if ($_POST['alias'] != false){
+    if ($_POST['name'] != false){
     $api->updateNameAccount($_POST['idAccount'],$_POST['name']);
     }
 }
