@@ -163,7 +163,7 @@ $( function() {
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Email</th>
-                        <!--><th scope="col">Acciones</th></!-->
+                        <!--<th scope="col">Acciones</th></!-->
                     </tr>
                 </thead>
                 <tbody id="tbody-users">
