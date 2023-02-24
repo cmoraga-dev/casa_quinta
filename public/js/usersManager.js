@@ -137,7 +137,7 @@ function loadBodyTable( tableArray = []){
                 tr.appendChild(tdFirstName);
                 tr.appendChild(tdLastName);
                 tr.appendChild(tdEmail);
-                tr.appendChild(tdButtons);
+                //tr.appendChild(tdButtons);
             });
 
         }
