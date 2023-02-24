@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST"){
         $api->updatePassAccount($_POST['idAccount'],$_POST['pass']);
     }
     if ($_POST['name'] != false){
-    $api->updateNameAccount($_POST['idAccount'],$_POST['name']);
+        $api->updateNameAccount($_POST['idAccount'],$_POST['name']);
     }
 }
 ?>
