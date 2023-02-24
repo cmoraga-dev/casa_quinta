@@ -67,7 +67,7 @@ include_once 'db.php';
          * Actualiza la contrasena de una cuenta asociada a un id unico, este parametro debe llegar encriptado y de tipo string.
          */
         function updateAccountName($idAccount, $name){
-            $query = $this->connect()->query("UPDATE accounts SET pass = '$pass' WHERE id = $idAccount ");
+            $query = $this->connect()->query("UPDATE accounts SET user_name = '$name' WHERE id = $idAccount ");
             return $query;
         }
 
