@@ -25,7 +25,7 @@ include("../login/validateSession.php");
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="/view/home/index.php">Home</a></li>
                     <li><a class="dropdown-item" href="/view/home/usersManager.php">Mantenedor de usuarios</a></li>
-                    <li><a class="dropdown-item" href="">Mantenedor de cuentas</a></li>
+                    <li><a class="dropdown-item" href="">Detalles de cuenta</a></li>
                     <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
                 </ul>
             </div>
@@ -42,7 +42,7 @@ include("../login/validateSession.php");
             <h3>Detalles de cuenta</h3>
         </div>
         <div class="container mt-3">
-            <form action="update_account.php" method="POST">
+            <form action="" method="POST">
                 <div class="form-group">
                 <label for="alias">Alias:</label>
                 <input type="text" id="alias" name="alias" class="form-control" required>
