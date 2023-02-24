@@ -46,8 +46,8 @@ function updateAccount () {
         console.log(response);        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
-        var resp = JSON.parse(err);
-        console.log(resp);
+        //var resp = JSON.parse(err);
+        console.log(err);
         //console.log(`${resp['cod']} ${resp['def']}`);
     });
 }
