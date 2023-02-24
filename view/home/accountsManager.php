@@ -44,22 +44,17 @@ include("../login/validateSession.php");
         <div class="container mt-3">
             <form action="update_account.php" method="POST">
                 <div class="form-group">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" class="form-control" required>
+                <label for="alias">Alias:</label>
+                <input type="text" id="alias" name="alias" class="form-control" required>
                 </div>
 
                 <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" required>
-                </div>
-
-                <div class="form-group">
-                <label for="password">New Password:</label>
+                <label for="password">Nueva contraseña:</label>
                 <input type="password" id="password" name="password" class="form-control">
                 </div>
 
                 <div class="form-group">
-                <label for="confirm_password">Confirm New Password:</label>
+                <label for="confirm_password">Confirmar nueva contraseña:</label>
                 <input type="password" id="confirm_password" name="confirm_password" class="form-control">
                 </div>
 
