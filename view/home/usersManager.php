@@ -115,7 +115,7 @@ $( function() {
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="/view/home/index.php">Agendas activas</a></li>
-                    <li><a class="dropdown-item" href="">Mantenedor de cuentas</a></li>
+                    <li><a class="dropdown-item" href="/view/home/accountsManager.php">Mantenedor de cuentas</a></li>
                     <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
                 </ul>
             </div>
