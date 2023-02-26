@@ -47,20 +47,20 @@ include_once __DIR__.'/User.php';
                                                 ORDER BY datatime ASC; ");
             return $query;
         }
-                
+
         /** Obtener Dashboard de hoy.
          * Se crea una consulta SQL para recrear los parametros de un dashboard solicitado que debera
          * traer los datos solicitados por el usuario: Nombre de paciente, Hora agendada, Box, Nombre Doctor
          */
-        function getDashboardConfirm(){
-            $query = $this->connect()->query("SELECT CONCAT(u.first_name,' ' ,u.last_name) as 'full_name_patient', datatime, bu.box, 
-                                                CONCAT(bu.first_name,' ' ,bu.last_name) as 'full_name_account', b.id
-                                                FROM `bookings` b 
-                                                INNER JOIN `users` u ON b.user_id = u.id
-                                                INNER JOIN `box_users` bu ON b.box_id = bu.id
-                                                WHERE DATE(b.datatime) = DATE(NOW())
-                                                and b.active = 1
-                                                order by b.datatime desc");
+        function getDashboardConfirm() {
+            $query = $this->connect()->query("SELECT CONCAT(u.first_name,' ' ,u.last_name) as 'full_name_patient', datatime, box_id as 'box', 
+                bu.alias  as 'full_name_account', b.id
+                FROM `bookings` b 
+                INNER JOIN `users` u ON b.user_id = u.id
+                INNER JOIN `accounts` bu ON b.box_id = bu.id
+                WHERE DATE(b.datatime) = DATE(NOW())
+                and b.active = 1
+                order by b.datatime desc");
             return $query;
         }
 
