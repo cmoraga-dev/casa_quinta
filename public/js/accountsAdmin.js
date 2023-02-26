@@ -216,7 +216,7 @@ function getAllAccounts() {
     }).done(function (response) {
         //console.log(response)
         data = JSON.parse(response)
-        loadData(response['server']);
+        loadData(data['server']);
         console.log('ok');        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
