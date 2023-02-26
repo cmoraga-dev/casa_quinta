@@ -94,16 +94,17 @@ class Account_controller{
                 array_push($users["users"], $item);
             }
             echo json_encode(array('cod' => '202', 
-                                    'def' => 'Reservas obtenidas con exito',
+                                    'def' => 'Cuentas obtenidas con éxito',
                                     'server' => $users));
             return;
 
         } else {
             echo json_encode(array('cod' => '500', 
-                                    'msj' => 'No se logro actualizar la clave del usuario',
+                                    'msj' => 'No se pudo obtener información',
                                     'server' => $res));
         }
     }
+
 
     function createAccount($name , $pass, $id_type_profile){
         try {
