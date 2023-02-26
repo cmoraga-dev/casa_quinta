@@ -93,7 +93,11 @@ class Account_controller{
                 );
                 array_push($users["users"], $item);
             }
-            return $this->users = $users;
+            echo json_encode(array('cod' => '202', 
+                                    'def' => 'Reservas obtenidas con exito',
+                                    'server' => $users));
+            return;
+
         } else {
             echo json_encode(array('cod' => '500', 
                                     'msj' => 'No se logro actualizar la clave del usuario',
