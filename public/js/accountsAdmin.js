@@ -158,7 +158,7 @@ function loadData( tableArray = []){
             // Se limpia el tbody para ir actualizandolo.
             tbody.innerHTML = '';
 
-            tableArray.users.map((e) => {
+            tableArray.server.users.map((e) => {
                 // Se crean las varibales de html.
                 let tr = document.createElement("tr");
                 let tdId = document.createElement("td");
