@@ -44,7 +44,7 @@ include("../login/validateSession.php");
         <div class="container mt-3">
             <form action="" method="POST" onsubmit="">
                 <div class="form-group">
-                <label for="alias">Alias:</label>
+                <label for="alias">Nombre:</label>
                 <input type="text" id="alias" name="alias" class="form-control" value="<?= $_SESSION["user"] ?>" required>
                 </div>
 
