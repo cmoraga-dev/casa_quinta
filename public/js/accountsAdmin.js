@@ -143,7 +143,7 @@ function addUser() {
 function loadData( tableArray = []){
 
     // Se asigna un valor a la constante para saber si viene vacio el arreglo.
-    console.log(tableArray);
+    console.log(typeof(tableArray));
     const table = tableArray.server.users.length;
 
     console.log(tableArray.server.users);
