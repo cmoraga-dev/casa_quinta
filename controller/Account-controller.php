@@ -74,7 +74,7 @@ class Account_controller{
         }
     }
 
-    function getAllAcount(){
+    function getAllAccounts(){
         $user = new Account();
         $users = array();
         $users["users"] = array();
@@ -93,8 +93,9 @@ class Account_controller{
             }
             return $this->user = $users;
         } else {
-            $this->error = json_encode(array('cod' => '500',
-                                    'msj' => 'Usuarios incorrecto'));
+            echo json_encode(array('cod' => '500', 
+                                    'msj' => 'No se logro actualizar la clave del usuario',
+                                    'server' => $res));
         }
     }
 
@@ -128,6 +129,7 @@ class Account_controller{
                                     'msj' => 'No se logro eliminar el usuario'));
         }
     }
+
 
     function updatePassAccount($idAccount , $pass){
         $user = new Account();

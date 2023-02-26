@@ -67,7 +67,7 @@ include("../login/validateSession.php");
     <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
         <h3>Mantenedor de cuentas</h3>
     </div>
-      <button id="create-user" class="btn btn-success">Cuenta nueva</button>
+      <button id="create-account" class="btn btn-success">Cuenta nueva</button>
       <div class="table-responsive{-sm|-md|-lg|-xl}">
             <table id="tableUsers" class="table table-striped">
                 <thead class="table-primary">

@@ -84,10 +84,6 @@ function loadData( tableArray = []){
 }
 
 
-/** Obtiene todas las reservas confirmadas del dia.
- *  Se encarga de buscar todas las reservas que han sido confirmadas para el dia de hoy,
- *  sin importar si han sido de dias pasados o futuros.
- */
 function getAllUsers() {
     var host = window.location.origin;
 

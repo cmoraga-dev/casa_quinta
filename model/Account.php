@@ -16,10 +16,12 @@ include_once 'db.php';
          * Devuelve todos los usuarios y sus datos.
          */
         function getAllAccount(){
-            $query = $this->connect()->query("SELECT * FROM accounts");
+            $query = $this->connect()->query("SELECT a.*, b.type_privilege as profile_type FROM accounts a
+                JOIN privileges b on a.id_type_profile = b.id");
             return $query;
         }
 
+        
         /** Obtiene el usuario por nombre.
          * Devuelve el usuario buscado y sus datos.
          */
