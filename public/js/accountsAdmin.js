@@ -211,7 +211,8 @@ function getAllAccounts() {
         url: host+'/api/getAllAccounts',
         type: 'POST',
     }).done(function (response) {
-        loadData(response);
+        console.log(response)
+        loadData(response['server']);
         console.log('ok');        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
