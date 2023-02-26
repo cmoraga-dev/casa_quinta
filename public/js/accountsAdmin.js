@@ -144,9 +144,9 @@ function loadData( tableArray = []){
 
     // Se asigna un valor a la constante para saber si viene vacio el arreglo.
     console.log(tableArray);
-    const table = tableArray.users.length;
+    const table = tableArray.server.users.length;
 
-    console.log(tableArray.users);
+    console.log(tableArray.server.users);
 
     // Se valida si viene con datos para ejecutar la carga de tabla.
     if(table > 0){
