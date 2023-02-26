@@ -86,12 +86,14 @@ class Account_controller{
 
                 $item = array(
                     "id" => $row['id'],
-                    "account" => $row['user_name'],
+                    "user_name" => $row['user_name'],
                     "pass" => $row['pass'],
+                    "alias" => $row['alias'],
+                    "profile_type" => $row['profile_type'],
                 );
                 array_push($users["users"], $item);
             }
-            return $this->user = $users;
+            return $this->users = $users;
         } else {
             echo json_encode(array('cod' => '500', 
                                     'msj' => 'No se logro actualizar la clave del usuario',
