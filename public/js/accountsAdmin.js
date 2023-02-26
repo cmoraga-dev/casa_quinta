@@ -213,7 +213,7 @@ function getAllAccounts() {
         type: 'POST',
     }).done(function (response) {
         //console.log(response)
-        loadData(response['server']);
+        loadData(response);
         console.log('ok');        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
