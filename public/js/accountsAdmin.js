@@ -144,9 +144,9 @@ function loadData( tableArray = []){
 
     // Se asigna un valor a la constante para saber si viene vacio el arreglo.
     console.log(typeof(tableArray));
-    const table = tableArray.server.users.length;
+    const table = tableArray.users.length;
 
-    console.log(tableArray.server.users);
+    console.log(tableArray.users);
 
     // Se valida si viene con datos para ejecutar la carga de tabla.
     if(table > 0){
@@ -158,7 +158,7 @@ function loadData( tableArray = []){
             // Se limpia el tbody para ir actualizandolo.
             tbody.innerHTML = '';
 
-            tableArray.server.users.map((e) => {
+            tableArray.users.map((e) => {
                 // Se crean las varibales de html.
                 let tr = document.createElement("tr");
                 let tdId = document.createElement("td");
