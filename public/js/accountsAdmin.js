@@ -143,7 +143,8 @@ function addUser() {
 function loadData( tableArray = []){
 
     // Se asigna un valor a la constante para saber si viene vacio el arreglo.
-    const table = tableArray.users.length
+    console.log(tableArray);
+    const table = tableArray.users.length;
 
     console.log(tableArray.users);
 
@@ -178,8 +179,8 @@ function loadData( tableArray = []){
                 // Se asignan valores a las variables creadas con los datos tomados del map.
                 tr.id = e.id;
                 tdAccountName.textContent = e.user_name;
-                tdAccountAlias.textContent = e.alias
-                tdAccountType.textContent = e.profile_type
+                tdAccountAlias.textContent = e.alias;
+                tdAccountType.textContent = e.profile_type;
                 
                 // Se le asigna el evento onclick para llamar al metodo callUser
                 edit_btn.id = "editUser";
@@ -211,8 +212,8 @@ function getAllAccounts() {
         url: host+'/api/getAllAccounts',
         type: 'POST',
     }).done(function (response) {
-        console.log(response)
-        loadData(JSON.parse(response['server']));
+        //console.log(response)
+        loadData(response['server']);
         console.log('ok');        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
