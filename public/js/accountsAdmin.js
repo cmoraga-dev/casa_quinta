@@ -144,6 +144,8 @@ function loadData( tableArray = []){
 
     // Se asigna un valor a la constante para saber si viene vacio el arreglo.
     console.log(typeof(tableArray));
+    console.log(tableArray);
+
     const table = tableArray.users.length;
 
     console.log(tableArray.users);
