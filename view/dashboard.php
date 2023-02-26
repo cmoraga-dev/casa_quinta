@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <img src="../public/img/qr_code.png" alt="QR Code" style="position:fixed; bottom:10px; right:10px; z-index:999;">
     <div class="container" style="padding-top: 50px;">
         <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
             <h1>Sala de espera </h1>
