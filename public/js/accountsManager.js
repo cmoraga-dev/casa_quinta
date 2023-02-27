@@ -26,13 +26,13 @@ function updateAccount (e) {
     var pass = document.getElementById("password").value;
     var confirm_password = document.getElementById("confirm_password").value;
     var valid_name = false;
-    var valid_pass = false;
+    var valid_pass = null;
 
     if (name != null && name != '') {
         valid_name = name;
     }
 
-    if (pass != null && pass != '' && pass != false && pass == confirm_password) {
+    if (pass != null && pass != '' && pass != null && pass != 'false' && pass == confirm_password) {
         valid_pass = pass;
     }
 
