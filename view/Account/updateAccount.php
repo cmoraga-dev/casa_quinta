@@ -5,7 +5,7 @@ session_start();
 $api = new Account_controller();
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
-    if (isset($_POST['pass']) && $_POST['pass']!= ""){
+    if (isset($_POST['pass']) && $_POST['pass']!= "" && $_POST['pass']!= false){
         $api->updatePassAccount($_POST['idAccount'],$_POST['pass']);
     }
     if (isset($_POST['name'])){
