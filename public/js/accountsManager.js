@@ -32,7 +32,7 @@ function updateAccount (e) {
         valid_name = name;
     }
 
-    if (pass != null && pass != '' && pass == confirm_password) {
+    if (pass != null && pass != '' && pass != false && pass == confirm_password) {
         valid_pass = pass;
     }
 
