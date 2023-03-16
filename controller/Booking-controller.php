@@ -257,10 +257,10 @@ class Booking_controller{
      * el id_box junto con el id del booking para su asociacion al id del doctor.
      * @return "202 || confirmado con exito , 404 || error no encontrado o 500 || error servidor" 
      */
-    function updateBoxBooking($id , $box_id){
+    function updateBoxBooking($id , $box_id, $box_num){
         $box_user = new Booking();
 
-        $res = $box_user->updateBoxBooking($id , $box_id);
+        $res = $box_user->updateBoxBooking($id , $box_id, $box_num);
         
         if ($res->rowCount()) {
             echo json_encode(array('cod' => '202', 
