@@ -33,7 +33,7 @@ include("../login/validateSession.php");
                 <p class="h3">Nombre de usuario: <?= $_SESSION["user"] ?></p>
             </span>
             <span class="navbar-text">
-                <p class="h3" style="padding-right: 30px;">Box actual: <?= $_SESSION["box_user_login"] ?></p>
+                <p class="h3" style="padding-right: 30px;" id="box_num">Box actual: <?= $_SESSION["box_user_login"] ?></p>
             </span>
     </nav>
 

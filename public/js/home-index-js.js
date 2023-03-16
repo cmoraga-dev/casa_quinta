@@ -153,6 +153,7 @@ $(document).on('click','#callUser',function(event) {
     // Se captura el id del tr que es el asignado con el booking id y es el padre del td
     // de donde esta asignado el button.
     let id_tr = event.target.parentElement.parentElement.id;
+    let box_num = document.getElementById("box_num").innerText;
 
     var host = window.location.origin;
     $.ajax({

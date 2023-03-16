@@ -114,7 +114,7 @@ include_once __DIR__.'/User.php';
          * Actualiza la reserva cuando se tiene un doctor asociado a ese box.
          */
         function updateBoxBooking($id, $box_id, $box_num){
-            $query = $this->connect()->query("UPDATE bookings SET box_id = $box_id, , box_num = $box_num WHERE id = $id ");
+            $query = $this->connect()->query("UPDATE bookings SET box_id = $box_id, box_num = $box_num WHERE id = $id ");
             return $query;
         }
 
