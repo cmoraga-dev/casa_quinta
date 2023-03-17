@@ -39,12 +39,18 @@ class Account_controller{
 
 
             // asignamos un valor a una variable 
-            $box_num = $box_user->getNumberBoxUser($users[0]["account"]);
-            
-            // validamos si posee un numero de box asignado.
-            if($box_num > 0){
-                $_SESSION["box_user_login"] = $box_num;
+            $res2 = $box_user->getNumberBoxUser($users[0]["account"]);
+            if ($res2->rowCount()) {
+                while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+                    $box_num = $row['box'];
+                }
+                
+                // validamos si posee un numero de box asignado.
+                if($box_num > 0){
+                    $_SESSION["box_user_login"] = $box_num;
+                }
             }
+            
             
             echo json_encode(array('cod' => '202', 
                                     'def' => 'Obtenido con exito'));

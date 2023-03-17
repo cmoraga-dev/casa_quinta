@@ -16,7 +16,7 @@ include_once 'db.php';
          * Busca el numero del box del usuario indicado por id de cuenta.
          */
         function getNumberBoxUser($id_account){
-            $query = $this->connect()->query("SELECT ifnull(`box`,0) FROM box_users WHERE id_account ='$id_account'");
+            $query = $this->connect()->query("SELECT ifnull(`box`,0) as 'box' FROM box_users WHERE id_account ='$id_account'");
             return $query;
         }
         
