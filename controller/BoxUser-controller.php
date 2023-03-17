@@ -48,6 +48,7 @@ class BoxUser_controller{
                     "last_name" => $row['last_name'],
                     "rut" => $row['identification_number'],
                     "email" => $row['email'],
+                    "box_num" =>$row['box'],
                 );
                 array_push($box_users["Users"], $item);
             }

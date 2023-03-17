@@ -11,6 +11,7 @@ class Account_controller{
     function getAccount($name , $pass){
         $user = new Account();
         $users = array();
+        $box_user = new BoxUser();
 
         // Encriptamos la password que nos llega.
         $passEncryp  = hash('sha512',$pass);
@@ -35,8 +36,11 @@ class Account_controller{
             $_SESSION['user'] = $users[0]["account"];
             $_SESSION["user_profile"] = $users[0]["id_type_profile"];
             $_SESSION["id_account"] = $users[0]["id"];
-            
 
+            // validamos si posee un numero de box asignado.
+            $box_num = $box_user->getNumberBoxUser($users[0]["account"]);
+            $_SESSION["box_user_login"] = $box_num;
+            
             echo json_encode(array('cod' => '202', 
                                     'def' => 'Obtenido con exito'));
             return;

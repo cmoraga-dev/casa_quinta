@@ -12,6 +12,14 @@ include_once 'db.php';
             return $query;
         }
 
+         /** Obtener usuario de Box por Rut.
+         * Busca el numero del box del usuario indicado por id de cuenta.
+         */
+        function getNumberBoxUser($id_account){
+            $query = $this->connect()->query("SELECT ifnull(`box`,0) FROM box_users WHERE id_account ='$id_account'");
+            return $query;
+        }
+        
         /** Obtiene todos los usuarios de los Box.
          * Devuelve todos los usuarios de Box y sus datos.
          */
