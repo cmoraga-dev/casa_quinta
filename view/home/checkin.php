@@ -1,5 +1,10 @@
 <?php
     include("../login/validateBoxLoginUser.php");
+
+    if($_SESSION['box_user_login'] !=0){
+        echo '<script>Console.log("exito")</script>
+        ';
+    }
 ?>
 <!DOCTYPE html>
 <html>
