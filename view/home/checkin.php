@@ -2,8 +2,7 @@
     include("../login/validateBoxLoginUser.php");
 
     if($_SESSION['box_user_login'] !=0){
-        echo '<script>Console.log("exito")</script>
-        ';
+      echo "<script>console.log('Tiene un box asignado');</script>";
     }
 ?>
 <!DOCTYPE html>
