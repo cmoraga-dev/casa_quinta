@@ -40,7 +40,7 @@ class Account_controller{
 
             // asignamos un valor a una variable 
             //$res2 = $box_user->getNumberBoxUser($users[0]["account"]);
-            $box_num =  $box_user->getNumberBoxUser($users[0]["account"])->fetch(PDO::FETCH_ASSOC)["box"];
+            //$box_num =  $box_user->getNumberBoxUser($users[0]["account"])->fetch(PDO::FETCH_ASSOC)["box"];
             // if ($res2->rowCount()) {
             //     while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
             //         $box_num = $row['box'];
