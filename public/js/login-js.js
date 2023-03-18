@@ -16,6 +16,7 @@ function validaUsuario(){
           type: 'POST',
       }).done(function (response){
           //Respuesta del servidor, independiente si esta correcto o no.
+          console.log(response);
           let resp = JSON.parse(response);
           // console.log(resp['cod']);
           if(resp['cod'] === '202'){
