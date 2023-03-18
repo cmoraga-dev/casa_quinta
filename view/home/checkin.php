@@ -1,7 +1,7 @@
 <?php
     include("../login/validateBoxLoginUser.php");
 
-    if($_SESSION["box_user_login"] !=0){
+    //if($_SESSION["box_user_login"] !=0){
 ?>
   <!DOCTYPE html>
   <html>
@@ -34,4 +34,4 @@
       </div>
       </body>
   </html>
-<?php } ?>
+<?php //} ?>
