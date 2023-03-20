@@ -25,7 +25,7 @@ include("../login/validateSession.php");
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="">Agendas activas</a></li>
                 <li><a class="dropdown-item" href="/view/home/usersManager.php">Mantenedor de usuarios</a></li>
-                <?php if ($_SESSION["user_profile"] == 2) { ?>
+                <?php if ($_SESSION["user_profile"] == 1) { ?>
                     <li><a class="dropdown-item" href="/view/home/usersManager.php">Mantenedor de cuentas</a></li>
                 <?php } ?>
                 <li><a class="dropdown-item" href="/view/home/accountsManager.php">Detalles de cuenta</a></li>

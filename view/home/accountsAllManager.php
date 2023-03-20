@@ -7,7 +7,7 @@ include("../login/validateSession.php");
 
 <head>
     <meta charset="utf-8">
-    <title>Configuracion de cuenta</title>
+    <title>Mantenedor de cuentas</title>
     <script src="../../public/jquery-3.6.2.min.js"></script>
     <script src="../../public/js/accountsManager.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -39,36 +39,7 @@ include("../login/validateSession.php");
             <p class="h3" style="padding-right: 30px;">Box actual: <?= $_SESSION["box_user_login"] ?></p>
         </span>
     </nav>
-
-    <div class="container" style="padding-top: 50px;">
-        <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
-            <h3>Detalles de cuenta</h3>
-        </div>
-        <div class="container mt-3">
-            <form action="" method="POST" onsubmit="">
-                <div class="form-group">
-                    <label for="alias">Nombre:</label>
-                    <input type="text" id="alias" name="alias" class="form-control" value="<?= $_SESSION["user"] ?>" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Nueva contraseña:</label>
-                    <input type="password" id="password" name="password" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label for="confirm_password">Confirmar nueva contraseña:</label>
-                    <input type="password" id="confirm_password" name="confirm_password" class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <input type="hidden" name="user_id" id="user_id" value="<?= $_SESSION["id_account"] ?>">
-                </div>
-
-                <button type="submit" class="btn btn-primary" id="form_btn" onclick="updateAccount(event)">Actualizar</button>
-            </form>
-        </div>
-    </div>
+    <h1>Crearemos cuenta y veremos cuenta</h1>
 </body>
 
 </html>
