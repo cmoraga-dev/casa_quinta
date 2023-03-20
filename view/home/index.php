@@ -18,31 +18,34 @@ include("../login/validateSession.php");
     <!-- As a heading -->
     <nav class="navbar navbar-dark bg-primary">
 
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
-                    Menu
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="">Agendas activas</a></li>
-                    <li><a class="dropdown-item" href="/view/home/usersManager.php">Mantenedor de usuarios</a></li>
-                    <li><a class="dropdown-item" href="/view/home/accountsManager.php">Detalles de cuenta</a></li>
-                    <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
-                </ul>
-            </div>
-            <span class="navbar-text">
-                <p class="h3">Nombre de usuario: <?= $_SESSION["user"] ?></p>
-            </span>
-            <span class="navbar-text">
-                <p class="h3" style="padding-right: 30px;" id="box_num">Box actual: <?= $_SESSION["box_user_login"] ?></p>
-            </span>
+        <div class="dropdown">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                Menu
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="">Agendas activas</a></li>
+                <li><a class="dropdown-item" href="/view/home/usersManager.php">Mantenedor de usuarios</a></li>
+                <?php if ($_SESSION["user_profile"] == 2) { ?>
+                    <li><a class="dropdown-item" href="/view/home/usersManager.php">Mantenedor de cuentas</a></li>
+                <?php } ?>
+                <li><a class="dropdown-item" href="/view/home/accountsManager.php">Detalles de cuenta</a></li>
+                <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
+            </ul>
+        </div>
+        <span class="navbar-text">
+            <p class="h3">Nombre de usuario: <?= $_SESSION["user"] ?></p>
+        </span>
+        <span class="navbar-text">
+            <p class="h3" style="padding-right: 30px;" id="box_num">Box actual: <?= $_SESSION["box_user_login"] ?></p>
+        </span>
     </nav>
 
     <div class="container" style="padding-top: 50px;">
-    <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
-        <h3>Pacientes en espera</h3>
-    </div>
+        <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
+            <h3>Pacientes en espera</h3>
+        </div>
         <div class="table-responsive{-sm|-md|-lg|-xl}">
-        <table id="tableBookingConfirm" class="table table-striped">
+            <table id="tableBookingConfirm" class="table table-striped">
                 <thead class="table-primary">
                     <tr>
                         <th scope="col">Nombre de paciente</th>
