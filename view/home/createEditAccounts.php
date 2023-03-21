@@ -49,36 +49,32 @@ include("../login/validateSession.php");
             <form>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4">Nombre de usuario</label>
+                        <label for="userName">Nombre de usuario</label>
                         <input type="text" class="form-control" id="inputEmail4" placeholder="Email">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputPassword4">Password</label>
+                        <label for="password">Password</label>
                         <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4">Nombres</label>
+                        <label for="name">Nombres</label>
                         <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputPassword4">Apellidos</label>
+                        <label for="fullLasname">Apellidos</label>
                         <input type="text" class="form-control" id="inputPassword4" placeholder="Apellidos">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputCity">Rut</label>
+                        <label for="rut">Rut</label>
                         <input type="text" class="form-control" id="inputCity">
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="inputState">Email</label>
+                        <label for="email">Email</label>
                         <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" id="inputZip">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Crear Cuenta</button>
