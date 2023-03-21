@@ -21,10 +21,10 @@ function createAccount(){
 
     let userName = document.getElementById("user").value;
     let password = document.getElementById("password").value;
-    let name = document.getElementById("name").value;
-    let fullname = document.getElementById("fullname").value;
-    let rut = document.getElementById("rut").value;
-    let email = document.getElementById("email").value;
+    // let name = document.getElementById("name").value;
+    // let fullname = document.getElementById("fullname").value;
+    // let rut = document.getElementById("rut").value;
+    // let email = document.getElementById("email").value;
     
     $.ajax({
         url: host+'/api/createAccount',
