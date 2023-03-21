@@ -1,7 +1,7 @@
 <?php
 include("../login/validateSession.php");
 ?>
-
+<?php if ($_SESSION["user_profile"] == 1) { ?>
 <!DOCTYPE html>
 <html>
 
@@ -30,7 +30,7 @@ include("../login/validateSession.php");
             <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/view/home/index.php">Agendas activas</a></li>
                 <?php if ($_SESSION["user_profile"] == 1) { ?>
-                    <li><a class="dropdown-item" href="/view/home/accountsAllManager.php">Mantenedor de cuentas</a></li>
+                    <li><a class="dropdown-item" href="/view/home/accountsAdmin.php">Mantenedor de cuentas</a></li>
                 <?php } ?>
                 <li><a class="dropdown-item" href="/view/home/accountsManager.php">Detalles de cuenta</a></li>
                 <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
@@ -93,3 +93,4 @@ include("../login/validateSession.php");
 </body>
 
 </html>
+<?php } ?>

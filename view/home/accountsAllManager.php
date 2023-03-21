@@ -26,7 +26,7 @@ include("../login/validateSession.php");
                 <li><a class="dropdown-item" href="/view/home/index.php">Home</a></li>
                 <li><a class="dropdown-item" href="/view/home/usersManager.php">Mantenedor de usuarios</a></li>
                 <?php if ($_SESSION["user_profile"] == 1) { ?>
-                    <li><a class="dropdown-item" href="/view/home/accountsAllManager.php">Mantenedor de cuentas</a></li>
+                    <li><a class="dropdown-item" href="/view/home/accountsAdmin.php">Mantenedor de cuentas</a></li>
                 <?php } ?>
                 <li><a class="dropdown-item" href="">Detalles de cuenta</a></li>
                 <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
@@ -40,6 +40,30 @@ include("../login/validateSession.php");
         </span>
     </nav>
     <h1>Crearemos cuenta y veremos cuenta</h1>
+    <div class="container" style="padding-top: 50px;">
+        <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
+            <h3>Mantenedor de cuentas</h3>
+        </div>
+        <button id="create-account" class="btn btn-success">Cuenta nueva</button>
+        <div class="table-responsive{-sm|-md|-lg|-xl}">
+            <table id="tableUsers" class="table table-striped">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Cuenta</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Tipo de cuenta</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-accounts">
+                    <tr>
+                        <td colspan="1000"><i class="fas fa-spinner spinning"></i> Loading...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

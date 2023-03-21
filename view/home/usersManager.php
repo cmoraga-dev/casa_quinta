@@ -116,7 +116,7 @@ include("../login/validateSession.php");
         <li><a class="dropdown-item" href="/view/home/index.php">Agendas activas</a></li>
         <li><a class="dropdown-item" href="/view/home/accountsManager.php">Detalles de cuenta</a></li>
         <?php if ($_SESSION["user_profile"] == 1) { ?>
-          <li><a class="dropdown-item" href="/view/home/accountsAllManager.php">Mantenedor de cuentas</a></li>
+          <li><a class="dropdown-item" href="/view/home/accountsAdmin.php">Mantenedor de cuentas</a></li>
         <?php } ?>
         <li><button type="button" onclick="javascript:logOut();" class="dropdown-item">Cerrar sesión</button></li>
       </ul>
