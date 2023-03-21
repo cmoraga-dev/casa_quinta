@@ -15,5 +15,6 @@ RewriteRule ^(api/updateActiveBooking)$ /view/Booking/updateActiveBooking.php [N
 RewriteRule ^(api/validateUser)$ /view/login/validateUser.php [NC,L,QSA]
 RewriteRule ^(api/getAllUsers)$ /view/User/getAllUser.php [NC,L,QSA]
 RewriteRule ^(api/createUser)$ /view/User/createUser.php [NC,L,QSA]
+RewriteRule ^(api/createAccount)$ /view/User/createAccount.php [NC,L,QSA]
 RewriteRule ^(api/updateAccount)$ /view/Account/updateAccount.php [NC,L,QSA]
 RewriteRule ^(api/getAllAccounts)$ /view/Account/getAllAccounts.php [NC,L,QSA]

@@ -128,7 +128,7 @@ class Account_controller{
 
             $res = $user->createAccount($name , $pass, $id_type_profile);
             
-            if ($res->rowCount()) {
+            if ($res >0) {
                 echo 'Se guardo Existosamente';
             }else{
                 echo json_encode(array('cod' => '500', 

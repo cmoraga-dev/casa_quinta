@@ -25,31 +25,27 @@ function createAccount(){
     let fullname = document.getElementById("fullname").value;
     let rut = document.getElementById("rut").value;
     let email = document.getElementById("email").value;
-
-    alert(`Crearemos una cuenta con estos datos:\n ${userName } ${password } ${name } ${fullname } ${rut } ${email }`);
     
-    // console.log
-    // $.ajax({
-    //     url: host+'/api/createUser',
-    //     type: 'POST',
-    //     data: { 
-    //         rut : rut,
-    //         first_name : first_name,
-    //         last_name : last_name,
-    //         email : email,
-    //     }
-    // }).done(function (response) {
-    //     console.log(response);
-    //     resp = JSON.parse(response)
-    //     if(resp['cod'] === '202'){
-    //       location.reload();
-    //     }
+    $.ajax({
+        url: host+'/api/createAccount',
+        type: 'POST',
+        data: { 
+            user : userName,
+            pass : password,
+        }
+    }).done(function (response) {
+        resp = JSON.parse(response)
+        console.log(response);
+        console.log(resp);
+        // if(resp['cod'] === '202'){
+        //   location.reload();
+        // }
 
-    // }).fail(function (err) {
-    //     // Respuesta de un error de peticion hacia el ajax       
-    //     var resp = JSON.parse(err);
-    //     console.log(`${resp['cod']} ${resp['def']}`);
-    // });
+    }).fail(function (err) {
+        // Respuesta de un error de peticion hacia el ajax       
+        var resp = JSON.parse(err);
+        console.log(`${resp['cod']} ${resp['def']}`);
+    });
 }
 
 function redirectToCreateEditAccount(){

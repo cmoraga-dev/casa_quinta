@@ -50,14 +50,14 @@ include("../login/validateSession.php");
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="userName">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="user" placeholder="Email" required>
+                        <input type="text" class="form-control" id="user" placeholder="Nombre de usuario" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
                         <input type="password" class="form-control" id="password" placeholder="Password" required>
                     </div>
                 </div>
-                <div class="row">
+                <!-- <div class="row">
                     <div class="form-group col-md-6">
                         <label for="name">Nombres</label>
                         <input type="text" class="form-control" id="name" placeholder="Nombre" required>
@@ -76,7 +76,7 @@ include("../login/validateSession.php");
                         <label for="email">Email</label>
                         <input type="email" class="form-control" id="email" placeholder="Email" required>
                     </div>
-                </div>
+                </div> -->
                 <div class="row">
                     <div class="col-8">
                         <button type= "submit" class="btn btn-primary">Crear Cuenta</button>
