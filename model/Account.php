@@ -33,11 +33,11 @@ include_once 'db.php';
         /** Crear Cuenta.
          * Funcion para crear cuenta para el acceso al sistema, las cuentas estan asociadas a un tipo de perfil con un rol de acceso.
          */
-        function createAccount($name, $pass, $id_typeProfile){
+        function createAccount($name, $pass){
             try {
 
                 $duplicateKey = $this->connect()->query("SELECT * FROM accounts WHERE user_name ='$name'");
-                $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, user_name, pass) VALUES($id_typeProfile, '$name', '$pass')");                
+                $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, user_name, pass) VALUES(2, '$name', '$pass')");                
                 if($duplicateKey->rowCount() < 1){                    
                     $query->execute();
                     $last_id = $this->connect()->lastInsertId();

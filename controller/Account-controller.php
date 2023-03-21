@@ -122,11 +122,11 @@ class Account_controller{
     }
 
 
-    function createAccount($name , $pass, $id_type_profile){
+    function createAccount($name , $pass){
         try {
             $user = new Account();
 
-            $res = $user->createAccount($name , $pass, $id_type_profile);
+            $res = $user->createAccount($name , $pass);
             
             if ($res >0) {
                 echo 'Se guardo Existosamente';
