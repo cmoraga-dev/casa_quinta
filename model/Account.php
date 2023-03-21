@@ -38,9 +38,11 @@ include_once 'db.php';
 
                 $duplicateKey = $this->connect()->query("SELECT * FROM accounts WHERE user_name ='$name'");
                 $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, user_name, pass) VALUES(2, '$name', '$pass')");                
-                if($duplicateKey->rowCount() < 1){                    
+                if($duplicateKey->rowCount() < 1){      
+                    //SELECT id FROM `accounts` ORDER BY `accounts`.`id` desc  limit 1                    
                     $query->execute();
-                    $last_id = $this->connect()->lastInsertId();
+                    $getLast_id = $this->connect()->query("SELECT id FROM `accounts` ORDER BY `accounts`.`id` desc  limit 1");
+                    $last_id = $getLast_id->$this->connect()->fetch_assoc();
                 }
                 return $last_id;
                 
