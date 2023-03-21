@@ -132,7 +132,7 @@ class Account_controller{
                 echo 'Se guardo Existosamente';
             }else{
                 echo json_encode(array('cod' => '500', 
-                                        'msj' => 'No se logro crear el usuario '+ $name));
+                                        'msj' => 'No se logro crear el usuario '.$name));
             }
         } catch (\Throwable $th) {
             echo $th;
