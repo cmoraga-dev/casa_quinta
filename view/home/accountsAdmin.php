@@ -94,6 +94,6 @@ include("../login/validateSession.php");
 
 </html>
 <?php }else{
-    echo '<script>top.location.href = "/login";</script>';
+    echo '<script>top.location.href = "/view/home/index.php";</script>';
     return;
 } ?>
