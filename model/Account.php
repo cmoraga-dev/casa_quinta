@@ -41,8 +41,9 @@ include_once 'db.php';
                 if($duplicateKey->rowCount() < 1){      
                     //SELECT id FROM `accounts` ORDER BY `accounts`.`id` desc  limit 1                    
                     $query->execute();
-                    $getLast_id = $this->connect()->query("SELECT id FROM `accounts` ORDER BY `accounts`.`id` desc  limit 1");
-                    $last_id = $getLast_id->$this->connect()->fetch_assoc();
+                    $queryLast_id = $this->connect()->query("SELECT id FROM `accounts` ORDER BY `accounts`.`id` desc  limit 1");
+                    $row_lastId = $queryLast_id->fetch(PDO::FETCH_ASSOC);
+                    $last_id = $row_lastId['id'];
                 }
                 return $last_id;
                 
