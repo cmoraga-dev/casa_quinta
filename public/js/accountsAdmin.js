@@ -34,9 +34,9 @@ function createAccount(){
             pass : password,
         }
     }).done(function (response) {
-        resp = JSON.parse(response)
+       // resp = JSON.parse(response)
         console.log(response);
-        console.log(resp);
+        //console.log(resp);
         // if(resp['cod'] === '202'){
         //   location.reload();
         // }
