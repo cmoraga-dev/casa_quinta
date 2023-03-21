@@ -46,7 +46,7 @@ include("../login/validateSession.php");
 
         <div class="container" style="padding-top: 50px;">
             <h1>Agregar cuenta de usuario</h1>
-            <form>
+            <form action="javascript: createAccount()">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="userName">Nombre de usuario</label>
@@ -79,10 +79,10 @@ include("../login/validateSession.php");
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        <button class="btn btn-primary" onclick="javascript: createAccount()">Crear Cuenta</button>
+                        <button type= "submit" class="btn btn-primary">Crear Cuenta</button>
                     </div>
                     <div class="col-4">
-                        <button class="btn btn-danger">Cancelar</button>
+                        <label class="btn btn-danger">Cancelar</label>
                     </div>
                 </div>
             </form>
