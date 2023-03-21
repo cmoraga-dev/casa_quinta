@@ -34,9 +34,8 @@ function createAccount(){
             pass : password,
         }
     }).done(function (response) {
-       // resp = JSON.parse(response)
-        console.log(response);
-        //console.log(resp);
+       resp = JSON.parse(response)
+        console.log(resp['cod'] );
         // if(resp['cod'] === '202'){
         //   location.reload();
         // }
@@ -55,12 +54,7 @@ function redirectToCreateEditAccount(){
 function loadData( tableArray = []){
 
     // Se asigna un valor a la constante para saber si viene vacio el arreglo.
-    console.log(typeof(tableArray));
-    console.log(tableArray);
-
     const table = tableArray.users.length;
-
-    console.log(tableArray.users);
 
     // Se valida si viene con datos para ejecutar la carga de tabla.
     if(table > 0){
@@ -129,7 +123,6 @@ function getAllAccounts() {
         //console.log(response)
         data = JSON.parse(response)
         loadData(data['server']);
-        console.log('ok');        
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
         var resp = JSON.parse(err);

@@ -129,7 +129,9 @@ class Account_controller{
             $res = $user->createAccount($name , $pass);
             
             if ($res >0) {
-                echo 'Se guardo Existosamente';
+                echo json_encode(array('cod' => '202', 
+                                    'def' => 'Cuentas obtenidas con éxito',
+                                    'server' => $res));
             }else{
                 echo json_encode(array('cod' => '500', 
                                         'msj' => 'No se logro crear el usuario '.$res));
