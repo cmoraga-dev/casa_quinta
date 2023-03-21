@@ -37,6 +37,7 @@ function createAccount(){
         resp = JSON.parse(response)
         console.log(response);
         console.log(resp);
+        console.log(`${userName} ${password}`)
         // if(resp['cod'] === '202'){
         //   location.reload();
         // }
