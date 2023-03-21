@@ -17,6 +17,59 @@ include("../login/validateSession.php");
 
     <script src="../../public/js/jquery.Rut.js"></script>
     <script src="../../public/js/accountsAdmin.js"></script>
+    <script>
+
+    $(function() {
+      var dialog, form,
+
+        // From http://www.whatwg.org/specs/web-apps/current-work/multipage/states-of-the-type-attribute.html#e-mail-state-%28type=email%29
+        first_name = $("#nombre"),
+        last_name = $("#apellido"),
+        rut = $("#rut"),
+        email = $("#email"),
+
+        allFields = $([]).add(first_name).add(last_name).add(rut).add(email),
+        tips = $(".validateTips");
+
+      function updateTips(t) {
+        tips
+          .text(t)
+          .addClass("ui-state-highlight");
+        setTimeout(function() {
+          tips.removeClass("ui-state-highlight", 1500);
+        }, 500);
+      }
+
+
+      dialog = $("#dialog-form").dialog({
+        autoOpen: false,
+        height: 400,
+        width: 350,
+        modal: true,
+        buttons: {
+          "Añadir paciente": function() {
+            addUser()
+          },
+          Cancelar: function() {
+            dialog.dialog("close");
+          }
+        },
+        close: function() {
+          form[0].reset();
+          allFields.removeClass("ui-state-error");
+        }
+      });
+
+      form = dialog.find("form").on("submit", function(event) {
+        event.preventDefault();
+        //addUser();
+      });
+
+      $("#create-user").button().on("click", function() {
+        dialog.dialog("open");
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -45,8 +98,8 @@ include("../login/validateSession.php");
     </nav>
 
     <div id="dialog-form" class="form-control" title="Añadir cuenta">
-        <p class="validateTips">Todos los campos son requeridos.</p>
         <form>
+            <p class="validateTips">Todos los campos son requeridos.</p>
             <fieldset>
                 <label for="dialog_first_name">Usuario de cuenta</label>
                 <input type="text" name="dialog_account_name" id="dialog_account_name" value="" class="form-control"">
