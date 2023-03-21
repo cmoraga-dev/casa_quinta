@@ -47,7 +47,7 @@ include("../login/validateSession.php");
         <div class="container" style="padding-top: 50px;">
             <h1>Agregar cuenta de usuario</h1>
             <form>
-                <div class="form-row">
+                <div class="row">
                     <div class="form-group col-md-6">
                         <label for="userName">Nombre de usuario</label>
                         <input type="text" class="form-control" id="inputEmail4" placeholder="Email">
@@ -57,7 +57,7 @@ include("../login/validateSession.php");
                         <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
                     </div>
                 </div>
-                <div class="form-row">
+                <div class="row">
                     <div class="form-group col-md-6">
                         <label for="name">Nombres</label>
                         <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre">
@@ -67,7 +67,7 @@ include("../login/validateSession.php");
                         <input type="text" class="form-control" id="inputPassword4" placeholder="Apellidos">
                     </div>
                 </div>
-                <div class="form-row">
+                <div class="row">
                     <div class="form-group col-md-6">
                         <label for="rut">Rut</label>
                         <input type="text" class="form-control" id="inputCity">
