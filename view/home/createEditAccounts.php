@@ -50,35 +50,41 @@ include("../login/validateSession.php");
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="userName">Nombre de usuario</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="Email">
+                        <input type="text" class="form-control" id="user" placeholder="Email" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="password">Password</label>
-                        <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                        <input type="password" class="form-control" id="password" placeholder="Password" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="name">Nombres</label>
-                        <input type="text" class="form-control" id="inputEmail4" placeholder="Nombre">
+                        <input type="text" class="form-control" id="name" placeholder="Nombre" required>
                     </div>
                     <div class="form-group col-md-6">
                         <label for="fullLasname">Apellidos</label>
-                        <input type="text" class="form-control" id="inputPassword4" placeholder="Apellidos">
+                        <input type="text" class="form-control" id="fullname" placeholder="Apellidos" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="rut">Rut</label>
-                        <input type="text" class="form-control" id="inputCity">
+                        <input type="text" class="form-control" id="rut" placeholder="Rut" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                        <input type="email" class="form-control" id="email" placeholder="Email" required>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Crear Cuenta</button>
-                <button type="" class="btn btn-primary">Cancelar</button>
+                <div class="row">
+                    <div class="col-8">
+                        <button type="" class="btn btn-primary" onclick="javascript: redirectToCreateEditAccount()">Crear Cuenta</button>
+                    </div>
+                    <div class="col-4">
+                        <button type="" class="btn btn-danger">Cancelar</button>
+                    </div>
+                </div>
             </form>
     </body>
 
