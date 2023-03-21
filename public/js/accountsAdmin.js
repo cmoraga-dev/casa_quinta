@@ -139,6 +139,9 @@ function addUser() {
     });
 }
 
+function createAccount(){
+    top.location.href = "/view/home/createEditAccounts.php";
+}
 
 function loadData( tableArray = []){
 
