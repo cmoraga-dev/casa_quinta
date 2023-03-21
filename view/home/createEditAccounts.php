@@ -79,10 +79,10 @@ include("../login/validateSession.php");
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        <button type="submit" class="btn btn-primary" onclick="javascript: redirectToCreateEditAccount()">Crear Cuenta</button>
+                        <button class="btn btn-primary" onclick="javascript: createAccount()">Crear Cuenta</button>
                     </div>
                     <div class="col-4">
-                        <button type="" class="btn btn-danger">Cancelar</button>
+                        <button class="btn btn-danger">Cancelar</button>
                     </div>
                 </div>
             </form>
