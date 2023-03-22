@@ -71,8 +71,16 @@ include_once 'db.php';
          * Elimina una cuenta asociada a un id unico en el sistema.
          */
         function deleteAccount($idAccount){
-            $query = $this->connect()->query("DELETE FROM accounts WHERE id = $idAccount ");
-            return $query;
+
+            // Preparamos las query antes de eliminar
+            $query = $this->connect()->prepare("DELETE FROM `box_users` WHERE id_account = $idAccount ");
+            $query2 = $this->connect()->prepare("DELETE FROM accounts WHERE id = $idAccount ");
+
+            // Las ejecutamos
+            $query->execute();
+            $query2->execute();
+
+            return $query2;
         }
 
         /** Actualizar Clave.

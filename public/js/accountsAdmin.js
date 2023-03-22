@@ -160,31 +160,30 @@ $(document).on('click','#deleteUser',function(event) {
     // de donde esta asignado el button.
     let id_tr = event.target.parentElement.parentElement.id;
 
-    console.log(id_tr);
-    // var host = window.location.origin;
-    // $.ajax({
+    var host = window.location.origin;
+    $.ajax({
         
-    //     // envia la peticion URL al API generado en view apartado booking
-    //     url: host+'/api/updateBoxBooking',
-    //     data: {
-    //         id_booking : id_tr,
-    //     },
-    //     type: 'POST',
-    // }).done(function (response) {
-    //     //Respuesta del servidor, independiente si esta correcto o no.
-    //     let resp = JSON.parse(response);
-    //     if (resp['cod'] === '202') {
-    //         // Debemos desabilitar el boton para llamar, dado que ya se le asigno un box.
-    //         event.target.disabled = true
-    //         window.location.reload();
+        // envia la peticion URL al API generado en view apartado booking
+        url: host+'/api/deleteAccount',
+        data: {
+            idAccount : id_tr,
+        },
+        type: 'POST',
+    }).done(function (response) {
+        //Respuesta del servidor, independiente si esta correcto o no.
+        let resp = JSON.parse(response);
+        if (resp['cod'] === '202') {
+            // Debemos desabilitar el boton para llamar, dado que ya se le asigno un box.
+            event.target.disabled = true
+            window.location.reload();
 
-    //     } else if (resp['cod'] === '404') {
-    //         console.log(`${resp['cod']} ${resp['def']}`);
-    //     }
+        } else if (resp['cod'] === '404') {
+            console.log(`${resp['cod']} ${resp['def']}`);
+        }
 
-    // }).fail(function (err) {
-    //     // Respuesta de un error de peticion hacia el ajax       
-    //     let resp = JSON.parse(err);
-    //     console.log(`${resp['cod']} ${resp['def']}`);
-    // }); 
+    }).fail(function (err) {
+        // Respuesta de un error de peticion hacia el ajax       
+        let resp = JSON.parse(err);
+        console.log(`${resp['cod']} ${resp['def']}`);
+    }); 
  });
