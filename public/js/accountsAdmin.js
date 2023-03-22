@@ -45,9 +45,9 @@ function createAccount(){
             let toastEl = document.querySelector('.toast');
             let toast = new bootstrap.Toast(toastEl);
 
-            // Obtenemos los valores de texto del toast.
-            let tittleToast = document.getElementsByClassName("mr-auto");
-            let msjToast = document.getElementsByClassName("toast-body");
+            // Seteamos los valores de texto del toast.
+            let tittleToast = toastEl.querySelector('.mr-auto');
+            let msjToast = toastEl.querySelector('.toast-body');
 
             // Agregamos valores a los componentes obtenidos con texto
             tittleToast.textContent = `Usuario Creado con Exito!`;
