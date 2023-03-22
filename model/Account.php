@@ -39,7 +39,8 @@ include_once 'db.php';
                 $passEncryp  = hash('sha512',$pass);
 
                 $duplicateKey = $this->connect()->query("SELECT * FROM accounts WHERE user_name ='$name'");
-                $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, user_name, pass) VALUES(2, '$name', '$passEncryp')");                
+                $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, user_name, pass, alias) 
+                                                    VALUES(2, '$name', '$passEncryp', '$first_name $last_name')");
                 if($duplicateKey->rowCount() < 1){      
                     $query->execute();
 

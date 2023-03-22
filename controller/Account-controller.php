@@ -148,7 +148,9 @@ class Account_controller{
         $res = $user->deleteAccount($idAccount);
         
         if ($res->rowCount()) {
-            echo 'Se Elimino Existosamente';
+            echo json_encode(array('cod' => '202', 
+                                    'def' => 'Cuenta eliminada con éxito',
+                                    'server' => $res));
         }else{
             echo json_encode(array('cod' => '500', 
                                     'msj' => 'No se logro eliminar el usuario'));
