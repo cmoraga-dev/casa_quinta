@@ -272,7 +272,8 @@ $(document).on('click','#editUser',function(event) {
             let arrayAccountInfo = resp['server'];
             arrayAccountInfo.users.map((e) => {
                 let inputUserName = document.getElementById("user");
-                inputUserName.textContent = e.account;
+                inputUserName.value = e.account;
+                inputUserName.disabled = true;
             });
         }
     }).fail(function (err) {
