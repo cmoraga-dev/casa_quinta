@@ -79,13 +79,32 @@ include("../login/validateSession.php");
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        <button type= "submit" class="btn btn-primary">Crear Cuenta</button>
+                        <button type="submit" class="btn btn-primary">Crear Cuenta</button>
                     </div>
                     <div class="col-4">
                         <label class="btn btn-danger">Cancelar</label>
                     </div>
                 </div>
             </form>
+
+            <!-- Flexbox container for aligning the toasts -->
+            <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+
+                <!-- Then put toasts within -->
+                <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="toast-header">
+                        <img src="..." class="rounded mr-2" alt="...">
+                        <strong class="mr-auto">Bootstrap</strong>
+                        <small>11 mins ago</small>
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="toast-body">
+                        Hello, world! This is a toast message.
+                    </div>
+                </div>
+            </div>
     </body>
 
 <?php } else {
