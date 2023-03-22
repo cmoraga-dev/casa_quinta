@@ -41,10 +41,27 @@ function createAccount(){
        resp = JSON.parse(response)
         console.log(resp['cod'] );        
         if(resp['cod'] === '202'){
+            // Obtenemos el Toast.
             let toastEl = document.querySelector('.toast');
             let toast = new bootstrap.Toast(toastEl);
+
+            // Obtenemos los valores de texto del toast.
+            let tittleToast = document.getElementsByClassName("mr-auto");
+            let msjToast = document.getElementsByClassName("toast-body");
+
+            // Agregamos valores a los componentes obtenidos con texto
+            tittleToast.textContent = `Usuario Creado con Exito!`;
+            msjToast.textContent = `Se ha creado satisfactoriamente el usuario ${user}`;
+
+            // Agregramos un fondo de exito
+            toastEl.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
+            toastEl.style.backgroundColor = 'lightgreen'; // Cambia el color de fondo a lightgreen
+
+            // Lo mostramos.
             toast.show()
-          //location.reload();
+            setTimeout(() => {
+                location.reload();                
+            }, 3000);
         }
 
     }).fail(function (err) {
