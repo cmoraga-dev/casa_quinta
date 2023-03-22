@@ -82,7 +82,7 @@ include("../login/validateSession.php");
                         <button type="submit" class="btn btn-primary">Crear Cuenta</button>
                     </div>
                     <div class="col-4">
-                        <label class="btn btn-danger">Cancelar</label>
+                        <label class="btn btn-danger" id="cancel-create">Cancelar</label>
                     </div>
                 </div>
             </form>

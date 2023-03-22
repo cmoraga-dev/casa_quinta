@@ -249,3 +249,9 @@ $(document).on('click','#editUser',function(event) {
     var host = window.location.origin;
     top.location.href = "/view/home/createEditAccounts.php";
  });
+
+  //Cancelar Creacion
+$(document).on('click','#cancel-create',function(event) {
+    // Volvemos al menu de listado de cuentas.
+    top.location.href = "/view/home/getAllAccounts.php";
+ });
