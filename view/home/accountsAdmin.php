@@ -44,28 +44,6 @@ include("../login/validateSession.php");
         </span>
     </nav>
 
-    <div id="dialog-form" class="form-control" title="Añadir cuenta">
-        <form>
-            <p class="validateTips">Todos los campos son requeridos.</p>
-            <fieldset>
-                <label for="dialog_first_name">Usuario de cuenta</label>
-                <input type="text" name="dialog_account_name" id="dialog_account_name" value="" class="form-control"">
-
-                <label for=" dialog_last_name">Alias o nombre de profesional</label>
-                <input type="text" name="dialog_alias" id="dialog_alias" value="" class="form-control">
-
-                <label for="dialog_email">Contraseña</label>
-                <input type="text" name="dialog_pass" id="dialog_pass" value="" class="form-control">
-
-                <label for="dialog_email">Confirmar contraseña</label>
-                <input type="text" name="dialog_pass_confirm" id="dialog_pass_confirm" value="" class="form-control">
-
-                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-            </fieldset>
-        </form>
-    </div>
-
-
     <div class="container" style="padding-top: 50px;">
         <div class="d-flex justify-content-center" style="margin-bottom: 20px;">
             <h3>Mantenedor de cuentas</h3>
