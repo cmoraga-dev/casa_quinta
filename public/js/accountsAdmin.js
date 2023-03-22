@@ -46,12 +46,10 @@ function createAccount(){
             let toast = new bootstrap.Toast(toastEl);
 
             // Seteamos los valores de texto del toast.
-            let tittleToast = toastEl.querySelector('.mr-auto');
             let msjToast = toastEl.querySelector('.toast-body');
             let divTittleToast = toastEl.querySelector('.toast-header');
 
-            // Agregamos valores a los componentes obtenidos con texto
-            tittleToast.textContent = `Usuario Creado con Exito!`;
+            // Agregamos valores a los componentes obtenidos con texto     
             msjToast.textContent = `Se ha creado satisfactoriamente el usuario ${userName}`;
 
             // Agregramos un fondo de exito
@@ -154,3 +152,39 @@ function getAllAccounts() {
     });
 }
 getAllAccounts();
+
+//Eliminar Cuenta
+$(document).on('click','#deleteUser',function(event) {
+
+    // Se captura el id del tr que es el asignado con el booking id y es el padre del td
+    // de donde esta asignado el button.
+    let id_tr = event.target.parentElement.id;
+
+    console.log(id_tr);
+    // var host = window.location.origin;
+    // $.ajax({
+        
+    //     // envia la peticion URL al API generado en view apartado booking
+    //     url: host+'/api/updateBoxBooking',
+    //     data: {
+    //         id_booking : id_tr,
+    //     },
+    //     type: 'POST',
+    // }).done(function (response) {
+    //     //Respuesta del servidor, independiente si esta correcto o no.
+    //     let resp = JSON.parse(response);
+    //     if (resp['cod'] === '202') {
+    //         // Debemos desabilitar el boton para llamar, dado que ya se le asigno un box.
+    //         event.target.disabled = true
+    //         window.location.reload();
+
+    //     } else if (resp['cod'] === '404') {
+    //         console.log(`${resp['cod']} ${resp['def']}`);
+    //     }
+
+    // }).fail(function (err) {
+    //     // Respuesta de un error de peticion hacia el ajax       
+    //     let resp = JSON.parse(err);
+    //     console.log(`${resp['cod']} ${resp['def']}`);
+    // }); 
+ });
