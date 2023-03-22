@@ -54,8 +54,7 @@ function createAccount(){
             msjToast.textContent = `Se ha creado satisfactoriamente el usuario ${userName}`;
 
             // Agregramos un fondo de exito
-            toastEl.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
-            //toastEl.style.backgroundColor = 'lightgreen'; // Cambia el color de fondo a lightgreen
+            tittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
 
             // Lo mostramos.
             toast.show()
