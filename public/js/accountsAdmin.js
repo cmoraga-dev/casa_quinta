@@ -216,9 +216,9 @@ $(document).on('click','#deleteUser',function(event) {
             let toastEl = document.querySelector('.toast');
             let toast = new bootstrap.Toast(toastEl);
 
-            // // Seteamos los valores de texto del toast.
-            // let msjToast = toastEl.querySelector('.toast-body');
-            // let divTittleToast = toastEl.querySelector('.toast-header');
+            // Seteamos los valores de texto del toast.
+            let msjToast = toastEl.querySelector('.toast-body');
+            let divTittleToast = toastEl.querySelector('.toast-header');
 
             // // Agregamos valores a los componentes obtenidos con texto     
             // msjToast.textContent = `Se ha eliminado el usuario`;
