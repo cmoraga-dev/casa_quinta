@@ -39,10 +39,13 @@ function createAccount(){
         }
     }).done(function (response) {
        resp = JSON.parse(response)
-        console.log(resp['cod'] );
-        // if(resp['cod'] === '202'){
-        //   location.reload();
-        // }
+        console.log(resp['cod'] );        
+        if(resp['cod'] === '202'){
+            let toastEl = document.querySelector('.toast');
+            let toast = new bootstrap.Toast(toastEl);
+            toast.show()
+          //location.reload();
+        }
 
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
