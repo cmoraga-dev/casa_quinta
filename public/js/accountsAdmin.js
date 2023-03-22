@@ -216,15 +216,15 @@ $(document).on('click','#deleteUser',function(event) {
             let toastEl = document.querySelector('.toast');
             let toast = new bootstrap.Toast(toastEl);
 
-            // Seteamos los valores de texto del toast.
-            let msjToast = toastEl.querySelector('.toast-body');
-            let divTittleToast = toastEl.querySelector('.toast-header');
+            // // Seteamos los valores de texto del toast.
+            // let msjToast = toastEl.querySelector('.toast-body');
+            // let divTittleToast = toastEl.querySelector('.toast-header');
 
-            // Agregamos valores a los componentes obtenidos con texto     
-            msjToast.textContent = `Se ha eliminado el usuario`;
+            // // Agregamos valores a los componentes obtenidos con texto     
+            // msjToast.textContent = `Se ha eliminado el usuario`;
 
-            // Agregramos un fondo de exito
-            divTittleToast.classList.add('bg-danger'); // Agrega la clase de estilo .bg-warning
+            // // Agregramos un fondo de exito
+            // divTittleToast.classList.add('bg-danger'); // Agrega la clase de estilo .bg-warning
             window.location.reload();
 
         } else if (resp['cod'] === '404') {
