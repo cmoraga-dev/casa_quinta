@@ -158,7 +158,7 @@ $(document).on('click','#deleteUser',function(event) {
 
     // Se captura el id del tr que es el asignado con el booking id y es el padre del td
     // de donde esta asignado el button.
-    let id_tr = event.target.parentElement.id;
+    let id_tr = event.target.parentElement.parentElement.id;
 
     console.log(id_tr);
     // var host = window.location.origin;
