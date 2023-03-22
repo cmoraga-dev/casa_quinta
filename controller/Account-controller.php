@@ -66,12 +66,12 @@ class Account_controller{
                                 'server'=> $res));
     }
 
-    function getByUserAccount($name){
+    function getByUserAccount($idAccount){
         $user = new Account();
         $users = array();
         $users["users"] = array();
 
-        $res = $user->getByUserAccount($name);
+        $res = $user->getByUserAccount($idAccount);
 
         if ($res->rowCount()) {
             while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
@@ -83,10 +83,14 @@ class Account_controller{
                 );
                 array_push($users["users"], $item);
             }
-            return $this->user = $users;
+
+            echo json_encode(array('cod' => '202', 
+                                    'def' => 'Cuentas obtenidas con éxito',
+                                    'server' => $users));
         } else {
-            $this->error = json_encode(array('cod' => '204', 
-                                    'msj' => 'Usuario o contraseña incorrecto'));
+            echo json_encode(array('cod' => '500', 
+                                    'msj' => 'No se pudo obtener información',
+                                    'server' => $res));
         }
     }
 

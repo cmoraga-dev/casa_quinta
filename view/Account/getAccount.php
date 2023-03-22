@@ -5,6 +5,6 @@ $api = new Account_controller();
 
 if($_SERVER["REQUEST_METHOD"] === "POST"){
     //$_POST = json_decode(file_get_contents("php://input"), true);
-    $api->getByUserAccount($_POST['name_account']);
+    $api->getByUserAccount($_POST['idAccount']);
 }
 ?>

@@ -59,8 +59,8 @@ function createAccount(){
             toast.show()
             
             setTimeout(() => {
-                location.reload();                
-            }, 2000);
+                window.location.reload();                
+            }, 1000);
         }
 
     }).fail(function (err) {
@@ -256,6 +256,25 @@ $(document).on('click','#editUser',function(event) {
     console.log(id_tr);
     var host = window.location.origin;
     top.location.href = "/view/home/createEditAccounts.php";
+
+    $.ajax({
+        url: host+'/api/getAccount',
+        data: {
+            idAccount : id_tr,
+        },
+        type: 'POST',
+    }).done(function (response) {
+        //Respuesta del servidor, independiente si esta correcto o no.
+        let resp = JSON.parse(response);
+
+        if (resp['cod'] === '202') {
+            console.table(resp['server']);
+        }
+    }).fail(function (err) {
+        // Respuesta de un error de peticion hacia el ajax       
+        let resp = JSON.parse(err);
+        console.log(`${resp['cod']} ${resp['def']}`);
+    });
  });
 
   //Cancelar Creacion

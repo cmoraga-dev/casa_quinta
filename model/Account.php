@@ -25,8 +25,8 @@ include_once 'db.php';
         /** Obtiene el usuario por nombre.
          * Devuelve el usuario buscado y sus datos.
          */
-        function getByUserAccount($user){
-            $query = $this->connect()->query("SELECT * FROM accounts WHERE user_name = $user");
+        function getByUserAccount($idAccount){
+            $query = $this->connect()->query("SELECT * FROM accounts WHERE id = $idAccount");
             return $query;
         }
 
