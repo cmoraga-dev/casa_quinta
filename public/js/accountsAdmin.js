@@ -253,9 +253,9 @@ $(document).on('click','#editUser',function(event) {
     // de donde esta asignado el button.
     let id_tr = event.target.parentElement.parentElement.id;
 
-    console.log(id_tr);
-    var host = window.location.origin;
     top.location.href = "/view/home/createEditAccounts.php";
+    var host = window.location.origin;
+    console.log(id_tr);
 
     $.ajax({
         url: host+'/api/getAccount',
