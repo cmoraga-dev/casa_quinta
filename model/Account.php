@@ -35,9 +35,11 @@ include_once 'db.php';
          */
         function createAccount($name, $pass, $first_name, $last_name, $rut, $email){
             try {
+                // encryptamos la pass
+                $passEncryp  = hash('sha512',$pass);
 
                 $duplicateKey = $this->connect()->query("SELECT * FROM accounts WHERE user_name ='$name'");
-                $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, user_name, pass) VALUES(2, '$name', '$pass')");                
+                $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, user_name, pass) VALUES(2, '$name', '$passEncryp')");                
                 if($duplicateKey->rowCount() < 1){      
                     $query->execute();
 
@@ -53,6 +55,8 @@ include_once 'db.php';
                     //Luego de obtener el id, debemos agregarlo al nuevo usuario de box.
                     $query2 = $this->connect()->prepare("INSERT INTO box_users (id_account, first_name, last_name, identification_number, email) 
                                                          VALUES($last_id, '$first_name', '$last_name', $rut, '$email')");
+
+                    $query2->execute();
                 
                 }
                 return $last_id;
