@@ -48,13 +48,14 @@ function createAccount(){
             // Seteamos los valores de texto del toast.
             let tittleToast = toastEl.querySelector('.mr-auto');
             let msjToast = toastEl.querySelector('.toast-body');
+            let divTittleToast = toastEl.querySelector('.toast-header');
 
             // Agregamos valores a los componentes obtenidos con texto
             tittleToast.textContent = `Usuario Creado con Exito!`;
             msjToast.textContent = `Se ha creado satisfactoriamente el usuario ${userName}`;
 
             // Agregramos un fondo de exito
-            tittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
+            divTittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
 
             // Lo mostramos.
             toast.show()
