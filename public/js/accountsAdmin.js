@@ -269,6 +269,11 @@ $(document).on('click','#editUser',function(event) {
 
         if (resp['cod'] === '202') {
             console.table(resp['server']);
+            let arrayAccountInfo = resp['server'];
+            arrayAccountInfo.users.map((e) => {
+                let inputUserName = document.getElementById("user");
+                inputUserName.textContent = e.account;
+            });
         }
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
