@@ -59,7 +59,7 @@ function createAccount(){
             toast.show()
             setTimeout(() => {
                 location.reload();                
-            }, 3000);
+            }, 2000);
         }
 
     }).fail(function (err) {
@@ -173,8 +173,19 @@ $(document).on('click','#deleteUser',function(event) {
         //Respuesta del servidor, independiente si esta correcto o no.
         let resp = JSON.parse(response);
         if (resp['cod'] === '202') {
-            // Debemos desabilitar el boton para llamar, dado que ya se le asigno un box.
-            event.target.disabled = true
+            // Obtenemos el Toast.
+            let toastEl = document.querySelector('.toast');
+            let toast = new bootstrap.Toast(toastEl);
+
+            // Seteamos los valores de texto del toast.
+            let msjToast = toastEl.querySelector('.toast-body');
+            let divTittleToast = toastEl.querySelector('.toast-header');
+
+            // Agregamos valores a los componentes obtenidos con texto     
+            msjToast.textContent = `Se ha eliminado el usuario`;
+
+            // Agregramos un fondo de exito
+            divTittleToast.classList.add('bg-danger'); // Agrega la clase de estilo .bg-warning
             window.location.reload();
 
         } else if (resp['cod'] === '404') {
@@ -186,4 +197,51 @@ $(document).on('click','#deleteUser',function(event) {
         let resp = JSON.parse(err);
         console.log(`${resp['cod']} ${resp['def']}`);
     }); 
+ });
+
+ //Eliminar Cuenta
+$(document).on('click','#editUser',function(event) {
+
+    // Se captura el id del tr que es el asignado con el booking id y es el padre del td
+    // de donde esta asignado el button.
+    let id_tr = event.target.parentElement.parentElement.id;
+
+    console.log(id_tr);
+    var host = window.location.origin;
+    // $.ajax({
+        
+    //     // envia la peticion URL al API generado en view apartado booking
+    //     url: host+'/api/deleteAccount',
+    //     data: {
+    //         idAccount : id_tr,
+    //     },
+    //     type: 'POST',
+    // }).done(function (response) {
+    //     //Respuesta del servidor, independiente si esta correcto o no.
+    //     let resp = JSON.parse(response);
+    //     if (resp['cod'] === '202') {
+    //         // Obtenemos el Toast.
+    //         let toastEl = document.querySelector('.toast');
+    //         let toast = new bootstrap.Toast(toastEl);
+
+    //         // Seteamos los valores de texto del toast.
+    //         let msjToast = toastEl.querySelector('.toast-body');
+    //         let divTittleToast = toastEl.querySelector('.toast-header');
+
+    //         // Agregamos valores a los componentes obtenidos con texto     
+    //         msjToast.textContent = `Se ha eliminado el usuario`;
+
+    //         // Agregramos un fondo de exito
+    //         divTittleToast.classList.add('bg-danger'); // Agrega la clase de estilo .bg-warning
+    //         window.location.reload();
+
+    //     } else if (resp['cod'] === '404') {
+    //         console.log(`${resp['cod']} ${resp['def']}`);
+    //     }
+
+    // }).fail(function (err) {
+    //     // Respuesta de un error de peticion hacia el ajax       
+    //     let resp = JSON.parse(err);
+    //     console.log(`${resp['cod']} ${resp['def']}`);
+    // }); 
  });
