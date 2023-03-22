@@ -57,6 +57,7 @@ function createAccount(){
 
             // Lo mostramos.
             toast.show()
+            
             setTimeout(() => {
                 location.reload();                
             }, 2000);
@@ -229,8 +230,10 @@ $(document).on('click','#deleteUser',function(event) {
             // Lo mostramos.
             toast.show()
 
-
-            window.location.reload();
+            setTimeout(() => {
+                window.location.reload();              
+            }, 1000);
+            
 
         } else if (resp['cod'] === '404') {
             console.log(`${resp['cod']} ${resp['def']}`);
