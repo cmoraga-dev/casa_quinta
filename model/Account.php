@@ -54,7 +54,7 @@ include_once 'db.php';
 
                     //Luego de obtener el id, debemos agregarlo al nuevo usuario de box.
                     $query2 = $this->connect()->prepare("INSERT INTO box_users (id_account, first_name, last_name, identification_number, email) 
-                                                         VALUES($last_id, '$first_name', '$last_name', $rut, '$email')");
+                                                         VALUES($last_id, '$first_name', '$last_name', '$rut', '$email')");
 
                     $query2->execute();
                 
