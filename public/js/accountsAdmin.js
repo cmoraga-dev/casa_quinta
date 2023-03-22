@@ -253,5 +253,5 @@ $(document).on('click','#editUser',function(event) {
   //Cancelar Creacion
 $(document).on('click','#cancel-create',function(event) {
     // Volvemos al menu de listado de cuentas.
-    top.location.href = "/view/home/getAllAccounts.php";
+    top.location.href = "/view/home/accountsAdmin.php";
  });
