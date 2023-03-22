@@ -122,11 +122,11 @@ class Account_controller{
     }
 
 
-    function createAccount($name , $pass){
+    function createAccount($name , $pass, $first_name, $last_name, $rut, $email){
         try {
             $user = new Account();
 
-            $res = $user->createAccount($name , $pass);
+            $res = $user->createAccount($name , $pass, $first_name, $last_name, $rut, $email);
             
             if ($res >0) {
                 echo json_encode(array('cod' => '202', 

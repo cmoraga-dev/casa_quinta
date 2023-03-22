@@ -33,16 +33,27 @@ include_once 'db.php';
         /** Crear Cuenta.
          * Funcion para crear cuenta para el acceso al sistema, las cuentas estan asociadas a un tipo de perfil con un rol de acceso.
          */
-        function createAccount($name, $pass){
+        function createAccount($name, $pass, $first_name, $last_name, $rut, $email){
             try {
 
                 $duplicateKey = $this->connect()->query("SELECT * FROM accounts WHERE user_name ='$name'");
                 $query = $this->connect()->prepare("INSERT INTO accounts (id_type_profile, user_name, pass) VALUES(2, '$name', '$pass')");                
                 if($duplicateKey->rowCount() < 1){      
                     $query->execute();
+
+                    // obtenemos el ultimo usuario creado para asi obtener el id recien creado.
                     $queryLast_id = $this->connect()->query("SELECT id FROM `accounts` ORDER BY `accounts`.`id` desc  limit 1");
+
+                    // lo sacamos con el fecth
                     $row_lastId = $queryLast_id->fetch(PDO::FETCH_ASSOC);
+                   
+                    // se lo agregamos a la variable
                     $last_id = $row_lastId['id'];
+
+                    //Luego de obtener el id, debemos agregarlo al nuevo usuario de box.
+                    $query2 = $this->connect()->prepare("INSERT INTO box_users (id_account, first_name, last_name, identification_number, email) 
+                                                         VALUES($last_id, '$first_name', '$last_name', $rut, '$email')");
+                
                 }
                 return $last_id;
                 
