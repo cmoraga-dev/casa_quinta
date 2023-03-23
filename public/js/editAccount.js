@@ -65,6 +65,7 @@ function updateAccount() {
     console.log(idEdit);
     if (idEdit != 0) {
         let inputPass = document.getElementById("password");
+        let inputName = document.getElementById("user");
 
         $.ajax({
             // envia la peticion URL al API generado.
@@ -72,6 +73,7 @@ function updateAccount() {
             data: {
                 idAccount: idEdit,
                 pass : inputPass,
+                name: inputName
             },
             type: 'POST',
         }).done(function (response) {
