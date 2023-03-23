@@ -260,7 +260,7 @@ $(document).on('click','#editUser',function(event) {
       }; 
    
     console.log(id_tr);
-    top.location.href = "/view/home/editAccount.php?usuario=" + encodeURIComponent(JSON.stringify(user));
+    top.location.href = "/view/home/editAccount.php?user=" + encodeURIComponent(JSON.stringify(user));
  });
 
   //Cancelar Creacion
