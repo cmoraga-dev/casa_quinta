@@ -252,8 +252,6 @@ $(document).on('click','#editUser',function(event) {
     // Se captura el id del tr que es el asignado con el booking id y es el padre del td
     // de donde esta asignado el button.
     let id_tr = event.target.parentElement.parentElement.id;
-
-    top.location.href = "/view/home/createEditAccounts.php";
     var host = window.location.origin;
     console.log(id_tr);
 
@@ -268,6 +266,7 @@ $(document).on('click','#editUser',function(event) {
         let resp = JSON.parse(response);
 
         if (resp['cod'] === '202') {
+            top.location.href = "/view/home/createEditAccounts.php";
             console.table(resp['server']);
             let arrayAccountInfo = resp['server'];
             arrayAccountInfo.users.map((e) => {
