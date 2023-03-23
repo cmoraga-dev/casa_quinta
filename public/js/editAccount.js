@@ -1,3 +1,4 @@
+let idUser = 0;
 
 $(document).ready(function() {
     // Obtén la cadena de consulta de la URL actual
@@ -7,12 +8,64 @@ $(document).ready(function() {
     let params = new URLSearchParams(queryString);
 
     // Obtiene el valor del parámetro 'usuario' y lo convierte en un objeto JavaScript
-    let usuario = JSON.parse(decodeURIComponent(params.get('usuario')));
-
-    console.log(usuario.nombre); // Imprime "Juan"
-    console.log(usuario.edad); // Imprime "30"
-    console.log(usuario.correo); // Imprime "juan@example.com"
+    let userByEdit = JSON.parse(decodeURIComponent(params.get('user')));
 
     let inputUserName = document.getElementById("user");
     inputUserName.setAttribute("disabled",true);
+
+    idUser = userByEdit.id;
+
+    loadEditAccount();
  })
+
+ // Obtenemos los datos del usuario a editar y lo cargamos en la pagina.
+ function loadEditAccount(){
+    var host = window.location.origin;
+    $.ajax({
+        url: host+'/api/getAccount',
+        data: {
+            idAccount : idUser,
+        },
+        type: 'POST',
+    }).done(function (response) {
+        //Respuesta del servidor, independiente si esta correcto o no.
+        let resp = JSON.parse(response);
+
+        if (resp['cod'] === '202') {          
+            console.table(resp['server']);
+            let arrayAccountInfo = resp['server'];           
+            // arrayAccountInfo.users.map((e) => {
+            //     inputUserName.value = e.account;
+            // });
+           
+        }
+    }).fail(function (err) {
+        // Respuesta de un error de peticion hacia el ajax       
+        let resp = JSON.parse(err);
+        console.log(`${resp['cod']} ${resp['def']}`);
+    });
+ }
+
+//Cancelar Creacion
+$(document).on('click','#cancel-create',function(event) {
+    // Volvemos al menu de listado de cuentas.
+    top.location.href = "/view/home/accountsAdmin.php";
+ });
+
+ /* Cierra Session.
+    Elimina el proceso de inicio de session,
+    esto se envia al archivo que elimina la session.
+*/
+function logOut(){
+    top.location.href = "../login/exitSession.php"; 
+
+}
+
+/* Cierra Session.
+    Elimina el proceso de inicio de session,
+    esto se envia al archivo que elimina la session.
+*/
+function goToHome(){
+    top.location.href = "../../view/home"; 
+
+}

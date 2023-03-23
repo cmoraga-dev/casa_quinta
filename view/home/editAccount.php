@@ -7,7 +7,7 @@ include("../login/validateSession.php");
 
     <head>
         <meta charset="utf-8">
-        <title>Crear y Editar Cuentas</title>
+        <title>Editar Cuentas</title>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
         <script src="https://kit.fontawesome.com/499ea74159.js" crossorigin="anonymous"></script>
@@ -45,7 +45,7 @@ include("../login/validateSession.php");
         </nav>
 
         <div class="container" style="padding-top: 50px;">
-            <h1>Agregar cuenta de usuario</h1>
+            <h1>Editar cuenta de usuario</h1>
             <form action="javascript: createAccount()">
                 <div class="row">
                     <div class="form-group col-md-6">

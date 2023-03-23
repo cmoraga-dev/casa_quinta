@@ -251,38 +251,15 @@ $(document).on('click','#editUser',function(event) {
 
     // Se captura el id del tr que es el asignado con el booking id y es el padre del td
     // de donde esta asignado el button.
-    let id_tr = event.target.parentElement.parentElement.id;
+    let id_tr = event.target.parentElement.parentElement.id;       
     var host = window.location.origin;
+
+    let user = {
+        id:  id_tr,
+      }; 
+   
     console.log(id_tr);
-
-    $.ajax({
-        url: host+'/api/getAccount',
-        data: {
-            idAccount : id_tr,
-        },
-        type: 'POST',
-    }).done(function (response) {
-        //Respuesta del servidor, independiente si esta correcto o no.
-        let resp = JSON.parse(response);
-
-        if (resp['cod'] === '202') {
-           let usuario = {
-            nombre: 'Juan',
-            edad: id_tr,
-            correo: 'juan@example.com'
-          };           
-            console.table(resp['server']);
-            let arrayAccountInfo = resp['server'];           
-            // arrayAccountInfo.users.map((e) => {
-            //     inputUserName.value = e.account;
-            // });
-            top.location.href = "/view/home/editAccount.php?usuario=" + encodeURIComponent(JSON.stringify(usuario));
-        }
-    }).fail(function (err) {
-        // Respuesta de un error de peticion hacia el ajax       
-        let resp = JSON.parse(err);
-        console.log(`${resp['cod']} ${resp['def']}`);
-    });
+    top.location.href = "/view/home/editAccount.php?usuario=" + encodeURIComponent(JSON.stringify(user));
  });
 
   //Cancelar Creacion
