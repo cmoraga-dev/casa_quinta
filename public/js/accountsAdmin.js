@@ -269,8 +269,8 @@ $(document).on('click','#editUser',function(event) {
             top.location.href = "/view/home/createEditAccounts.php";
             setTimeout(() => {
                 let inputUserName = document.getElementById("user");
-                inputUserName.disabled = true;
-            }, 300);
+                inputUserName.setAttribute("disabled",true);
+            }, 2000);
             console.table(resp['server']);
             let arrayAccountInfo = resp['server'];
             arrayAccountInfo.users.map((e) => {
