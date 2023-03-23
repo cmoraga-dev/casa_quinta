@@ -34,7 +34,7 @@ $(document).ready(function() {
             // Obtienes el componente de html a editar.
             let inputUserName = document.getElementById("user");
             let inputFirst_name = document.getElementById("name");
-            let inputFullname = document.getElementById("Apellidos");
+            let inputFullname = document.getElementById("fullname");
             let inputRut = document.getElementById("rut");
             let inputEmail = document.getElementById("email");           
 
@@ -47,10 +47,10 @@ $(document).ready(function() {
            
             arrayAccountInfo.users.map((e) => {
                 inputUserName.value = e.account;
-                inputFirst_name = e.first_name;
-                inputFullname = e.last_name;
-                inputRut = e.rut;
-                inputEmail = e.email;
+                inputFirst_name.value = e.first_name;
+                inputFullname.value = e.last_name;
+                inputRut.value = e.rut;
+                inputEmail.value = e.email;
             });
            
         }
