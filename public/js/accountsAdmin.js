@@ -266,7 +266,7 @@ $(document).on('click','#editUser',function(event) {
         let resp = JSON.parse(response);
 
         if (resp['cod'] === '202') {
-            top.location.href = "/view/home/createEditAccounts.php";
+            //top.location.href = "/view/home/createEditAccounts.php";
             console.table(resp['server']);
             let arrayAccountInfo = resp['server'];
             arrayAccountInfo.users.map((e) => {
