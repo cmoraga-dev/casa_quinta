@@ -272,11 +272,10 @@ $(document).on('click','#editUser',function(event) {
             correo: 'juan@example.com'
           };           
             console.table(resp['server']);
-            let arrayAccountInfo = resp['server'];
-           
-            arrayAccountInfo.users.map((e) => {
-                inputUserName.value = e.account;
-            });
+            let arrayAccountInfo = resp['server'];           
+            // arrayAccountInfo.users.map((e) => {
+            //     inputUserName.value = e.account;
+            // });
             top.location.href = "/view/home/editAccount.php?usuario=" + encodeURIComponent(JSON.stringify(usuario));
         }
     }).fail(function (err) {
