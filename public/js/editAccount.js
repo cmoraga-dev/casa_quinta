@@ -1,4 +1,4 @@
-
+let idEdit = 0;
 $(document).ready(function() {
     // Obtén la cadena de consulta de la URL actual
     let queryString = window.location.search;
@@ -28,7 +28,6 @@ $(document).ready(function() {
         let resp = JSON.parse(response);
 
         if (resp['cod'] === '202') {          
-            console.table(resp['server']);
             let arrayAccountInfo = resp['server'];   
 
             // Obtienes el componente de html a editar.
@@ -52,7 +51,7 @@ $(document).ready(function() {
                 inputRut.value = e.rut;
                 inputEmail.value = e.email;
             });
-           
+            idEdit = idUser;
         }
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
@@ -60,6 +59,51 @@ $(document).ready(function() {
         console.log(`${resp['cod']} ${resp['def']}`);
     });
  }
+
+function updateAccount() {
+    var host = window.location.origin;
+
+    if (idEdit > 0) {
+        let inputPass = document.getElementById("password");
+
+        $.ajax({
+            // envia la peticion URL al API generado en view apartado booking
+            url: host + '/api/updateAccount',
+            data: {
+                idAccount: id_tr,
+                pass : inputPass,
+            },
+            type: 'POST',
+        }).done(function (response) {
+            //Respuesta del servidor, independiente si esta correcto o no.
+            let resp = JSON.parse(response);
+            if (resp['cod'] === '202') {
+                // Obtenemos el Toast.
+                let toastEl = document.querySelector('.toast');
+                let toast = new bootstrap.Toast(toastEl);
+
+                // Seteamos los valores de texto del toast.
+                let msjToast = toastEl.querySelector('.toast-body');
+                let divTittleToast = toastEl.querySelector('.toast-header');
+
+                // Agregamos valores a los componentes obtenidos con texto     
+                msjToast.textContent = `Se ha actualizado la contraseña`;
+
+                // Agregramos un fondo de exito
+                divTittleToast.classList.add('bg-succes'); // Agrega la clase de estilo .bg-succes
+                window.location.reload();
+
+            } else if (resp['cod'] === '404') {
+                console.log(`${resp['cod']} ${resp['def']}`);
+            }
+
+        }).fail(function (err) {
+            // Respuesta de un error de peticion hacia el ajax       
+            let resp = JSON.parse(err);
+            console.log(`${resp['cod']} ${resp['def']}`);
+        });
+    }
+}
 
 //Cancelar Creacion
 $(document).on('click','#cancel-create',function(event) {

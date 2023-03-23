@@ -70,44 +70,6 @@ function createAccount(){
     });
 }
 
-function editAccount(){
-// $.ajax({
-        
-    //     // envia la peticion URL al API generado en view apartado booking
-    //     url: host+'/api/deleteAccount',
-    //     data: {
-    //         idAccount : id_tr,
-    //     },
-    //     type: 'POST',
-    // }).done(function (response) {
-    //     //Respuesta del servidor, independiente si esta correcto o no.
-    //     let resp = JSON.parse(response);
-    //     if (resp['cod'] === '202') {
-    //         // Obtenemos el Toast.
-    //         let toastEl = document.querySelector('.toast');
-    //         let toast = new bootstrap.Toast(toastEl);
-
-    //         // Seteamos los valores de texto del toast.
-    //         let msjToast = toastEl.querySelector('.toast-body');
-    //         let divTittleToast = toastEl.querySelector('.toast-header');
-
-    //         // Agregamos valores a los componentes obtenidos con texto     
-    //         msjToast.textContent = `Se ha eliminado el usuario`;
-
-    //         // Agregramos un fondo de exito
-    //         divTittleToast.classList.add('bg-danger'); // Agrega la clase de estilo .bg-warning
-    //         window.location.reload();
-
-    //     } else if (resp['cod'] === '404') {
-    //         console.log(`${resp['cod']} ${resp['def']}`);
-    //     }
-
-    // }).fail(function (err) {
-    //     // Respuesta de un error de peticion hacia el ajax       
-    //     let resp = JSON.parse(err);
-    //     console.log(`${resp['cod']} ${resp['def']}`);
-    // }); 
-}
 
 function redirectToCreateEditAccount(){
     top.location.href = "/view/home/createEditAccounts.php";
