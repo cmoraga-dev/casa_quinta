@@ -46,14 +46,14 @@ include("../login/validateSession.php");
 
         <div class="container" style="padding-top: 50px;">
             <h1>Editar cuenta de usuario</h1>
-            <form action="javascript: createAccount()">
+            <form action="javascript: updateAccount()">
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="userName">Nombre de usuario</label>
                         <input type="text" class="form-control" id="user" placeholder="Nombre de usuario" required>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="password">Password</label>
+                        <label for="password">Nueva Password</label>
                         <input type="password" class="form-control" id="password" placeholder="Password" required>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ include("../login/validateSession.php");
                 </div>
                 <div class="row">
                     <div class="col-8">
-                        <button type="submit" class="btn btn-primary">Crear Cuenta</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
                     </div>
                     <div class="col-4">
                         <label class="btn btn-danger" id="cancel-create">Cancelar</label>

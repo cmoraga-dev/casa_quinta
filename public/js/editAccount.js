@@ -9,9 +9,6 @@ $(document).ready(function() {
     // Obtiene el valor del parámetro 'usuario' y lo convierte en un objeto JavaScript
     let userByEdit = JSON.parse(decodeURIComponent(params.get('user')));
 
-    let inputUserName = document.getElementById("user");
-    inputUserName.setAttribute("disabled",true);
-
     let idUser = userByEdit.id;
 
     loadEditAccount(idUser);
@@ -32,10 +29,29 @@ $(document).ready(function() {
 
         if (resp['cod'] === '202') {          
             console.table(resp['server']);
-            let arrayAccountInfo = resp['server'];           
-            // arrayAccountInfo.users.map((e) => {
-            //     inputUserName.value = e.account;
-            // });
+            let arrayAccountInfo = resp['server'];   
+
+            // Obtienes el componente de html a editar.
+            let inputUserName = document.getElementById("user");
+            let inputFirst_name = document.getElementById("name");
+            let inputFullname = document.getElementById("Apellidos");
+            let inputRut = document.getElementById("rut");
+            let inputEmail = document.getElementById("email");           
+
+            // Deshabilitamos los campos que no se podran editar.
+            inputUserName.setAttribute("disabled", true);
+            inputFirst_name.setAttribute("disabled", true);
+            inputFullname.setAttribute("disabled", true);
+            inputRut.setAttribute("disabled", true);
+            inputEmail.setAttribute("disabled", true);
+           
+            arrayAccountInfo.users.map((e) => {
+                inputUserName.value = e.account;
+                inputFirst_name = e.first_name;
+                inputFullname = e.last_name;
+                inputRut = e.rut;
+                inputEmail = e.email;
+            });
            
         }
     }).fail(function (err) {

@@ -79,6 +79,10 @@ class Account_controller{
                 $item = array(
                     "id" => $row['id'],
                     "account" => $row['user_name'],
+                    "first_name" => $row['first_name'],
+                    "last_name" => $row['last_name'],
+                    "rut" => $row['identification_number'],
+                    "email" => $row['email'],
                 );
                 array_push($users["users"], $item);
             }
