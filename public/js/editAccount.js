@@ -70,7 +70,7 @@ function updateAccount() {
             // envia la peticion URL al API generado en view apartado booking
             url: host + '/api/updateAccount',
             data: {
-                idAccount: id_tr,
+                idAccount: idEdit,
                 pass : inputPass,
             },
             type: 'POST',
