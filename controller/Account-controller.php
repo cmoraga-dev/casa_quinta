@@ -79,7 +79,6 @@ class Account_controller{
                 $item = array(
                     "id" => $row['id'],
                     "account" => $row['user_name'],
-                    "pass" => $row['pass'],
                 );
                 array_push($users["users"], $item);
             }

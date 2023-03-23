@@ -26,7 +26,11 @@ include_once 'db.php';
          * Devuelve el usuario buscado y sus datos.
          */
         function getByUserAccount($idAccount){
-            $query = $this->connect()->query("SELECT * FROM accounts WHERE id = $idAccount");
+            $query = $this->connect()->query("SELECT ac.user_name, ac.id, bu.first_name, bu.last_name, bu.identification_number, bu.email
+                                                FROM accounts ac
+                                                INNER JOIN box_users bu
+                                                ON ac.id = bu.id_account
+                                                WHERE ac.id =$idAccount");
             return $query;
         }
 
