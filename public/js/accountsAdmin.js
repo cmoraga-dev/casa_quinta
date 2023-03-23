@@ -266,13 +266,15 @@ $(document).on('click','#editUser',function(event) {
         let resp = JSON.parse(response);
 
         if (resp['cod'] === '202') {
-            //top.location.href = "/view/home/createEditAccounts.php";
+            top.location.href = "/view/home/createEditAccounts.php";
+            setTimeout(() => {
+                let inputUserName = document.getElementById("user");
+                inputUserName.disabled = true;
+            }, 300);
             console.table(resp['server']);
             let arrayAccountInfo = resp['server'];
             arrayAccountInfo.users.map((e) => {
-                let inputUserName = document.getElementById("user");
                 inputUserName.value = e.account;
-                inputUserName.disabled = true;
             });
         }
     }).fail(function (err) {
