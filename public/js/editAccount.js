@@ -15,7 +15,8 @@ $(document).ready(function() {
 
     idUser = userByEdit.id;
 
-    loadEditAccount();
+    console.log(idUser + " " + userByEdit.id);
+    //loadEditAccount();
  })
 
  // Obtenemos los datos del usuario a editar y lo cargamos en la pagina.

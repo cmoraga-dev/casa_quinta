@@ -254,6 +254,7 @@ $(document).on('click','#editUser',function(event) {
     let id_tr = event.target.parentElement.parentElement.id;       
     var host = window.location.origin;
 
+    // Objeto de usuario con información
     let user = {
         id:  id_tr,
       }; 
