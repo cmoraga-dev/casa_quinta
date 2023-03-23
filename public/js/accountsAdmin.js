@@ -266,16 +266,21 @@ $(document).on('click','#editUser',function(event) {
         let resp = JSON.parse(response);
 
         if (resp['cod'] === '202') {
-            top.location.href = "/view/home/createEditAccounts.php";
-            setTimeout(() => {
-                let inputUserName = document.getElementById("user");
-                inputUserName.setAttribute("disabled",true);
-            }, 2000);
+           let usuario = {
+            nombre: 'Juan',
+            edad: 30,
+            correo: 'juan@example.com'
+          };
+            let inputUserName = document.getElementById("user");
+            inputUserName.setAttribute("disabled",true);
+           
             console.table(resp['server']);
             let arrayAccountInfo = resp['server'];
+           
             arrayAccountInfo.users.map((e) => {
                 inputUserName.value = e.account;
             });
+            top.location.href = "/view/home/createEditAccounts.php?usuario=" + encodeURIComponent(JSON.stringify(usuario));
         }
     }).fail(function (err) {
         // Respuesta de un error de peticion hacia el ajax       
@@ -289,3 +294,18 @@ $(document).on('click','#cancel-create',function(event) {
     // Volvemos al menu de listado de cuentas.
     top.location.href = "/view/home/accountsAdmin.php";
  });
+
+ $(document).ready(function() {
+    // Obtén la cadena de consulta de la URL actual
+    let queryString = window.location.search;
+
+    // Separa la cadena de consulta en un objeto de parámetros de búsqueda
+    let params = new URLSearchParams(queryString);
+
+    // Obtiene el valor del parámetro 'usuario' y lo convierte en un objeto JavaScript
+    let usuario = JSON.parse(decodeURIComponent(params.get('usuario')));
+
+    console.log(usuario.nombre); // Imprime "Juan"
+    console.log(usuario.edad); // Imprime "30"
+    console.log(usuario.correo); // Imprime "juan@example.com"
+ })
