@@ -1,4 +1,3 @@
-let idUser = 0;
 
 $(document).ready(function() {
     // Obtén la cadena de consulta de la URL actual
@@ -13,14 +12,13 @@ $(document).ready(function() {
     let inputUserName = document.getElementById("user");
     inputUserName.setAttribute("disabled",true);
 
-    idUser = userByEdit.id;
+    let idUser = userByEdit.id;
 
-    console.log(idUser + " " + userByEdit.id);
-    //loadEditAccount();
+    loadEditAccount(idUser);
  })
 
  // Obtenemos los datos del usuario a editar y lo cargamos en la pagina.
- function loadEditAccount(){
+ function loadEditAccount( idUser ){
     var host = window.location.origin;
     $.ajax({
         url: host+'/api/getAccount',
