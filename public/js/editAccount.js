@@ -62,12 +62,12 @@ $(document).ready(function() {
 
 function updateAccount() {
     var host = window.location.origin;
-
-    if (idEdit > 0) {
+    console.log(idEdit);
+    if (idEdit != 0) {
         let inputPass = document.getElementById("password");
 
         $.ajax({
-            // envia la peticion URL al API generado en view apartado booking
+            // envia la peticion URL al API generado.
             url: host + '/api/updateAccount',
             data: {
                 idAccount: idEdit,
