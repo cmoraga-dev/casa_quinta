@@ -270,10 +270,7 @@ $(document).on('click','#editUser',function(event) {
             nombre: 'Juan',
             edad: id_tr,
             correo: 'juan@example.com'
-          };
-            let inputUserName = document.getElementById("user");
-            inputUserName.setAttribute("disabled",true);
-           
+          };           
             console.table(resp['server']);
             let arrayAccountInfo = resp['server'];
            

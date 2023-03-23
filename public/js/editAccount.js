@@ -12,4 +12,7 @@ $(document).ready(function() {
     console.log(usuario.nombre); // Imprime "Juan"
     console.log(usuario.edad); // Imprime "30"
     console.log(usuario.correo); // Imprime "juan@example.com"
+
+    let inputUserName = document.getElementById("user");
+    inputUserName.setAttribute("disabled",true);
  })
