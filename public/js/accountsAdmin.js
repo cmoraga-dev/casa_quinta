@@ -33,8 +33,7 @@ function createAccount(){
     const numero = rutSinFormato.slice(0, -1);
     const digitoVerificador = rutSinFormato.slice(-1);
 
-    console.log(`el rut ${rut} le sacamos los puntos y guion ${rutSinFormato} y separamos en  ${numero}  ${digitoVerificador} `)
-
+    console.log(validarRut(numero, digitoVerificador));
 
     // $.ajax({
     //     url: host+'/api/createAccount',
@@ -244,20 +243,13 @@ $(document).on('click','#cancel-create',function(event) {
 
  //------------------------ VALIDADOR DE RUT
 
- function validarRut(rut) {
-
-    const rutSinFormato  = rut.replace(/\./g, '').replace(/\-/g, '');
-
-    // Separar el número del dígito verificador
-    const numeroSinDigito = rutSinFormato.slice(0, -1);
-    const digitoVerificador = rutSinFormato.slice(-1);
-
+ function validarRut(numero, digitoVerificador) {
     let rutValido = false;
     let suma = 0;
     let factor = 2;
     
     // Convertir el número del RUT a un arreglo de dígitos
-    const digitos = numeroSinDigito.split('').reverse();
+    const digitos = numero.split('').reverse();
   
     // Sumar los productos de los dígitos por su factor correspondiente
     digitos.forEach((digito) => {
