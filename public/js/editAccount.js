@@ -91,7 +91,10 @@ function updateAccount() {
 
                 // Agregramos un fondo de exito
                 divTittleToast.classList.add('bg-succes'); // Agrega la clase de estilo .bg-succes
-                //window.location.reload();
+
+                // Mostramos el toast.
+                toast.show();
+                window.location.reload();
 
             } else if (resp['cod'] === '404') {
                 console.log(`${resp['cod']} ${resp['def']}`);
