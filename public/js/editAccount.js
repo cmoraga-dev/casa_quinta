@@ -65,45 +65,43 @@ function updateAccount() {
 
     if (idEdit != 0) {
         let inputPass = document.getElementById("password").value;
-        let inputName = document.getElementById("user");
-        console.log(`${idEdit} y la pass ${inputPass}`);
 
-        // $.ajax({
-        //     // envia la peticion URL al API generado.
-        //     url: host + '/api/updateAccountPassword',
-        //     data: {
-        //         idAccount: idEdit,
-        //         pass : inputPass,
-        //     },
-        //     type: 'POST',
-        // }).done(function (response) {
-        //     //Respuesta del servidor, independiente si esta correcto o no.
-        //     let resp = JSON.parse(response);
-        //     if (resp['cod'] === '202') {
-        //         // Obtenemos el Toast.
-        //         let toastEl = document.querySelector('.toast');
-        //         let toast = new bootstrap.Toast(toastEl);
+        $.ajax({
+            // envia la peticion URL al API generado.
+            url: host + '/api/updateAccountPassword',
+            data: {
+                idAccount: idEdit,
+                pass : inputPass,
+            },
+            type: 'POST',
+        }).done(function (response) {
+            //Respuesta del servidor, independiente si esta correcto o no.
+            let resp = JSON.parse(response);
+            if (resp['cod'] === '202') {
+                // Obtenemos el Toast.
+                let toastEl = document.querySelector('.toast');
+                let toast = new bootstrap.Toast(toastEl);
 
-        //         // Seteamos los valores de texto del toast.
-        //         let msjToast = toastEl.querySelector('.toast-body');
-        //         let divTittleToast = toastEl.querySelector('.toast-header');
+                // Seteamos los valores de texto del toast.
+                let msjToast = toastEl.querySelector('.toast-body');
+                let divTittleToast = toastEl.querySelector('.toast-header');
 
-        //         // Agregamos valores a los componentes obtenidos con texto     
-        //         msjToast.textContent = `Se ha actualizado la contraseña`;
+                // Agregamos valores a los componentes obtenidos con texto     
+                msjToast.textContent = `Se ha actualizado la contraseña`;
 
-        //         // Agregramos un fondo de exito
-        //         divTittleToast.classList.add('bg-succes'); // Agrega la clase de estilo .bg-succes
-        //         window.location.reload();
+                // Agregramos un fondo de exito
+                divTittleToast.classList.add('bg-succes'); // Agrega la clase de estilo .bg-succes
+                window.location.reload();
 
-        //     } else if (resp['cod'] === '404') {
-        //         console.log(`${resp['cod']} ${resp['def']}`);
-        //     }
+            } else if (resp['cod'] === '404') {
+                console.log(`${resp['cod']} ${resp['def']}`);
+            }
 
-        // }).fail(function (err) {
-        //     // Respuesta de un error de peticion hacia el ajax       
-        //     let resp = JSON.parse(err);
-        //     console.log(`${resp['cod']} ${resp['def']}`);
-        // });
+        }).fail(function (err) {
+            // Respuesta de un error de peticion hacia el ajax       
+            let resp = JSON.parse(err);
+            console.log(`${resp['cod']} ${resp['def']}`);
+        });
     }
 }
 
