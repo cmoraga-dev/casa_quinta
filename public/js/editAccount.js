@@ -90,7 +90,7 @@ function updateAccount() {
                 msjToast.textContent = `Se ha actualizado la contraseña`;
 
                 // Agregramos un fondo de exito
-                divTittleToast.classList.add('bg-succes'); // Agrega la clase de estilo .bg-succes
+                divTittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-succes
 
                 // Mostramos el toast.
                 toast.show();
