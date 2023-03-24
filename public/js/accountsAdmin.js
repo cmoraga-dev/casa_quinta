@@ -2,8 +2,8 @@
     Elimina el proceso de inicio de session,
     esto se envia al archivo que elimina la session.
 */
-function logOut(){
-    top.location.href = "../login/exitSession.php"; 
+function logOut() {
+    top.location.href = "../login/exitSession.php";
 
 }
 
@@ -11,12 +11,12 @@ function logOut(){
     Elimina el proceso de inicio de session,
     esto se envia al archivo que elimina la session.
 */
-function goToHome(){
-    top.location.href = "../../view/home"; 
+function goToHome() {
+    top.location.href = "../../view/home";
 
 }
 
-function createAccount(){
+function createAccount() {
     var host = window.location.origin;
 
     let userName = document.getElementById("user").value;
@@ -25,13 +25,60 @@ function createAccount(){
     let fullname = document.getElementById("fullname").value;
     let rut = document.getElementById("rut").value;
     let email = document.getElementById("email").value;
-    
+
     // Remover cualquier punto o guion existente en el RUT (solo si es que ya estaba formateado)
     const rutSinFormato = rut.replace(/\./g, '').replace(/\-/g, '');
 
-    if(checkRut(rutSinFormato) == true){
-        console.log(checkRut(rutSinFormato));        
-    }else{
+    if (checkRut(rutSinFormato) == true) {
+        // Separar el número del dígito verificador
+        const numero = rutSinFormato.slice(0, -1);
+        const digitoVerificador = rutSinFormato.slice(-1);
+
+        // Formatear el rut a 11.111.111-1
+        const rutFormateado = numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + digitoVerificador;
+        $.ajax({
+            url: host + '/api/createAccount',
+            type: 'POST',
+            data: {
+                user: userName,
+                pass: password,
+                first_name: name,
+                last_name: fullname,
+                rut: rutFormateado,
+                email: email,
+            }
+        }).done(function (response) {
+            resp = JSON.parse(response)
+            console.log(resp['cod']);
+            if (resp['cod'] === '202') {
+                // Obtenemos el Toast.
+                let toastEl = document.querySelector('.toast');
+                let toast = new bootstrap.Toast(toastEl);
+
+                // Seteamos los valores de texto del toast.
+                let msjToast = toastEl.querySelector('.toast-body');
+                let divTittleToast = toastEl.querySelector('.toast-header');
+
+                // Agregamos valores a los componentes obtenidos con texto     
+                msjToast.textContent = `Se ha creado satisfactoriamente el usuario ${userName}`;
+
+                // Agregramos un fondo de exito
+                divTittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
+
+                // Lo mostramos.
+                toast.show()
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }
+
+        }).fail(function (err) {
+            // Respuesta de un error de peticion hacia el ajax       
+            var resp = JSON.parse(err);
+            console.log(`${resp['cod']} ${resp['def']}`);
+        });
+    } else {
         // Obtenemos el Toast.
         let toastEl = document.querySelector('.toast');
         let toast = new bootstrap.Toast(toastEl);
@@ -41,76 +88,35 @@ function createAccount(){
         let divTittleToast = toastEl.querySelector('.toast-header');
 
         // Agregamos valores a los componentes obtenidos con texto     
-        msjToast.textContent = `Rut invalido ${rut} por favor digitar bien`;
+        msjToast.textContent = `Rut invalido '${rut}' por favor digitar bien`;
 
         // Agregramos un fondo de exito
         divTittleToast.classList.add('bg-danger'); // Agrega la clase de estilo .bg-success
 
         // Lo mostramos.
-        toast.show() 
+        toast.show()
     }
 
-    // $.ajax({
-    //     url: host+'/api/createAccount',
-    //     type: 'POST',
-    //     data: { 
-    //         user : userName,
-    //         pass : password,
-    //         first_name : name,
-    //         last_name : fullname,
-    //         rut : rut,
-    //         email : email,
-    //     }
-    // }).done(function (response) {
-    //    resp = JSON.parse(response)
-    //     console.log(resp['cod'] );        
-    //     if(resp['cod'] === '202'){
-    //         // Obtenemos el Toast.
-    //         let toastEl = document.querySelector('.toast');
-    //         let toast = new bootstrap.Toast(toastEl);
 
-    //         // Seteamos los valores de texto del toast.
-    //         let msjToast = toastEl.querySelector('.toast-body');
-    //         let divTittleToast = toastEl.querySelector('.toast-header');
-
-    //         // Agregamos valores a los componentes obtenidos con texto     
-    //         msjToast.textContent = `Se ha creado satisfactoriamente el usuario ${userName}`;
-
-    //         // Agregramos un fondo de exito
-    //         divTittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
-
-    //         // Lo mostramos.
-    //         toast.show()
-            
-    //         setTimeout(() => {
-    //             window.location.reload();                
-    //         }, 1000);
-    //     }
-
-    // }).fail(function (err) {
-    //     // Respuesta de un error de peticion hacia el ajax       
-    //     var resp = JSON.parse(err);
-    //     console.log(`${resp['cod']} ${resp['def']}`);
-    // });
 }
 
 
-function redirectToCreateEditAccount(){
+function redirectToCreateEditAccount() {
     top.location.href = "/view/home/createEditAccounts.php";
 }
 
-function loadData( tableArray = []){
+function loadData(tableArray = []) {
 
     // Se asigna un valor a la constante para saber si viene vacio el arreglo.
     const table = tableArray.users.length;
 
     // Se valida si viene con datos para ejecutar la carga de tabla.
-    if(table > 0){
+    if (table > 0) {
         // Se busca el body de la tabla.
         const tbody = document.getElementById("tbody-accounts");
-       
+
         // Se valida que existe el campo id
-        if(tbody){
+        if (tbody) {
             // Se limpia el tbody para ir actualizandolo.
             tbody.innerHTML = '';
 
@@ -137,7 +143,7 @@ function loadData( tableArray = []){
                 tdAccountName.textContent = e.user_name;
                 tdAccountAlias.textContent = e.alias;
                 tdAccountType.textContent = e.profile_type;
-                
+
                 // Se le asigna el evento onclick para llamar al metodo callUser
                 edit_btn.id = "editUser";
                 delete_btn.id = "deleteUser";
@@ -165,7 +171,7 @@ function getAllAccounts() {
     var host = window.location.origin;
 
     $.ajax({
-        url: host+'/api/getAllAccounts',
+        url: host + '/api/getAllAccounts',
         type: 'POST',
     }).done(function (response) {
         //console.log(response)
@@ -180,7 +186,7 @@ function getAllAccounts() {
 getAllAccounts();
 
 //Eliminar Cuenta
-$(document).on('click','#deleteUser',function(event) {
+$(document).on('click', '#deleteUser', function (event) {
 
     // Se captura el id del tr que es el asignado con el booking id y es el padre del td
     // de donde esta asignado el button.
@@ -188,11 +194,11 @@ $(document).on('click','#deleteUser',function(event) {
 
     var host = window.location.origin;
     $.ajax({
-        
+
         // envia la peticion URL al API generado en view apartado booking
-        url: host+'/api/deleteAccount',
+        url: host + '/api/deleteAccount',
         data: {
-            idAccount : id_tr,
+            idAccount: id_tr,
         },
         type: 'POST',
     }).done(function (response) {
@@ -212,14 +218,14 @@ $(document).on('click','#deleteUser',function(event) {
 
             // Agregramos un fondo de exito
             divTittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-warning
-            
+
             // Lo mostramos.
             toast.show()
 
             setTimeout(() => {
-                window.location.reload();              
+                window.location.reload();
             }, 1000);
-            
+
 
         } else if (resp['cod'] === '404') {
             console.log(`${resp['cod']} ${resp['def']}`);
@@ -229,78 +235,78 @@ $(document).on('click','#deleteUser',function(event) {
         // Respuesta de un error de peticion hacia el ajax       
         let resp = JSON.parse(err);
         console.log(`${resp['cod']} ${resp['def']}`);
-    }); 
- });
+    });
+});
 
- //Eliminar Cuenta
-$(document).on('click','#editUser',function(event) {
+//Eliminar Cuenta
+$(document).on('click', '#editUser', function (event) {
 
     // Se captura el id del tr que es el asignado con el booking id y es el padre del td
     // de donde esta asignado el button.
-    let id_tr = event.target.parentElement.parentElement.id;       
+    let id_tr = event.target.parentElement.parentElement.id;
     var host = window.location.origin;
 
     // Objeto de usuario con información
     let user = {
-        id:  id_tr,
-      }; 
-   
+        id: id_tr,
+    };
+
     console.log(id_tr);
     top.location.href = "/view/home/editAccount.php?user=" + encodeURIComponent(JSON.stringify(user));
- });
+});
 
-  //Cancelar Creacion
-$(document).on('click','#cancel-create',function(event) {
+//Cancelar Creacion
+$(document).on('click', '#cancel-create', function (event) {
     // Volvemos al menu de listado de cuentas.
     top.location.href = "/view/home/accountsAdmin.php";
- });
+});
 
 
- //------------------------ VALIDADOR DE RUT
+//------------------------ VALIDADOR DE RUT
 
- function checkRut(rut) {
+function checkRut(rut) {
     // Despejar Puntos
-    var valor = rut.replace('.','');
+    var valor = rut.replace('.', '');
     // Despejar Guión
-    valor = valor.replace('-','');
-    
+    valor = valor.replace('-', '');
+
     // Aislar Cuerpo y Dígito Verificador
-    cuerpo = valor.slice(0,-1);
+    cuerpo = valor.slice(0, -1);
     dv = valor.slice(-1).toUpperCase();
-    
+
     // Formatear RUN
-    rut.value = cuerpo + '-'+ dv
-    
+    rut.value = cuerpo + '-' + dv
+
     // Si no cumple con el mínimo ej. (n.nnn.nnn)
-    if(cuerpo.length < 7) { return false;}
-    
+    if (cuerpo.length < 7) { return false; }
+
     // Calcular Dígito Verificador
     suma = 0;
     multiplo = 2;
-    
+
     // Para cada dígito del Cuerpo
-    for(i=1;i<=cuerpo.length;i++) {
-    
+    for (i = 1; i <= cuerpo.length; i++) {
+
         // Obtener su Producto con el Múltiplo Correspondiente
         index = multiplo * valor.charAt(cuerpo.length - i);
-        
+
         // Sumar al Contador General
         suma = suma + index;
-        
+
         // Consolidar Múltiplo dentro del rango [2,7]
-        if(multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
-  
+        if (multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
+
     }
-    
+
     // Calcular Dígito Verificador en base al Módulo 11
     dvEsperado = 11 - (suma % 11);
-    
+
     // Casos Especiales (0 y K)
-    dv = (dv == 'K')?10:dv;
-    dv = (dv == 0)?11:dv;
-    
+    dv = (dv == 'K') ? 10 : dv;
+    dv = (dv == 0) ? 11 : dv;
+
     // Validar que el Cuerpo coincide con su Dígito Verificador
-    if(dvEsperado != dv) {  return false; }
-    
+    if (dvEsperado != dv) { return false; }
+
     return true;
 }
