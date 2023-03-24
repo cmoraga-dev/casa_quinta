@@ -33,7 +33,7 @@ function createAccount(){
     const numero = rutSinFormato.slice(0, -1);
     const digitoVerificador = rutSinFormato.slice(-1);
 
-    console.log(validarRut(numero, digitoVerificador));
+    console.log(Valida_Rut(rutSinFormato));
 
     // $.ajax({
     //     url: host+'/api/createAccount',
@@ -243,28 +243,58 @@ $(document).on('click','#cancel-create',function(event) {
 
  //------------------------ VALIDADOR DE RUT
 
- function validarRut(numero, digitoVerificador) {
-    let rutValido = false;
-    let suma = 0;
-    let factor = 2;
-    
-    // Convertir el número del RUT a un arreglo de dígitos
-    const digitos = numero.split('').reverse();
-  
-    // Sumar los productos de los dígitos por su factor correspondiente
-    digitos.forEach((digito) => {
-      suma += digito * factor;
-      factor = factor === 7 ? 2 : factor + 1;
-    });
-  
-    // Calcular el dígito verificador esperado
-    const resto = suma % 11;
-    const digitoVerificadorEsperado = resto === 0 ? 0 : resto === 1 ? 'K' : 11 - resto;
-  
-    // Comparar el dígito verificador esperado con el dígito verificador del RUT ingresado
-    if (digitoVerificadorEsperado === digitoVerificador) {
-      rutValido = true;
+function Valida_Rut(Objeto) {
+    var tmpstr = "";
+    var intlargo = Objeto.value
+    if (intlargo.length > 0) {
+        crut = Objeto.value
+        largo = crut.length;
+        if (largo < 2) {
+            return false;
+        }
+        for (i = 0; i < crut.length; i++)
+            if (crut.charAt(i) != ' ' && crut.charAt(i) != '.' && crut.charAt(i) != '-') {
+                tmpstr = tmpstr + crut.charAt(i);
+            }
+        rut = tmpstr;
+        crut = tmpstr;
+        largo = crut.length;
+
+        if (largo > 2)
+            rut = crut.substring(0, largo - 1);
+        else
+            rut = crut.charAt(0);
+
+        dv = crut.charAt(largo - 1);
+
+        if (rut == null || dv == null)
+            return 0;
+
+        var dvr = '0';
+        suma = 0;
+        mul = 2;
+
+        for (i = rut.length - 1; i >= 0; i--) {
+            suma = suma + rut.charAt(i) * mul;
+            if (mul == 7)
+                mul = 2;
+            else
+                mul++;
+        }
+
+        res = suma % 11;
+        if (res == 1)
+            dvr = 'k';
+        else if (res == 0)
+            dvr = '0';
+        else {
+            dvi = 11 - res;
+            dvr = dvi + "";
+        }
+
+        if (dvr != dv.toLowerCase()) {
+            return false;
+        }
+        return true;
     }
-  
-    return rutValido;
-  }
+}
