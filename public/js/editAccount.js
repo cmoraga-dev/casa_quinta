@@ -94,7 +94,7 @@ function updateAccount() {
 
                 // Mostramos el toast.
                 toast.show();
-                window.location.reload();
+                //window.location.reload();
 
             } else if (resp['cod'] === '404') {
                 console.log(`${resp['cod']} ${resp['def']}`);
