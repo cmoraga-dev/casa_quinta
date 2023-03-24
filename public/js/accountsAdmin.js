@@ -285,7 +285,7 @@ $(document).on('click','#cancel-create',function(event) {
     dv = (dv == 0)?11:dv;
     
     // Validar que el Cuerpo coincide con su Dígito Verificador
-    if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
+    if(dvEsperado != dv) {  return false; }
     
     return true;
 }
