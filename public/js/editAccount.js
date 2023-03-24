@@ -96,7 +96,7 @@ function updateAccount() {
                 toast.show();
                 setTimeout(() => {
                     top.location.href = "/view/home/accountsAdmin.php";    
-                }, 1000);
+                }, 500);
 
             } else if (resp['cod'] === '404') {
                 console.log(`${resp['cod']} ${resp['def']}`);

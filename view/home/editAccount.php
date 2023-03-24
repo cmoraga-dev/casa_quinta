@@ -17,6 +17,8 @@ include("../login/validateSession.php");
 
         <script src="../../public/js/jquery.Rut.js"></script>
         <script src="../../public/js/editAccount.js"></script>
+        
+        <script src="../../public/css/adminAccount.css"></script>
     </head>
 
     <body>
