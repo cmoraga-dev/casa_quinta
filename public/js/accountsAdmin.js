@@ -26,48 +26,62 @@ function createAccount(){
     let rut = document.getElementById("rut").value;
     let email = document.getElementById("email").value;
     
-    $.ajax({
-        url: host+'/api/createAccount',
-        type: 'POST',
-        data: { 
-            user : userName,
-            pass : password,
-            first_name : name,
-            last_name : fullname,
-            rut : rut,
-            email : email,
-        }
-    }).done(function (response) {
-       resp = JSON.parse(response)
-        console.log(resp['cod'] );        
-        if(resp['cod'] === '202'){
-            // Obtenemos el Toast.
-            let toastEl = document.querySelector('.toast');
-            let toast = new bootstrap.Toast(toastEl);
+    const rutEsValido = validarRut(rut);
 
-            // Seteamos los valores de texto del toast.
-            let msjToast = toastEl.querySelector('.toast-body');
-            let divTittleToast = toastEl.querySelector('.toast-header');
+    if (rutEsValido) {
+        // Formatear el número del RUT con puntos
+        const rutFormateado = numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + digitoVerificador;
+      
+        // Guardar el RUT formateado en la base de datos
+        // Aquí debes incluir el código que se encargue de guardar el RUT en la base de datos
+      
+        console.log(rutFormateado); // Imprimir el RUT formateado en la consola para verificar que el formato es correcto
+      } else {
+        console.log('El RUT ingresado no es válido'); // Imprimir un mensaje de error si el RUT no es válido
+      }
+    
+    // $.ajax({
+    //     url: host+'/api/createAccount',
+    //     type: 'POST',
+    //     data: { 
+    //         user : userName,
+    //         pass : password,
+    //         first_name : name,
+    //         last_name : fullname,
+    //         rut : rut,
+    //         email : email,
+    //     }
+    // }).done(function (response) {
+    //    resp = JSON.parse(response)
+    //     console.log(resp['cod'] );        
+    //     if(resp['cod'] === '202'){
+    //         // Obtenemos el Toast.
+    //         let toastEl = document.querySelector('.toast');
+    //         let toast = new bootstrap.Toast(toastEl);
 
-            // Agregamos valores a los componentes obtenidos con texto     
-            msjToast.textContent = `Se ha creado satisfactoriamente el usuario ${userName}`;
+    //         // Seteamos los valores de texto del toast.
+    //         let msjToast = toastEl.querySelector('.toast-body');
+    //         let divTittleToast = toastEl.querySelector('.toast-header');
 
-            // Agregramos un fondo de exito
-            divTittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
+    //         // Agregamos valores a los componentes obtenidos con texto     
+    //         msjToast.textContent = `Se ha creado satisfactoriamente el usuario ${userName}`;
 
-            // Lo mostramos.
-            toast.show()
+    //         // Agregramos un fondo de exito
+    //         divTittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
+
+    //         // Lo mostramos.
+    //         toast.show()
             
-            setTimeout(() => {
-                window.location.reload();                
-            }, 1000);
-        }
+    //         setTimeout(() => {
+    //             window.location.reload();                
+    //         }, 1000);
+    //     }
 
-    }).fail(function (err) {
-        // Respuesta de un error de peticion hacia el ajax       
-        var resp = JSON.parse(err);
-        console.log(`${resp['cod']} ${resp['def']}`);
-    });
+    // }).fail(function (err) {
+    //     // Respuesta de un error de peticion hacia el ajax       
+    //     var resp = JSON.parse(err);
+    //     console.log(`${resp['cod']} ${resp['def']}`);
+    // });
 }
 
 
@@ -230,3 +244,39 @@ $(document).on('click','#cancel-create',function(event) {
     // Volvemos al menu de listado de cuentas.
     top.location.href = "/view/home/accountsAdmin.php";
  });
+
+
+ //------------------------ VALIDADOR DE RUT
+
+ function validarRut(rut) {
+
+    const rutSinFormato  = rut.replace(/\./g, '').replace(/\-/g, '');
+
+    // Separar el número del dígito verificador
+    const numeroSinDigito = rutSinFormato.slice(0, -1);
+    const digitoVerificador = rutSinFormato.slice(-1);
+
+    let rutValido = false;
+    let suma = 0;
+    let factor = 2;
+    
+    // Convertir el número del RUT a un arreglo de dígitos
+    const digitos = numeroSinDigito.split('').reverse();
+  
+    // Sumar los productos de los dígitos por su factor correspondiente
+    digitos.forEach((digito) => {
+      suma += digito * factor;
+      factor = factor === 7 ? 2 : factor + 1;
+    });
+  
+    // Calcular el dígito verificador esperado
+    const resto = suma % 11;
+    const digitoVerificadorEsperado = resto === 0 ? 0 : resto === 1 ? 'K' : 11 - resto;
+  
+    // Comparar el dígito verificador esperado con el dígito verificador del RUT ingresado
+    if (digitoVerificadorEsperado === digitoVerificador) {
+      rutValido = true;
+    }
+  
+    return rutValido;
+  }
