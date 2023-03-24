@@ -62,6 +62,9 @@ function createAccount() {
                 // Agregamos valores a los componentes obtenidos con texto     
                 msjToast.textContent = `Se ha creado satisfactoriamente el usuario ${userName}`;
 
+                //Quitamos algun color ya cargado por error
+                divTittleToast.classList.remove('bg-danger');
+
                 // Agregramos un fondo de exito
                 divTittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-success
 
