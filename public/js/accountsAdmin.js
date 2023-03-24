@@ -26,20 +26,16 @@ function createAccount(){
     let rut = document.getElementById("rut").value;
     let email = document.getElementById("email").value;
     
-    let rutEsValido = validarRut(rut);
+    // Remover cualquier punto o guion existente en el RUT (solo si es que ya estaba formateado)
+    const rutSinFormato = rut.replace(/\./g, '').replace(/\-/g, '');
 
-    if (rutEsValido) {
-        // Formatear el número del RUT con puntos
-        let rutFormateado = numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '-' + digitoVerificador;
-      
-        // Guardar el RUT formateado en la base de datos
-        // Aquí debes incluir el código que se encargue de guardar el RUT en la base de datos
-      
-        console.log(rutFormateado); // Imprimir el RUT formateado en la consola para verificar que el formato es correcto
-      } else {
-        console.log('El RUT ingresado no es válido'); // Imprimir un mensaje de error si el RUT no es válido
-      }
-    
+    // Separar el número del dígito verificador
+    const numero = rutSinFormato.slice(0, -1);
+    const digitoVerificador = rutSinFormato.slice(-1);
+
+    console.log(`el rut ${rut} le sacamos los puntos y guion ${rutSinFormato} y separamos en  ${numero}  ${digitoVerificador} `)
+
+
     // $.ajax({
     //     url: host+'/api/createAccount',
     //     type: 'POST',
@@ -250,18 +246,18 @@ $(document).on('click','#cancel-create',function(event) {
 
  function validarRut(rut) {
 
-    let rutSinFormato  = rut.replace(/\./g, '').replace(/\-/g, '');
+    const rutSinFormato  = rut.replace(/\./g, '').replace(/\-/g, '');
 
     // Separar el número del dígito verificador
-    let numeroSinDigito = rutSinFormato.slice(0, -1);
-    let digitoVerificador = rutSinFormato.slice(-1);
+    const numeroSinDigito = rutSinFormato.slice(0, -1);
+    const digitoVerificador = rutSinFormato.slice(-1);
 
     let rutValido = false;
     let suma = 0;
     let factor = 2;
     
     // Convertir el número del RUT a un arreglo de dígitos
-    let digitos = numeroSinDigito.split('').reverse();
+    const digitos = numeroSinDigito.split('').reverse();
   
     // Sumar los productos de los dígitos por su factor correspondiente
     digitos.forEach((digito) => {
@@ -270,8 +266,8 @@ $(document).on('click','#cancel-create',function(event) {
     });
   
     // Calcular el dígito verificador esperado
-    let resto = suma % 11;
-    let digitoVerificadorEsperado = resto === 0 ? 0 : resto === 1 ? 'K' : 11 - resto;
+    const resto = suma % 11;
+    const digitoVerificadorEsperado = resto === 0 ? 0 : resto === 1 ? 'K' : 11 - resto;
   
     // Comparar el dígito verificador esperado con el dígito verificador del RUT ingresado
     if (digitoVerificadorEsperado === digitoVerificador) {
