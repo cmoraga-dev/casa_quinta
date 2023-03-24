@@ -1,4 +1,4 @@
-let idEdit = 0;
+var idEdit = 0;
 $(document).ready(function() {
     // Obtén la cadena de consulta de la URL actual
     let queryString = window.location.search;
