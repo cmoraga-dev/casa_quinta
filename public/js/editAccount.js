@@ -64,7 +64,7 @@ function updateAccount() {
     var host = window.location.origin;
 
     if (idEdit != 0) {
-        let inputPass = document.getElementById("password");
+        let inputPass = document.getElementById("password").value;
         let inputName = document.getElementById("user");
         console.log(`${idEdit} y la pass ${inputPass}`);
 
