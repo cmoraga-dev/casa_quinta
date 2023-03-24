@@ -69,11 +69,10 @@ function updateAccount() {
 
         $.ajax({
             // envia la peticion URL al API generado.
-            url: host + '/api/updateAccount',
+            url: host + '/api/updateAccountPassword',
             data: {
                 idAccount: idEdit,
                 pass : inputPass,
-                name: inputName
             },
             type: 'POST',
         }).done(function (response) {
