@@ -29,11 +29,26 @@ function createAccount(){
     // Remover cualquier punto o guion existente en el RUT (solo si es que ya estaba formateado)
     const rutSinFormato = rut.replace(/\./g, '').replace(/\-/g, '');
 
-    // Separar el número del dígito verificador
-    const numero = rutSinFormato.slice(0, -1);
-    const digitoVerificador = rutSinFormato.slice(-1);
+    if(checkRut(rutSinFormato) == true){
+        console.log(checkRut(rutSinFormato));        
+    }else{
+        // Obtenemos el Toast.
+        let toastEl = document.querySelector('.toast');
+        let toast = new bootstrap.Toast(toastEl);
 
-    console.log(checkRut(rutSinFormato));
+        // Seteamos los valores de texto del toast.
+        let msjToast = toastEl.querySelector('.toast-body');
+        let divTittleToast = toastEl.querySelector('.toast-header');
+
+        // Agregamos valores a los componentes obtenidos con texto     
+        msjToast.textContent = `Rut invalido ${rut} por favor digitar bien`;
+
+        // Agregramos un fondo de exito
+        divTittleToast.classList.add('bg-danger'); // Agrega la clase de estilo .bg-success
+
+        // Lo mostramos.
+        toast.show() 
+    }
 
     // $.ajax({
     //     url: host+'/api/createAccount',
@@ -196,7 +211,7 @@ $(document).on('click','#deleteUser',function(event) {
             msjToast.textContent = `Se ha eliminado el usuario`;
 
             // Agregramos un fondo de exito
-            divTittleToast.classList.add('bg-danger'); // Agrega la clase de estilo .bg-warning
+            divTittleToast.classList.add('bg-success'); // Agrega la clase de estilo .bg-warning
             
             // Lo mostramos.
             toast.show()
@@ -257,7 +272,7 @@ $(document).on('click','#cancel-create',function(event) {
     rut.value = cuerpo + '-'+ dv
     
     // Si no cumple con el mínimo ej. (n.nnn.nnn)
-    if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
+    if(cuerpo.length < 7) { return false;}
     
     // Calcular Dígito Verificador
     suma = 0;
