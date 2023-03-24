@@ -245,7 +245,7 @@ $(document).on('click','#cancel-create',function(event) {
 
 function Valida_Rut(Objeto) {
     var tmpstr = "";
-    var intlargo = Objeto.value
+    var intlargo = Objeto.toString().length;
     if (intlargo.length > 0) {
         crut = Objeto.value
         largo = crut.length;
